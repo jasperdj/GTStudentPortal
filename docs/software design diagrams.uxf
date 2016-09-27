@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>13</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>754</x>
+      <y>234</y>
+      <w>273</w>
+      <h>247</h>
+    </coordinates>
+    <panel_attributes>User
+--
+-String firstName
+-String surname
+-String email
+-String phone
+-String password
+-Boolean recruiter
+-
+--
+Getters/setters
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLActor</id>
+    <coordinates>
+      <x>2301</x>
+      <y>715</y>
+      <w>78</w>
+      <h>143</h>
+    </coordinates>
+    <panel_attributes>Student
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLActor</id>
+    <coordinates>
+      <x>2288</x>
+      <y>1196</y>
+      <w>104</w>
+      <h>143</h>
+    </coordinates>
+    <panel_attributes>Recruiter
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>2470</x>
+      <y>611</y>
+      <w>377</w>
+      <h>325</h>
+    </coordinates>
+    <panel_attributes>
+halign=left
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>2509</x>
+      <y>650</y>
+      <w>299</w>
+      <h>52</h>
+    </coordinates>
+    <panel_attributes>Gegevens wijzigen profiel
+valign=center
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>2509</x>
+      <y>715</y>
+      <w>299</w>
+      <h>52</h>
+    </coordinates>
+    <panel_attributes>Inschrijven
+valign=center
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>2509</x>
+      <y>780</y>
+      <w>299</w>
+      <h>52</h>
+    </coordinates>
+    <panel_attributes>Activiteiten beheren/inschrijven
+valign=center
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>2470</x>
+      <y>962</y>
+      <w>377</w>
+      <h>624</h>
+    </coordinates>
+    <panel_attributes>
+halign=left
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>2509</x>
+      <y>845</y>
+      <w>299</w>
+      <h>52</h>
+    </coordinates>
+    <panel_attributes>Inschrijven loting
+valign=center
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>2509</x>
+      <y>1443</y>
+      <w>299</w>
+      <h>52</h>
+    </coordinates>
+    <panel_attributes>Gegevens wijzigen eigen profiel
+valign=center
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>2509</x>
+      <y>988</y>
+      <w>299</w>
+      <h>52</h>
+    </coordinates>
+    <panel_attributes>Student overzicht opvragen
+valign=center
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>2509</x>
+      <y>1053</y>
+      <w>299</w>
+      <h>52</h>
+    </coordinates>
+    <panel_attributes>Gegevens wijzigen student profiel
+valign=center
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>2509</x>
+      <y>1248</y>
+      <w>299</w>
+      <h>52</h>
+    </coordinates>
+    <panel_attributes>Toevoegen activiteiten
+valign=center
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>2509</x>
+      <y>1313</y>
+      <w>299</w>
+      <h>52</h>
+    </coordinates>
+    <panel_attributes>Wijzigen activiteiten
+valign=center
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>2509</x>
+      <y>1508</y>
+      <w>299</w>
+      <h>52</h>
+    </coordinates>
+    <panel_attributes>Aanmelden nieuw account
+valign=center
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>2509</x>
+      <y>1118</y>
+      <w>299</w>
+      <h>52</h>
+    </coordinates>
+    <panel_attributes>Contact ingeschreven studenten
+valign=center
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>2509</x>
+      <y>1183</y>
+      <w>299</w>
+      <h>52</h>
+    </coordinates>
+    <panel_attributes>Student notificaties ontvangen
+valign=center
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>2509</x>
+      <y>1378</y>
+      <w>299</w>
+      <h>52</h>
+    </coordinates>
+    <panel_attributes>Verloting beheer
+valign=center
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>2158</x>
+      <y>559</y>
+      <w>754</w>
+      <h>1053</h>
+    </coordinates>
+    <panel_attributes>
+halign=left
+bg=orange
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>377</x>
+      <y>507</y>
+      <w>351</w>
+      <h>338</h>
+    </coordinates>
+    <panel_attributes>Student
+--
+- LocalDate dateJoined
+- University university
+- Education education
+- LocalDate startEducation
+- LocalDate endEducation
+- List&lt;Role&gt; roles
+- enum linkedInConnectionStatus 
+(approved, declined, pending)
+- Boolean isInterestedInEvents 
+- List&lt;EventType&gt; eventTypeInterests
+- List&lt;EventTheme&gt; eventThemeInterest
+- String contactOrigin
+- LocalDate dateOfBirth 
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1274</x>
+      <y>624</y>
+      <w>338</w>
+      <h>143</h>
+    </coordinates>
+    <panel_attributes>University
+--
+- String name
+- 
+
+--
++ List&lt;Education&gt; getEducations()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1300</x>
+      <y>819</y>
+      <w>273</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>Education
+--
+- String name
+- enum degree (hbo, wo)
+--
+getters/setters</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>975</x>
+      <y>507</y>
+      <w>273</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>Role
+--
+- String name
+--
+getters/setters</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>806</x>
+      <y>1053</y>
+      <w>273</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>EventTheme
+--
+- String name
+--
+getters/setters</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1352</x>
+      <y>949</y>
+      <w>273</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>EventType
+--
+- String name
+--
+getters/setters</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1664</x>
+      <y>559</y>
+      <w>312</w>
+      <h>312</h>
+    </coordinates>
+    <panel_attributes>Event
+--
+- List&lt;EventType&gt; eventTypes
+- List&lt;EventTheme&gt; eventThemes
+- String title
+- LocalDateTime start
+- LocalDateTime end
+- Boolean published
+- String description
+- List&lt;User&gt; attendiesDeclined
+- List&lt;User&gt; attendiesAccepted
+- List&lt;User&gt; attendiesMayb e
+--
+getters/setters</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>663</y>
+      <w>299</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>StudentComment
+--
+- LocalDate created
+- String message
+- LocalDateTime triggerNotification
+--
+getters/setters</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1326</x>
+      <y>260</y>
+      <w>273</w>
+      <h>247</h>
+    </coordinates>
+    <panel_attributes>DataManager
+--
+- eventTypes
+- eventThemes
+- List&lt;Role&gt; roles
+--
++addEventType
++addEventTheme
++add</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1443</x>
+      <y>494</y>
+      <w>39</w>
+      <h>156</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;100.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>559</x>
+      <y>364</y>
+      <w>221</w>
+      <h>169</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>150.0;10.0;10.0;10.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1430</x>
+      <y>754</y>
+      <w>39</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>715</x>
+      <y>559</y>
+      <w>286</w>
+      <h>39</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>200.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>143</x>
+      <y>416</y>
+      <w>221</w>
+      <h>169</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>150.0;10.0;10.0;10.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>299</x>
+      <y>715</y>
+      <w>104</w>
+      <h>39</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;60.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1105</x>
+      <y>377</y>
+      <w>247</w>
+      <h>156</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;100.0;10.0;10.0;170.0;10.0</additional_attributes>
+  </element>
+</diagram>
