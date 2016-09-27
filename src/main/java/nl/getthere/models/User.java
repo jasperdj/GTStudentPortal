@@ -1,4 +1,4 @@
-package nl.getthere.model;
+package nl.getthere.models;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

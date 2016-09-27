@@ -1,7 +1,7 @@
 package nl.getthere.controllers;
 
-import nl.getthere.model.User;
-import nl.getthere.model.UserRepository;
+import nl.getthere.models.User;
+import nl.getthere.models.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
