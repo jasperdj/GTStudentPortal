@@ -1,14 +1,17 @@
 package nl.getthere.model;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
 import java.time.LocalDate;
 import java.util.List;
 
 /**
  * Created by jasper.dejong on 27-9-2016.
  */
+@Entity
 public class Student {
     private LocalDate dateJoined;
     private Education education;
