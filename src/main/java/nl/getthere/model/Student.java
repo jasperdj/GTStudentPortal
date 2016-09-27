@@ -70,7 +70,7 @@ public class Student {
     public void setEndEducation(LocalDate endEducation) {
         this.endEducation = endEducation;
     }
-    
+
     @ManyToOne
     public Role getRole() {
         return role;

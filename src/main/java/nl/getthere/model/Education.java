@@ -1,9 +1,6 @@
 package nl.getthere.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by jasper.dejong on 27-9-2016.
@@ -19,6 +16,15 @@ public class Education {
     public Long getId() {
         return id;
     }
+    private University university;
+
+    @ManyToOne
+    public University getUniversity() {
+        return university;
+    }
+    public void setUniversity(University university) {
+        this.university = university;
+    }
 
     public void setId(Long id) {
         this.id = id;
@@ -27,7 +33,6 @@ public class Education {
     public enum Degree {
         hbo, wo
     }
-
     public String getName() {
         return name;
     }
