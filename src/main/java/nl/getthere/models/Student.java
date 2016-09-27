@@ -11,8 +11,12 @@ import javax.persistence.ManyToOne;
 /**
  * Created by jasper.dejong on 27-9-2016.
  */
+
+
+//Sprint security, sprint boot and sprint security
+
 @Entity
-public class Student {
+public class Student extends User {
     private LocalDate dateJoined;
     private Education education;
     private LocalDate startEducation;
