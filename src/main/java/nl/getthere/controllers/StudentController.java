@@ -25,13 +25,14 @@ public class StudentController {
 			LocalDate dateOfBirth) {
 		Student s = new Student(firstName, lastName, email, phone, password, LocalDate.now(), education, startEducation, endEducation, dateOfBirth);
 		repo.save(s);
+		model.addAttribute("status", "Student aangemaakt!");
 		model.addAttribute("student", s);
 		return "newstudent";
 	}
 	
-	@RequestMapping("/newstudent")
+	@RequestMapping(value = "/newstudent", method = RequestMethod.GET)
 	public String showForm(Model model){
-		
+		model.addAttribute("status", "Gebruik het formulier om een student aan te maken.");
 		return "newstudent";
 	}
 
