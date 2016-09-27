@@ -14,7 +14,7 @@ public class UserController {
 	@Autowired
 	private UserRepository repo;
 	
-	@RequestMapping("/create/user")
+	@RequestMapping("/newuser")
 	public String createUser(Model model, String firstName, String lastName, String email, String phone, String password, Boolean isRecruiter){
 		User u = new User();
 		u.setFirstName("Henk");

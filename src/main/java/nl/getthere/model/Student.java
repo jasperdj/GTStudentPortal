@@ -1,12 +1,12 @@
 package nl.getthere.model;
 
+import java.time.LocalDate;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-import java.time.LocalDate;
-import java.util.List;
+import javax.persistence.ManyToOne;
 
 /**
  * Created by jasper.dejong on 27-9-2016.
@@ -17,7 +17,7 @@ public class Student {
     private Education education;
     private LocalDate startEducation;
     private LocalDate endEducation;
-    private List<Role> roles;
+    private Role role;
     private LinkedInConnectionStatus linkedInConnectionStatus;
     private Boolean isInterestedInEvents;
     private String contactOrigin;
@@ -45,7 +45,8 @@ public class Student {
     public void setDateJoined(LocalDate dateJoined) {
         this.dateJoined = dateJoined;
     }
-
+    
+    @ManyToOne
     public Education getEducation() {
         return education;
     }
@@ -70,12 +71,13 @@ public class Student {
         this.endEducation = endEducation;
     }
 
-
-    public List<Role> getRoles() {
-        return roles;
+    @ManyToOne
+    public Role getRole() {
+        return role;
     }
-    public void setRoles(List<Role> roles) {
-        this.roles = roles;
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     public LinkedInConnectionStatus getLinkedInConnectionStatus() {
