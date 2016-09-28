@@ -2,7 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html ">
 <html>
 <head>
 <%@include file="../includes/header.jsp"%>
@@ -12,6 +12,7 @@
 	
 	<!-- firstName, lastName, email, phone, password, LocalDate.now(), education, startEducation, endEducation, dateOfBirth -->
 	<div class="ui main text container padded">
+		<p>${status }</p>
 		<form:form method="post" modelAttribute="student" cssClass="ui form">
 			<div class="field">
 				<label>Naam</label>
@@ -55,17 +56,17 @@
 				</div>
 				<div class="three wide field">
 					<label>Begin</label>
-					<form:input path="startEducation"/>
+					<form:input type="date" path="startEducation"/>
 				</div>
 				<div class="three wide field">
 					<label>Eind</label>
-					<form:input path="endEducation"/>
+					<form:input type="date" path="endEducation"/>
 				</div>
 			</div>	
 			
 			<div class="field">
 				<label>Geboortedatum</label>
-				<form:input path="dateOfBirth"/>
+				<form:input type="date" path="dateOfBirth"/>
 			</div>		
 			
 			<div class="field">
@@ -73,7 +74,7 @@
 				<form:checkbox path="isInterestedInEvents"/>
 			</div>
 			
-			<div class="ui button" tabindex="0">Cre&euml;er student</div>
+			<input type="submit" class="ui button" value="Cre&euml;er student">
 		</form:form>
 	</div>
 	
