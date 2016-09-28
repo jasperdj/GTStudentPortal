@@ -1,10 +1,11 @@
 
 # Answers
 - Can a student have more than one educations?
-    No.
+    + No.
 - Can a student have multiple roles?
+    + Refactored to Company interests, and yes.
+    + Company intersts is divided to: Internship, Graduation internship, Traineeship and Events.
 
 # Questions
-
-- Can a student have multiple roles?
+-
 -
