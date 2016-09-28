@@ -84,15 +84,6 @@ public class Student extends User {
         this.endEducation = endEducation;
     }
 
-    @ManyToOne
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
-    }
-
     public LinkedInConnectionStatus getLinkedInConnectionStatus() {
         return linkedInConnectionStatus;
     }
