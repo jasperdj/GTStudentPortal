@@ -18,15 +18,6 @@ public class User {
     private String password;
     private Boolean recruiter;
     
-    public User(String firstName, String lastName, String email, String phone, String password) {
-		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.email = email;
-		this.phone = phone;
-		this.password = password;
-	}
-
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public Long getId() {
