@@ -6,6 +6,9 @@ import java.util.List;
 /**
  * Created by jasper.dejong on 27-9-2016.
  */
+
+//Todo setting column values. I.E @Column(name = "email", nullable = false, unique = true)
+
 @Entity
 public class University {
     private String name;

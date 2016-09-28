@@ -1,6 +1,10 @@
 
+# Answers
+- Can a student have more than one educations?
+    No.
+- Can a student have multiple roles?
+
 # Questions
 
-- Can a student have more than one educations?
 - Can a student have multiple roles?
 -

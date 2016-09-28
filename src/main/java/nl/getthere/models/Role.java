@@ -8,6 +8,8 @@ import javax.persistence.Id;
 /**
  * Created by jasper.dejong on 27-9-2016.
  */
+
+//Todo setting column values. I.E @Column(name = "email", nullable = false, unique = true)
 @Entity
 public class Role {
     private String name;

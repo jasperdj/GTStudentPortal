@@ -2,6 +2,8 @@ package nl.getthere.models;
 
 import org.springframework.data.repository.CrudRepository;
 
+import java.util.Optional;
+
 public interface StudentRepository extends CrudRepository<Student, Long> {
-    public User findByEmail(String username);
+    Optional<User> findOneByEmail(String username);
 }

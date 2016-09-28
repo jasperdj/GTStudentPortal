@@ -13,7 +13,7 @@ import javax.persistence.ManyToOne;
  */
 
 
-//Sprint security, sprint boot and sprint security
+//Todo setting column values. I.E @Column(name = "email", nullable = false, unique = true)
 
 @Entity
 public class Student extends User {
