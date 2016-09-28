@@ -27,15 +27,6 @@ public class Student extends User {
     private LocalDate dateOfBirth;
     private Long id;
 
-	public Student(String firstName, String lastName, String email, String phone, String password, LocalDate dateJoined, Education education, LocalDate startEducation, LocalDate endEducation, LocalDate dateOfBirth) {
-		super(firstName, lastName, email, phone, password);
-		this.dateJoined = dateJoined;
-		this.education = education;
-		this.startEducation = startEducation;
-		this.endEducation = endEducation;
-		this.dateOfBirth = dateOfBirth;
-	}
-
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public Long getId() {
@@ -91,11 +82,11 @@ public class Student extends User {
         this.linkedInConnectionStatus = linkedInConnectionStatus;
     }
 
-    public Boolean getInterestedInEvents() {
+    public Boolean getIsInterestedInEvents() {
         return isInterestedInEvents;
     }
 
-    public void setInterestedInEvents(Boolean interestedInEvents) {
+    public void setIsInterestedInEvents(Boolean interestedInEvents) {
         isInterestedInEvents = interestedInEvents;
     }
 
