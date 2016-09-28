@@ -31,7 +31,7 @@ public class StudentController {
 	
 	@RequestMapping("/students")
 	public String showStudents(Model model){
-		model.addAttribute("student", studentRepo.findAll());
+		model.addAttribute("students", studentRepo.findAll());
 		return "studentsoverview";
 	}
 	

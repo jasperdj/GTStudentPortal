@@ -8,16 +8,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 /**
  * Created by jasper.dejong on 27-9-2016.
  */
-
-
-//Sprint security, sprint boot and sprint security
-
 @Entity
-public class Student extends User {
-    private LocalDate dateJoined;
+public class Student{
+	private String firstName;
+    private String lastName;
+    private String email;
+    private String phone;
+	private LocalDate dateJoined;
     private Education education;
     private LocalDate startEducation;
     private LocalDate endEducation;
@@ -33,6 +35,38 @@ public class Student extends User {
         return id;
     }
 
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	
     public void setId(Long id) {
         this.id = id;
     }
@@ -40,7 +74,8 @@ public class Student extends User {
     public enum LinkedInConnectionStatus {
         approved, declined, pending
     }
-
+    
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     public LocalDate getDateJoined() {
         return dateJoined;
     }
@@ -58,14 +93,16 @@ public class Student extends User {
         this.education = education;
     }
 
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     public LocalDate getStartEducation() {
         return startEducation;
     }
-
+    
     public void setStartEducation(LocalDate startEducation) {
         this.startEducation = startEducation;
     }
-
+    
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     public LocalDate getEndEducation() {
         return endEducation;
     }
@@ -97,7 +134,8 @@ public class Student extends User {
     public void setContactOrigin(String contactOrigin) {
         this.contactOrigin = contactOrigin;
     }
-
+    
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
