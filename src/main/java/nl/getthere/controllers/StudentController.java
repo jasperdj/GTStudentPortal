@@ -24,6 +24,11 @@ public class StudentController {
 		return new Student();
 	}
 	
+	@RequestMapping("/")
+	public String goHome(){
+		return "index";
+	}
+	
 	@RequestMapping("/students")
 	public String showStudents(Model model){
 		model.addAttribute("student", studentRepo.findAll());

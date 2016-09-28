@@ -5,22 +5,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Get There - Studenten Portal</title>
-<link rel="stylesheet" type="text/css" href="<c:url value="/css/semantic.css"/>">
-<link rel="stylesheet" type="text/css" href="<c:url value="/css/studentportal.css"/>">
-<script src="<c:url value="/js/semantic.js"/>"></script>
+<%@include file="../includes/header.jsp"%>
 </head>
 <body>
-	<div class="ui fixed menu">
-	   <div class="ui container">
-	     <a href="#" class="header item">
-	       <img class="logo" src="img/logo.png">
-	       GT Student Portal
-	     </a>
-	     <a href="#" class="item">Home</a>
-	   </div>
-	 </div>
+	<%@include file="../includes/navbar.jsp"%
 	
 	<!-- firstName, lastName, email, phone, password, LocalDate.now(), education, startEducation, endEducation, dateOfBirth -->
 	<div class="ui main text container padded">
