@@ -2,9 +2,9 @@ package nl.getthere.controllers;
 
 import java.time.LocalDate;
 
-import nl.getthere.models.Education;
-import nl.getthere.models.Student;
-import nl.getthere.models.StudentRepository;
+import nl.getthere.model.Education;
+import nl.getthere.model.Student;
+import nl.getthere.model.StudentRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
