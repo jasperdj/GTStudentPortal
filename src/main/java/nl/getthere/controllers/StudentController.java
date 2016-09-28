@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class StudentController {
-
 	@Autowired
 	private StudentRepository repo;
 
@@ -38,7 +37,7 @@ public class StudentController {
 	
 	@RequestMapping(value = "/student", method = RequestMethod.POST)
 	public String updateStudent(){
-		
+		//Comment
 		return "studentdetail";
 	}
 	
