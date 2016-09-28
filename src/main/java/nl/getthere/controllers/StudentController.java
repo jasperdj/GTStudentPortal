@@ -38,7 +38,9 @@ public class StudentController {
 	
 	@RequestMapping(value = "/student", method = RequestMethod.POST)
 	public String updateStudent(){
-		
+		for (int i = 0; i < 10; i++) {
+			System.out.println(i);
+		}
 		return "studentdetail";
 	}
 	
