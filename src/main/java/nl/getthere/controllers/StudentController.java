@@ -35,5 +35,18 @@ public class StudentController {
 		model.addAttribute("status", "Gebruik het formulier om een student aan te maken.");
 		return "newstudent";
 	}
-
+	
+	@RequestMapping(value = "/student", method = RequestMethod.POST)
+	public String updateStudent(){
+		
+		return "studentdetail";
+	}
+	
+	@RequestMapping(value = "/student", method = RequestMethod.GET)
+	public String showStudent(){
+		
+		return "studentdetail";
+	}
+	
+	
 }
