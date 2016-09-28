@@ -9,30 +9,35 @@
 </head>
 <body>
 	<%@include file="../includes/navbar.jsp"%>
-	 
-	 <div class="ui container padded">
-	 	<table class="ui celled table">
-		 	<thead>
-			 	<tr>
-		 			<th>Voornaam</th>
-		 			<th>Achternaam</th>
-		 			<th>Email</th>
-		 			<th>Telefoon</th>
-		 			<th>Studie</th>
-		 		</tr>
-		 	</thead>
-	 		<tbody>
-	 			<c:forEach items="${students}" var="s">
-	 			<tr>
-	 				<td>${s.firstName}</td>
-	 				<td>${s.lastName }</td>
-	 				<td>${s.email }</td>
-	 				<td>${s.phone }</td>
-	 				<td>${s.education.name } (s.education.degree)</td>
-	 			</tr>
-			</c:forEach>
-	 		</tbody>
-	 	</table>
-	 </div>
+	
+	<div class="ui container padded">
+
+		<form action="/student">
+		    <input type="submit" class="ui icon button" value="Nieuwe student" ></input>
+		</form>
+		
+		<table class="ui celled table">
+	 	<thead>
+		 	<tr>
+	 			<th>Voornaam</th>
+	 			<th>Achternaam</th>
+	 			<th>Email</th>
+	 			<th>Telefoon</th>
+	 			<th>Studie</th>
+	 		</tr>
+	 	</thead>
+			<tbody>
+				<c:forEach items="${students}" var="s">
+				<tr>
+					<td>${s.firstName}</td>
+					<td>${s.lastName }</td>
+					<td>${s.email }</td>
+					<td>${s.phone }</td>
+					<td>${s.education.name } (s.education.degree)</td>
+				</tr>
+		</c:forEach>
+			</tbody>
+		</table>
+	</div>
 </body>
 </html>
