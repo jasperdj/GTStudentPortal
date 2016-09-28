@@ -21,7 +21,6 @@ public class Student extends User {
     private Education education;
     private LocalDate startEducation;
     private LocalDate endEducation;
-    private Role role;
     private LinkedInConnectionStatus linkedInConnectionStatus;
     private Boolean isInterestedInEvents;
     private String contactOrigin;
