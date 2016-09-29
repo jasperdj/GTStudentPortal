@@ -7,6 +7,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * Created by jasper.dejong on 27-9-2016.
@@ -16,30 +22,64 @@ import javax.persistence.ManyToOne;
 //Todo setting column values. I.E @Column(name = "email", nullable = false, unique = true)
 
 @Entity
-public class Student {
-    private LocalDate dateJoined;
+public class Student{
+	@NotEmpty(message="Voer aub een voornaam in. ")
+	private String firstName;
+	@NotEmpty(message="Voer aub een achternaam in. ")
+    private String lastName;
+	@NotEmpty(message="Voer aub een email in. ") @Email(message="Controleer het opgegeven emailadres. ")
+    private String email;
+	@Size(min=10,max=10, message="Controleer nummer.")
+    private String phone;
+	private LocalDate dateJoined;
+	@NotNull
     private Education education;
     private LocalDate startEducation;
     private LocalDate endEducation;
     private LinkedInConnectionStatus linkedInConnectionStatus;
+    @NotNull
     private Boolean isInterestedInEvents;
     private String contactOrigin;
+    @NotNull
     private LocalDate dateOfBirth;
     private Long id;
-
-	public Student(String firstName, String lastName, String email, String phone, String password, LocalDate dateJoined, Education education, LocalDate startEducation, LocalDate endEducation, LocalDate dateOfBirth) {
-		this.dateJoined = dateJoined;
-		this.education = education;
-		this.startEducation = startEducation;
-		this.endEducation = endEducation;
-		this.dateOfBirth = dateOfBirth;
-	}
-
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public Long getId() {
         return id;
     }
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
 
     public void setId(Long id) {
         this.id = id;
@@ -49,6 +89,7 @@ public class Student {
         approved, declined, pending
     }
 
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     public LocalDate getDateJoined() {
         return dateJoined;
     }
@@ -66,6 +107,7 @@ public class Student {
         this.education = education;
     }
 
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     public LocalDate getStartEducation() {
         return startEducation;
     }
@@ -74,6 +116,7 @@ public class Student {
         this.startEducation = startEducation;
     }
 
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     public LocalDate getEndEducation() {
         return endEducation;
     }
@@ -90,11 +133,11 @@ public class Student {
         this.linkedInConnectionStatus = linkedInConnectionStatus;
     }
 
-    public Boolean getInterestedInEvents() {
+    public Boolean getIsInterestedInEvents() {
         return isInterestedInEvents;
     }
 
-    public void setInterestedInEvents(Boolean interestedInEvents) {
+    public void setIsInterestedInEvents(Boolean interestedInEvents) {
         isInterestedInEvents = interestedInEvents;
     }
 
@@ -106,6 +149,7 @@ public class Student {
         this.contactOrigin = contactOrigin;
     }
 
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
