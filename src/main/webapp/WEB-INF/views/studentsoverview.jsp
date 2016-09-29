@@ -24,18 +24,19 @@
 	 			<th>Email</th>
 	 			<th>Telefoon</th>
 	 			<th>Geboortedatum</th>
-	 			<th>Studie</th>
+	 			<th colspan="2">Studie</th>
 	 		</tr>
 	 	</thead>
 			<tbody>
 				<c:forEach items="${students}" var="s">
 					<tr>
-						<td><a href="/student/${s.id }">${s.firstName}</a></td>
+						<td>${s.firstName}</td>
 						<td>${s.lastName }</td>
 						<td>${s.email }</td>
 						<td>${s.phone }</td>
 						<td>${s.dateOfBirth }</td>
 						<td>${s.education.name } ${s.education.degree}</td>
+						<td><a href="/student/${s.id }">wijzig</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>

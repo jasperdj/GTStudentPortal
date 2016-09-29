@@ -74,7 +74,7 @@
 				<label>Events? <form:errors path="isInterestedInEvents" cssClass="form-error" /></label>
 				<form:checkbox path="isInterestedInEvents"/>
 			</div>
-			<button type="submit" class="ui button">"Cre&euml;er student"</button>
+			<button type="submit" class="ui button">Submit</button>
 		</form:form>
 	</div>
 	

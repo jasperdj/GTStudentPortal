@@ -50,18 +50,10 @@ public class StudentController {
 		return "studentform";
 	}
 	
-	@RequestMapping(value = "/student/{id}", method = RequestMethod.GET)
-	public String showStudent(@PathVariable Long id, Model model){
-		model.addAttribute(studentRepo.findOne(id));
-		model.addAttribute("universities", universityRepo.findAll());
-		model.addAttribute("educations", educationRepo.findAll());
-		return "studentform";
-	}
-	
 	@RequestMapping(value = "/student", method = RequestMethod.POST)
 	public String createStudent(Model model, @Valid Student student, BindingResult result) {
 		if(result.hasErrors()){
-			model.addAttribute("status", "Ja dat klopt niet, Harry.");
+			model.addAttribute("status", "Student kon niet worden aangemaakt!");
 			model.addAttribute("universities", universityRepo.findAll());
 			model.addAttribute("educations", educationRepo.findAll());
 			return "studentform";
@@ -73,7 +65,27 @@ public class StudentController {
 		return "studentform";
 	}
 	
+	@RequestMapping(value = "/student/{id}", method = RequestMethod.GET)
+	public String showStudent(@PathVariable Long id, Model model){
+		model.addAttribute(studentRepo.findOne(id));
+		model.addAttribute("universities", universityRepo.findAll());
+		model.addAttribute("educations", educationRepo.findAll());
+		return "studentform";
+	}
 	
-	
+	@RequestMapping(value = "/student/{id}", method = RequestMethod.POST)
+	public String updateStudent( Model model, @Valid Student student, BindingResult result){
+		if(result.hasErrors()){
+			model.addAttribute("status", "Student kon niet worden aangepast!");
+			model.addAttribute("universities", universityRepo.findAll());
+			model.addAttribute("educations", educationRepo.findAll());
+			return "studentform";
+		}
+		studentRepo.save(student);
+		model.addAttribute("status", "Student gewijzigd!");
+		model.addAttribute("universities", universityRepo.findAll());
+		model.addAttribute("educations", educationRepo.findAll());
+		return "studentform";
+	}	
 	
 }
