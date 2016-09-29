@@ -20,7 +20,12 @@ public class User {
     private String phone;
     private String password;
     private Boolean recruiter;
-    
+    private String userRole;
+
+    public User() {
+
+    }
+
     public User(String firstName, String lastName, String email, String phone, String password) {
 		super();
 		this.firstName = firstName;
@@ -28,12 +33,20 @@ public class User {
 		this.email = email;
 		this.phone = phone;
 		this.password = password;
+        this.userRole = "student";
 	}
 
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public Long getId() {
         return id;
+    }
+
+    public String getUserRole() {
+        return userRole;
+    }
+    public void setUserRole(String userRole) {
+        this.userRole = userRole;
     }
 
     public void setId(Long id) {

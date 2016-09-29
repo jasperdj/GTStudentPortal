@@ -16,7 +16,7 @@ import javax.persistence.ManyToOne;
 //Todo setting column values. I.E @Column(name = "email", nullable = false, unique = true)
 
 @Entity
-public class Student extends User {
+public class Student {
     private LocalDate dateJoined;
     private Education education;
     private LocalDate startEducation;
@@ -28,7 +28,6 @@ public class Student extends User {
     private Long id;
 
 	public Student(String firstName, String lastName, String email, String phone, String password, LocalDate dateJoined, Education education, LocalDate startEducation, LocalDate endEducation, LocalDate dateOfBirth) {
-		super(firstName, lastName, email, phone, password);
 		this.dateJoined = dateJoined;
 		this.education = education;
 		this.startEducation = startEducation;

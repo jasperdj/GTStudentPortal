@@ -46,6 +46,4 @@ public class StudentController {
 		
 		return "studentdetail";
 	}
-	
-	
 }
