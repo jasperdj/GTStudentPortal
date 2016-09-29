@@ -1,51 +1,91 @@
 package nl.getthere.controllers;
 
-import java.time.LocalDate;
+import javax.validation.Valid;
 
-import nl.getthere.model.Education;
+import nl.getthere.model.EducationRepository;
 import nl.getthere.model.Student;
 import nl.getthere.model.StudentRepository;
+import nl.getthere.model.UniversityRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class StudentController {
 
 	@Autowired
-	private StudentRepository repo;
+	private StudentRepository studentRepo;
+	@Autowired
+	private UniversityRepository universityRepo;
+	@Autowired
+	private EducationRepository educationRepo;
 
-	@RequestMapping(value = "/newstudent", method = RequestMethod.POST)
-	public String createStudent(Model model, @RequestParam(required = true) String firstName, @RequestParam(required = true) String lastName, @RequestParam(required = true) String email,
-			@RequestParam(required = false) String phone, @RequestParam(required = true) String password, @RequestParam(required = true) Education education, LocalDate startEducation, LocalDate endEducation,
-			LocalDate dateOfBirth) {
-		Student s = new Student(firstName, lastName, email, phone, password, LocalDate.now(), education, startEducation, endEducation, dateOfBirth);
-		repo.save(s);
-		model.addAttribute("status", "Student aangemaakt!");
-		model.addAttribute("student", s);
-		return "newstudent";
+	@ModelAttribute("student")
+	public Student getStudent(){
+		return new Student();
 	}
 	
-	@RequestMapping(value = "/newstudent", method = RequestMethod.GET)
-	public String showForm(Model model){
-		model.addAttribute("status", "Gebruik het formulier om een student aan te maken.");
-		return "newstudent";
+	@RequestMapping("/")
+	public String goHome(){
+		return "index";
 	}
 	
-	@RequestMapping(value = "/student", method = RequestMethod.POST)
-	public String updateStudent(){
-		return "studentdetail";
+	@RequestMapping("/students")
+	public String showStudents(Model model){
+		model.addAttribute("students", studentRepo.findAll());
+		return "studentsoverview";
 	}
 	
 	@RequestMapping(value = "/student", method = RequestMethod.GET)
-	public String showStudent(){
-		
-		return "studentdetail";
+	public String showForm(Model model){
+		model.addAttribute("status", "Gebruik het formulier om een student aan te maken.");
+		model.addAttribute("universities", universityRepo.findAll());
+		model.addAttribute("educations", educationRepo.findAll());
+		return "studentform";
 	}
 	
+	@RequestMapping(value = "/student", method = RequestMethod.POST)
+	public String createStudent(Model model, @Valid Student student, BindingResult result) {
+		if(result.hasErrors()){
+			model.addAttribute("status", "Student kon niet worden aangemaakt!");
+			model.addAttribute("universities", universityRepo.findAll());
+			model.addAttribute("educations", educationRepo.findAll());
+			return "studentform";
+		}
+		studentRepo.save(student);
+		model.addAttribute("status", "Student aangemaakt!");
+		model.addAttribute("universities", universityRepo.findAll());
+		model.addAttribute("educations", educationRepo.findAll());
+		return "studentform";
+	}
+	
+	@RequestMapping(value = "/student/{id}", method = RequestMethod.GET)
+	public String showStudent(@PathVariable Long id, Model model){
+		model.addAttribute(studentRepo.findOne(id));
+		model.addAttribute("universities", universityRepo.findAll());
+		model.addAttribute("educations", educationRepo.findAll());
+		return "studentform";
+	}
+	
+	@RequestMapping(value = "/student/{id}", method = RequestMethod.POST)
+	public String updateStudent( Model model, @Valid Student student, BindingResult result){
+		if(result.hasErrors()){
+			model.addAttribute("status", "Student kon niet worden aangepast!");
+			model.addAttribute("universities", universityRepo.findAll());
+			model.addAttribute("educations", educationRepo.findAll());
+			return "studentform";
+		}
+		studentRepo.save(student);
+		model.addAttribute("status", "Student gewijzigd!");
+		model.addAttribute("universities", universityRepo.findAll());
+		model.addAttribute("educations", educationRepo.findAll());
+		return "studentform";
+	}	
 	
 }

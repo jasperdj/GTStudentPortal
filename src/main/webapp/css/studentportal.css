@@ -1,9 +1,13 @@
 @CHARSET "ISO-8859-1";
 
 .padded{
-	padding-top: 60px;
+	padding-top: 100px;
 }
 
 .small-padded{
 	padding-top: 20px;
+}
+
+.form-error{
+	color: #e54e4e;
 }
