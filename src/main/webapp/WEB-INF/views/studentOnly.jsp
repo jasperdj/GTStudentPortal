@@ -8,5 +8,7 @@
 </head>
 <body>
 student only, yeay.
+${name}<br />
+${credentials}
 </body>
 </html>

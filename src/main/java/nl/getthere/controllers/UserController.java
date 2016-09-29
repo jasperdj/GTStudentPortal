@@ -17,7 +17,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
+import static nl.getthere.helpers.CurrentUser.getCurrentUser;
+
 
 @Controller
 public class UserController {
@@ -41,6 +45,7 @@ public class UserController {
 
 	@RequestMapping("/users/*")
 	public String userpage(Model model) {
+		model.addAttribute("name", getCurrentUser().getRole());
 		return "studentOnly";
 	}
 }
