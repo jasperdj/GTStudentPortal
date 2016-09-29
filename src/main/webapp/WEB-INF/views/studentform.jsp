@@ -10,9 +10,9 @@
 <body>
 	<%@include file="../includes/navbar.jsp"%>
 	
-	<!-- firstName, lastName, email, phone, password, LocalDate.now(), education, startEducation, endEducation, dateOfBirth -->
 	<div class="ui main text container padded">
-		<p>${status }</p>
+		<%@include file="../includes/status.jsp"%>
+
 		<form:form method="post" modelAttribute="student" cssClass="ui form">
 			<div class="field">
 				<label>Naam <form:errors path="firstName" cssClass="form-error" /> <form:errors path="lastName" cssClass="form-error" /></label>
@@ -36,6 +36,11 @@
 						<form:input path="phone" placeholder="Telefoonnummer"/>
 					</div>
 				</div>
+			</div>
+			
+			<div class="field">
+				<label>Geboortedatum <form:errors path="dateOfBirth" cssClass="form-error" /></label>
+				<form:input type="date" path="dateOfBirth"/>
 			</div>
 			
 			<div class="fields">
@@ -64,11 +69,18 @@
 					<form:input type="date" path="endEducation"/>
 				</div>
 			</div>	
+							
 			
-			<div class="field">
-				<label>Geboortedatum <form:errors path="dateOfBirth" cssClass="form-error" /></label>
-				<form:input type="date" path="dateOfBirth"/>
-			</div>		
+			<div class="two fields">
+				<div class="field">
+					<label>Bron</label>
+					<form:input path="contactOrigin" placeholder="Bron"/>
+				</div>
+				<div class="field">
+					<label>LinkedIn status</label>
+					<form:input path="linkedInConnectionStatus" placeholder="Status"/>
+				</div>
+			</div>
 			
 			<div class="field">
 				<label>Events? <form:errors path="isInterestedInEvents" cssClass="form-error" /></label>

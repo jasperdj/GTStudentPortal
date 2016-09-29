@@ -53,7 +53,7 @@ public class StudentController {
 	@RequestMapping(value = "/student", method = RequestMethod.POST)
 	public String createStudent(Model model, @Valid Student student, BindingResult result) {
 		if(result.hasErrors()){
-			model.addAttribute("status", "Student kon niet worden aangemaakt!");
+			model.addAttribute("error", "Student kon niet worden aangemaakt!");
 			model.addAttribute("universities", universityRepo.findAll());
 			model.addAttribute("educations", educationRepo.findAll());
 			return "studentform";
@@ -76,16 +76,15 @@ public class StudentController {
 	@RequestMapping(value = "/student/{id}", method = RequestMethod.POST)
 	public String updateStudent( Model model, @Valid Student student, BindingResult result){
 		if(result.hasErrors()){
-			model.addAttribute("status", "Student kon niet worden aangepast!");
+			model.addAttribute("error", "Student kon niet worden aangepast!");
 			model.addAttribute("universities", universityRepo.findAll());
 			model.addAttribute("educations", educationRepo.findAll());
 			return "studentform";
 		}
 		studentRepo.save(student);
 		model.addAttribute("status", "Student gewijzigd!");
-		model.addAttribute("universities", universityRepo.findAll());
-		model.addAttribute("educations", educationRepo.findAll());
-		return "studentform";
+		model.addAttribute("students", studentRepo.findAll());
+		return "redirect:/students";
 	}	
 	
 }
