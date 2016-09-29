@@ -1,9 +1,6 @@
 package nl.getthere.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by jasper.dejong on 27-9-2016.
@@ -69,10 +66,10 @@ public class User {
         this.lastName = lastName;
     }
 
+    @Column( nullable = false, unique = true)
     public String getEmail() {
         return email;
     }
-
     public void setEmail(String email) {
         this.email = email;
     }

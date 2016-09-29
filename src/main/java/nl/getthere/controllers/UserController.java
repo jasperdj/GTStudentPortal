@@ -1,5 +1,6 @@
 package nl.getthere.controllers;
 
+import nl.getthere.helpers.CurrentUser;
 import nl.getthere.model.User;
 import nl.getthere.model.UserRepository;
 
@@ -14,18 +15,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.util.Collection;
-import java.util.List;
 import java.util.Optional;
+
 import static nl.getthere.helpers.CurrentUser.getCurrentUser;
 
 
 @Controller
 public class UserController {
-	
+
 	@Autowired
 	private UserRepository repo;
 
@@ -45,7 +42,7 @@ public class UserController {
 
 	@RequestMapping("/users/*")
 	public String userpage(Model model) {
-		model.addAttribute("name", getCurrentUser().getRole());
+		model.addAttribute("name", repo.findOneByEmail(getCurrentUser().getEmail()).getFirstName());
 		return "studentOnly";
 	}
 }

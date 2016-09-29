@@ -1,5 +1,7 @@
 package nl.getthere.helpers;
 
+import nl.getthere.model.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 import java.util.Collection;
@@ -8,11 +10,14 @@ import java.util.Collection;
  * Created by jasper.dejong on 29-9-2016.
  */
 public class CurrentUser {
-    private String name;
+    private String email;
     private String role;
 
+    @Autowired
+    private UserRepository userRepository;
+
     public CurrentUser(String name, String role) {
-        this.name = name;
+        this.email = name;
         this.role = role;
     }
 
@@ -26,12 +31,12 @@ public class CurrentUser {
         return new CurrentUser(name, role);
     }
 
-    public String getName() {
-        return name;
+    public String getEmail() {
+        return email;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setEmail(String name) {
+        this.email = name;
     }
 
     public String getRole() {

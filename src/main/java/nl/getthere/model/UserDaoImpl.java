@@ -34,6 +34,5 @@ public class UserDaoImpl implements UserDao {
         } else {
             return null;
         }
-
     }
 }
