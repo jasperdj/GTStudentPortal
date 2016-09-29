@@ -56,8 +56,10 @@ public class RegistrationController {
 		user.setEmail(student.getEmail());
 		user.setPassword(new BCryptPasswordEncoder().encode("student"));
 		user.setUserRole("student");
-		userRepo.save(user);
+			
 		studentRepo.save(student);
+		user.setStudent(student);
+		userRepo.save(user);
 		model.addAttribute("status", "Student aangemaakt!");
 	
 		return "redirect:/login";
