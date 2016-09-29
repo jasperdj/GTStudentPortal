@@ -15,8 +15,6 @@ import org.springframework.security.web.authentication.logout.CookieClearingLogo
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
-@EnableGlobalMethodSecurity(prePostEnabled = true)
-@Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
 class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -27,16 +25,17 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         web
                 .ignoring()
-                .antMatchers("/resources/**"); // #3
+                .antMatchers("/resources/**", "/static/**", "/css/**", "/js/**");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .anyRequest().fullyAuthenticated()
                 .antMatchers("/login","/","/logout", "/public/**").permitAll()
+                .antMatchers("/resources/**").authenticated()
                 .antMatchers("/students/**", "/students").hasAuthority("recruiter")
                 .antMatchers("/student/**", "/student").hasAnyAuthority("recruiter", "student")
+                .anyRequest().authenticated()
                 .and()
 
                 .formLogin()
@@ -44,6 +43,9 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .failureUrl("/login?error")
                 .usernameParameter("email")
                 .permitAll();
+
+        http.authorizeRequests().antMatchers("/resources/**").permitAll().;
+
 
         http.
                 logout()
