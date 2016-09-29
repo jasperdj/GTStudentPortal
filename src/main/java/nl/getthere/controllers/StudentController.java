@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -44,6 +45,14 @@ public class StudentController {
 	@RequestMapping(value = "/student", method = RequestMethod.GET)
 	public String showForm(Model model){
 		model.addAttribute("status", "Gebruik het formulier om een student aan te maken.");
+		model.addAttribute("universities", universityRepo.findAll());
+		model.addAttribute("educations", educationRepo.findAll());
+		return "studentform";
+	}
+	
+	@RequestMapping(value = "/student/{id}", method = RequestMethod.GET)
+	public String showStudent(@PathVariable Long id, Model model){
+		model.addAttribute(studentRepo.findOne(id));
 		model.addAttribute("universities", universityRepo.findAll());
 		model.addAttribute("educations", educationRepo.findAll());
 		return "studentform";

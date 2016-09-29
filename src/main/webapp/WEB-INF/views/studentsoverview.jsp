@@ -30,7 +30,7 @@
 			<tbody>
 				<c:forEach items="${students}" var="s">
 					<tr>
-						<td>${s.firstName}</td>
+						<td><a href="/student/${s.id }">${s.firstName}</a></td>
 						<td>${s.lastName }</td>
 						<td>${s.email }</td>
 						<td>${s.phone }</td>
