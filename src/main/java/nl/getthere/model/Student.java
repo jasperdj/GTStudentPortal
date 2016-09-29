@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -24,6 +25,7 @@ public class Student{
     private String lastName;
 	@NotEmpty(message="Voer aub een email in. ") @Email(message="Controleer het opgegeven emailadres. ")
     private String email;
+	@Size(min=10,max=10, message="Controleer nummer.")
     private String phone;
 	private LocalDate dateJoined;
 	@NotNull
