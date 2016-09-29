@@ -2,6 +2,7 @@ package nl.getthere.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,6 +11,8 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.Generated;
+import org.hibernate.annotations.GenerationTime;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -86,7 +89,8 @@ public class Student{
         approved, declined, pending
     }
     
-    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @Generated(GenerationTime.INSERT) 
+    @Column(name="date_joined", insertable=false)
     public LocalDate getDateJoined() {
         return dateJoined;
     }

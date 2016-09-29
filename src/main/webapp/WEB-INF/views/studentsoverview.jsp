@@ -11,7 +11,8 @@
 	<%@include file="../includes/navbar.jsp"%>
 	
 	<div class="ui container padded">
-
+		<%@include file="../includes/status.jsp"%>
+		
 		<form action="/student">
 		    <input type="submit" class="ui icon button" value="Nieuwe student" ></input>
 		</form>

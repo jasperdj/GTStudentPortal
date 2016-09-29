@@ -10,9 +10,9 @@
 <body>
 	<%@include file="../includes/navbar.jsp"%>
 	
-	<!-- firstName, lastName, email, phone, password, LocalDate.now(), education, startEducation, endEducation, dateOfBirth -->
 	<div class="ui main text container padded">
-		<p>${status }</p>
+		<%@include file="../includes/status.jsp"%>
+
 		<form:form method="post" modelAttribute="student" cssClass="ui form">
 			<div class="field">
 				<label>Naam <form:errors path="firstName" cssClass="form-error" /> <form:errors path="lastName" cssClass="form-error" /></label>
