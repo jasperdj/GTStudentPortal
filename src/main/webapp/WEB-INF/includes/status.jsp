@@ -8,7 +8,6 @@
   <p>${error }</p></div>
 </c:if>
 
-
 <c:if test="${not empty status}">
 	<div class="ui message transition">
 	  <i class="close icon"></i>

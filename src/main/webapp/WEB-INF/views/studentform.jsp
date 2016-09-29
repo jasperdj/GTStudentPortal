@@ -69,7 +69,6 @@
 					<form:input type="date" path="endEducation"/>
 				</div>
 			</div>	
-							
 			
 			<div class="two fields">
 				<div class="field">
