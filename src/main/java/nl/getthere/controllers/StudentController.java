@@ -2,10 +2,13 @@ package nl.getthere.controllers;
 
 import javax.validation.Valid;
 
+import nl.getthere.helpers.CurrentUser;
 import nl.getthere.model.EducationRepository;
 import nl.getthere.model.Student;
 import nl.getthere.model.StudentRepository;
 import nl.getthere.model.UniversityRepository;
+import nl.getthere.model.User;
+import nl.getthere.model.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,6 +28,8 @@ public class StudentController {
 	private UniversityRepository universityRepo;
 	@Autowired
 	private EducationRepository educationRepo;
+	@Autowired
+	private UserRepository userRepo;
 
 	@ModelAttribute("student")
 	public Student getStudent(){
@@ -44,6 +49,9 @@ public class StudentController {
 	
 	@RequestMapping(value = "/student", method = RequestMethod.GET)
 	public String showForm(Model model){
+		if(CurrentUser.getCurrentUser().getRole() == "student"){
+			return "index"; //TODO change to proper error code.
+		}
 		model.addAttribute("status", "Gebruik het formulier om een student aan te maken.");
 		model.addAttribute("universities", universityRepo.findAll());
 		model.addAttribute("educations", educationRepo.findAll());
@@ -74,7 +82,7 @@ public class StudentController {
 	}
 	
 	@RequestMapping(value = "/student/{id}", method = RequestMethod.POST)
-	public String updateStudent( Model model, @Valid Student student, BindingResult result){
+	public String updateStudent(@PathVariable Long id, Model model, @Valid Student student, BindingResult result){
 		if(result.hasErrors()){
 			model.addAttribute("error", "Student kon niet worden aangepast!");
 			model.addAttribute("universities", universityRepo.findAll());
