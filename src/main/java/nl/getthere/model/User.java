@@ -1,4 +1,4 @@
-package nl.getthere.models;
+package nl.getthere.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,8 +20,17 @@ public class User {
     private String phone;
     private String password;
     private Boolean recruiter;
+    
+    public User(String firstName, String lastName, String email, String phone, String password) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.phone = phone;
+		this.password = password;
+	}
 
-    @Id
+	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public Long getId() {
         return id;

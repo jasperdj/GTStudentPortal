@@ -1,4 +1,4 @@
-package nl.getthere.models;
+package nl.getthere.model;
 
 import java.time.LocalDate;
 
@@ -21,14 +21,22 @@ public class Student extends User {
     private Education education;
     private LocalDate startEducation;
     private LocalDate endEducation;
-    private Role role;
     private LinkedInConnectionStatus linkedInConnectionStatus;
     private Boolean isInterestedInEvents;
     private String contactOrigin;
     private LocalDate dateOfBirth;
     private Long id;
 
-    @Id
+	public Student(String firstName, String lastName, String email, String phone, String password, LocalDate dateJoined, Education education, LocalDate startEducation, LocalDate endEducation, LocalDate dateOfBirth) {
+		super(firstName, lastName, email, phone, password);
+		this.dateJoined = dateJoined;
+		this.education = education;
+		this.startEducation = startEducation;
+		this.endEducation = endEducation;
+		this.dateOfBirth = dateOfBirth;
+	}
+
+	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public Long getId() {
         return id;
@@ -73,15 +81,6 @@ public class Student extends User {
 
     public void setEndEducation(LocalDate endEducation) {
         this.endEducation = endEducation;
-    }
-
-    @ManyToOne
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
     }
 
     public LinkedInConnectionStatus getLinkedInConnectionStatus() {

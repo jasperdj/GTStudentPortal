@@ -1,19 +1,19 @@
-package nl.getthere.models;
+package nl.getthere.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by jasper.dejong on 27-9-2016.
  */
 
 //Todo setting column values. I.E @Column(name = "email", nullable = false, unique = true)
+
 @Entity
-public class Role {
+public class University {
     private String name;
     private Long id;
+    private List<Education> educations;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -31,5 +31,13 @@ public class Role {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @OneToMany(mappedBy = "university")
+    public List<Education> getEducations() {
+        return educations;
+    }
+    public void setEducations(List<Education> educations) {
+        this.educations = educations;
     }
 }

@@ -1,4 +1,4 @@
-package nl.getthere.models;
+package nl.getthere.model;
 
 import org.springframework.data.repository.CrudRepository;
 
