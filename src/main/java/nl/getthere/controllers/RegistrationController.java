@@ -2,11 +2,15 @@ package nl.getthere.controllers;
 
 import javax.validation.Valid;
 
+import nl.getthere.model.EducationRepository;
 import nl.getthere.model.Student;
 import nl.getthere.model.StudentRepository;
+import nl.getthere.model.UniversityRepository;
+import nl.getthere.model.User;
 import nl.getthere.model.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -21,6 +25,10 @@ public class RegistrationController {
 	private UserRepository userRepo;
 	@Autowired
 	private StudentRepository studentRepo;
+	@Autowired
+	private UniversityRepository universityRepo;
+	@Autowired
+	private EducationRepository educationRepo;
 	
 	@ModelAttribute("student")
 	public Student getStudent(){
@@ -28,7 +36,9 @@ public class RegistrationController {
 	}
 	
 	@RequestMapping("/registration")
-	public String showRegistrationForm(){
+	public String showRegistrationForm(Model model){
+		model.addAttribute("universities", universityRepo.findAll());
+		model.addAttribute("educations", educationRepo.findAll());
 		return "studentform";
 	}
 	
@@ -36,10 +46,20 @@ public class RegistrationController {
 	public String registerNewStudent(Model model, @Valid Student student, BindingResult result){
 		if(result.hasErrors()){
 			model.addAttribute("error", "Er is iets fout gegaan, probeer het opnieuw.");
+			model.addAttribute("universities", universityRepo.findAll());
+			model.addAttribute("educations", educationRepo.findAll());
 			return "studentform";
 		}
-		
-		
+		User user = new User();
+		user.setFirstName(student.getFirstName());
+		user.setLastName(student.getLastName());
+		user.setEmail(student.getEmail());
+		user.setPassword(new BCryptPasswordEncoder().encode("student"));
+		user.setUserRole("student");
+		userRepo.save(user);
+		studentRepo.save(student);
+		model.addAttribute("status", "Student aangemaakt!");
+	
 		return "redirect:/login";
 	}
 		
