@@ -38,6 +38,11 @@
 				</div>
 			</div>
 			
+			<div class="field">
+				<label>Geboortedatum <form:errors path="dateOfBirth" cssClass="form-error" /></label>
+				<form:input type="date" path="dateOfBirth"/>
+			</div>
+			
 			<div class="fields">
 				<div class="five wide field">
 					<label>School</label>
@@ -64,11 +69,18 @@
 					<form:input type="date" path="endEducation"/>
 				</div>
 			</div>	
+							
 			
-			<div class="field">
-				<label>Geboortedatum <form:errors path="dateOfBirth" cssClass="form-error" /></label>
-				<form:input type="date" path="dateOfBirth"/>
-			</div>		
+			<div class="two fields">
+				<div class="field">
+					<label>Bron</label>
+					<form:input path="contactOrigin" placeholder="Bron"/>
+				</div>
+				<div class="field">
+					<label>LinkedIn status</label>
+					<form:input path="linkedInConnectionStatus" placeholder="Status"/>
+				</div>
+			</div>
 			
 			<div class="field">
 				<label>Events? <form:errors path="isInterestedInEvents" cssClass="form-error" /></label>

@@ -8,5 +8,7 @@
     </a>
     <a href="/" class="item">Home</a>
     <a href="/students" class="item">Studenten</a>
+    
+    <a href="/logout" class="item align-right">Logout</a>
   </div>
 </div>
