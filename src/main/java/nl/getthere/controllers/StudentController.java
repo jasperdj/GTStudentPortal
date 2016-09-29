@@ -1,5 +1,8 @@
 package nl.getthere.controllers;
 
+import javax.validation.Valid;
+
+import nl.getthere.model.EducationRepository;
 import nl.getthere.model.Student;
 import nl.getthere.model.StudentRepository;
 import nl.getthere.model.UniversityRepository;
@@ -7,6 +10,7 @@ import nl.getthere.model.UniversityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,6 +22,8 @@ public class StudentController {
 	private StudentRepository studentRepo;
 	@Autowired
 	private UniversityRepository universityRepo;
+	@Autowired
+	private EducationRepository educationRepo;
 
 	@ModelAttribute("student")
 	public Student getStudent(){
@@ -39,13 +45,22 @@ public class StudentController {
 	public String showForm(Model model){
 		model.addAttribute("status", "Gebruik het formulier om een student aan te maken.");
 		model.addAttribute("universities", universityRepo.findAll());
+		model.addAttribute("educations", educationRepo.findAll());
 		return "studentform";
 	}
 	
 	@RequestMapping(value = "/student", method = RequestMethod.POST)
-	public String createStudent(Model model, Student student) {
+	public String createStudent(Model model, @Valid Student student, BindingResult result) {
+		if(result.hasErrors()){
+			model.addAttribute("status", "Ja dat klopt niet, Harry.");
+			model.addAttribute("universities", universityRepo.findAll());
+			model.addAttribute("educations", educationRepo.findAll());
+			return "studentform";
+		}
 		studentRepo.save(student);
 		model.addAttribute("status", "Student aangemaakt!");
+		model.addAttribute("universities", universityRepo.findAll());
+		model.addAttribute("educations", educationRepo.findAll());
 		return "studentform";
 	}
 	

@@ -7,7 +7,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -15,17 +18,23 @@ import org.springframework.format.annotation.DateTimeFormat;
  */
 @Entity
 public class Student{
+	@NotEmpty(message="Voer aub een voornaam in. ")
 	private String firstName;
+	@NotEmpty(message="Voer aub een achternaam in. ")
     private String lastName;
+	@NotEmpty(message="Voer aub een email in. ") @Email(message="Controleer het opgegeven emailadres. ")
     private String email;
     private String phone;
 	private LocalDate dateJoined;
+	@NotNull
     private Education education;
     private LocalDate startEducation;
     private LocalDate endEducation;
     private LinkedInConnectionStatus linkedInConnectionStatus;
+    @NotNull
     private Boolean isInterestedInEvents;
     private String contactOrigin;
+    @NotNull
     private LocalDate dateOfBirth;
     private Long id;
 
@@ -34,7 +43,7 @@ public class Student{
     public Long getId() {
         return id;
     }
-
+	
 	public String getFirstName() {
 		return firstName;
 	}
@@ -42,7 +51,7 @@ public class Student{
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
-
+	
 	public String getLastName() {
 		return lastName;
 	}
@@ -50,7 +59,7 @@ public class Student{
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-
+	
 	public String getEmail() {
 		return email;
 	}
@@ -84,7 +93,7 @@ public class Student{
         this.dateJoined = dateJoined;
     }
     
-    @ManyToOne
+    @ManyToOne 
     public Education getEducation() {
         return education;
     }
@@ -93,7 +102,7 @@ public class Student{
         this.education = education;
     }
 
-    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @DateTimeFormat(pattern="yyyy-MM-dd") 
     public LocalDate getStartEducation() {
         return startEducation;
     }
@@ -122,7 +131,7 @@ public class Student{
     public Boolean getIsInterestedInEvents() {
         return isInterestedInEvents;
     }
-
+    
     public void setIsInterestedInEvents(Boolean interestedInEvents) {
         isInterestedInEvents = interestedInEvents;
     }

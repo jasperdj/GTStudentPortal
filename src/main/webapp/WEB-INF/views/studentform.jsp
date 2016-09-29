@@ -15,25 +15,25 @@
 		<p>${status }</p>
 		<form:form method="post" modelAttribute="student" cssClass="ui form">
 			<div class="field">
-				<label>Naam</label>
+				<label>Naam <form:errors path="firstName" cssClass="form-error" /> <form:errors path="lastName" cssClass="form-error" /></label>
 				<div class="two fields">
 					<div class="field">
-						<form:input path="firstName"/>
+						<form:input path="firstName" placeholder="Voornaam"/>
 					</div>
 					<div class="field">
-						<form:input path="lastName"/>
+						<form:input path="lastName" placeholder="Achternaam"/>
 					</div>		
 				</div>
 			</div>
 			
 			<div class="field">
-				<label>Contact</label>
+				<label>Contact <form:errors path="email" cssClass="form-error" /> <form:errors path="phone" cssClass="form-error" /></label>
 				<div class="two fields">
 					<div class="field">
-						<form:input path="email"/>
+						<form:input path="email" placeholder="Email"/>
 					</div>
 					<div class="field">
-						<form:input path="phone"/>
+						<form:input path="phone" placeholder="Telefoonnummer"/>
 					</div>
 				</div>
 			</div>
@@ -48,33 +48,33 @@
 					</form:select>
 				</div>
 				<div class="five wide field">
-					<label>Opleiding</label>
-					<form:select path="">
-						<option value="1">Opl 1</option>
-						<option value="2">Opl 2</option>
+					<label>Opleiding <form:errors path="education" cssClass="form-error" /></label>
+					<form:select path="education">
+						<c:forEach items="${educations}" var="e">
+							<option value="${e.id}">${e.name}</option>
+						</c:forEach>
 					</form:select>
 				</div>
 				<div class="three wide field">
-					<label>Begin</label>
+					<label>Begin<form:errors path="startEducation" cssClass="form-error" /></label>
 					<form:input type="date" path="startEducation"/>
 				</div>
 				<div class="three wide field">
-					<label>Eind</label>
+					<label>Eind<form:errors path="endEducation" cssClass="form-error" /></label>
 					<form:input type="date" path="endEducation"/>
 				</div>
 			</div>	
 			
 			<div class="field">
-				<label>Geboortedatum</label>
+				<label>Geboortedatum <form:errors path="dateOfBirth" cssClass="form-error" /></label>
 				<form:input type="date" path="dateOfBirth"/>
 			</div>		
 			
 			<div class="field">
-				<label>Events?</label>
+				<label>Events? <form:errors path="isInterestedInEvents" cssClass="form-error" /></label>
 				<form:checkbox path="isInterestedInEvents"/>
 			</div>
-			
-			<input type="submit" class="ui button" value="Cre&euml;er student">
+			<button type="submit" class="ui button">"Cre&euml;er student"</button>
 		</form:form>
 	</div>
 	

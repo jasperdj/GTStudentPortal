@@ -23,6 +23,7 @@
 	 			<th>Achternaam</th>
 	 			<th>Email</th>
 	 			<th>Telefoon</th>
+	 			<th>Geboortedatum</th>
 	 			<th>Studie</th>
 	 		</tr>
 	 	</thead>
@@ -33,7 +34,8 @@
 						<td>${s.lastName }</td>
 						<td>${s.email }</td>
 						<td>${s.phone }</td>
-						<td>${s.education.name } (s.education.degree)</td>
+						<td>${s.dateOfBirth }</td>
+						<td>${s.education.name } ${s.education.degree}</td>
 					</tr>
 				</c:forEach>
 			</tbody>
