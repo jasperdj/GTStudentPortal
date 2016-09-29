@@ -17,6 +17,10 @@ import org.springframework.format.annotation.DateTimeFormat;
 /**
  * Created by jasper.dejong on 27-9-2016.
  */
+
+
+//Todo setting column values. I.E @Column(name = "email", nullable = false, unique = true)
+
 @Entity
 public class Student{
 	@NotEmpty(message="Voer aub een voornaam in. ")
@@ -39,13 +43,12 @@ public class Student{
     @NotNull
     private LocalDate dateOfBirth;
     private Long id;
-
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public Long getId() {
         return id;
     }
-	
+
 	public String getFirstName() {
 		return firstName;
 	}
@@ -53,7 +56,7 @@ public class Student{
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
-	
+
 	public String getLastName() {
 		return lastName;
 	}
@@ -61,7 +64,7 @@ public class Student{
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	
+
 	public String getEmail() {
 		return email;
 	}
@@ -77,7 +80,7 @@ public class Student{
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -85,7 +88,7 @@ public class Student{
     public enum LinkedInConnectionStatus {
         approved, declined, pending
     }
-    
+
     @DateTimeFormat(pattern="yyyy-MM-dd")
     public LocalDate getDateJoined() {
         return dateJoined;
@@ -95,7 +98,7 @@ public class Student{
         this.dateJoined = dateJoined;
     }
     
-    @ManyToOne 
+    @ManyToOne
     public Education getEducation() {
         return education;
     }
@@ -104,15 +107,15 @@ public class Student{
         this.education = education;
     }
 
-    @DateTimeFormat(pattern="yyyy-MM-dd") 
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     public LocalDate getStartEducation() {
         return startEducation;
     }
-    
+
     public void setStartEducation(LocalDate startEducation) {
         this.startEducation = startEducation;
     }
-    
+
     @DateTimeFormat(pattern="yyyy-MM-dd")
     public LocalDate getEndEducation() {
         return endEducation;
@@ -133,7 +136,7 @@ public class Student{
     public Boolean getIsInterestedInEvents() {
         return isInterestedInEvents;
     }
-    
+
     public void setIsInterestedInEvents(Boolean interestedInEvents) {
         isInterestedInEvents = interestedInEvents;
     }
@@ -145,7 +148,7 @@ public class Student{
     public void setContactOrigin(String contactOrigin) {
         this.contactOrigin = contactOrigin;
     }
-    
+
     @DateTimeFormat(pattern="yyyy-MM-dd")
     public LocalDate getDateOfBirth() {
         return dateOfBirth;
