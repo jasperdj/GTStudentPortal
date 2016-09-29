@@ -25,8 +25,9 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/*", "/public/**").permitAll()
-                .antMatchers("/users/**").hasAuthority("student")
+                .antMatchers("/login","/","/logout", "/public/**", "/css/**", "/js/**", "/js/semantic.js").permitAll()
+                .antMatchers("/students/**", "/students").hasAuthority("recruiter")
+                .antMatchers("/student/**", "/student").hasAnyAuthority("recruiter", "student")
                 .anyRequest().fullyAuthenticated()
                 .and()
                 .formLogin()
@@ -35,8 +36,11 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .usernameParameter("email")
                 .permitAll();
 
-        http.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/login?logout").deleteCookies("JSESSIONID")
+        http.
+                logout()
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/login?logout")
+                .deleteCookies("JSESSIONID")
                 .invalidateHttpSession(true);
     }
 
