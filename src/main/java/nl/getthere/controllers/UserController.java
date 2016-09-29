@@ -34,4 +34,9 @@ public class UserController {
 		return new ModelAndView("login", "error", error);
 	}
 
+	@RequestMapping("/users/*")
+	public String userpage(Model model) {
+		return "studentOnly";
+	}
+
 }

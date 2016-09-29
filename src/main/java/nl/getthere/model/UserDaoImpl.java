@@ -12,7 +12,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-
 @Repository
 @Transactional
 public class UserDaoImpl implements UserDao {
@@ -26,7 +25,7 @@ public class UserDaoImpl implements UserDao {
         List<User> users = new ArrayList<User>();
 
         users = sessionFactory.getCurrentSession()
-                .createQuery("from User where username=?")
+                .createQuery("from User where username=" + username)
                 .setParameter(0, username)
                 .list();
 
