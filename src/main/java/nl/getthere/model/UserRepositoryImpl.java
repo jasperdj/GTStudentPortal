@@ -21,7 +21,6 @@ public abstract class UserRepositoryImpl implements UserRepository {
 
     @SuppressWarnings("unchecked")
     public User findOneByEmail(String username) {
-
         List<User> users = new ArrayList<User>();
 
         users = sessionFactory.getCurrentSession()

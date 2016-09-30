@@ -7,8 +7,6 @@ import java.util.List;
  * Created by jasper.dejong on 27-9-2016.
  */
 
-//Todo setting column values. I.E @Column(name = "email", nullable = false, unique = true)
-
 @Entity
 public class University {
     private String name;
@@ -20,15 +18,14 @@ public class University {
     public Long getId() {
         return id;
     }
-
     public void setId(Long id) {
         this.id = id;
     }
 
+    @Column(nullable = false, unique = true)
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
