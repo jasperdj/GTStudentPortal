@@ -42,6 +42,11 @@ public class StudentController {
 		return new Student();
 	}
 	
+	@ModelAttribute("newStudent")
+	public Student getNewStudent(){
+		return new Student();
+	}
+	
 	@ModelAttribute("universities")
 	public Iterable<University> getUniversity(){
 		return universityRepo.findAll();
@@ -64,26 +69,26 @@ public class StudentController {
 	}
 	
 	@RequestMapping("/student")
-	public String showForm(){
-		return "studentform";
+	public String showForm(SessionStatus status){
+		return "newstudent";
 	}
 	
 	@RequestMapping(value = "/student", method = RequestMethod.POST)
-	public String createStudent(Model model, @Valid Student student, BindingResult result) {
+	public String createStudent(Model model, @Valid Student newStudent, BindingResult result) {
 		if(result.hasErrors()){
 			model.addAttribute("error", "Student kon niet worden aangemaakt!");
-			return "studentform";
+			return "newstudent";
 		}
 		try{
 			User user = new User();
-			user.setFirstName(student.getFirstName());
-			user.setLastName(student.getLastName());
-			user.setEmail(student.getEmail());
+			user.setFirstName(newStudent.getFirstName());
+			user.setLastName(newStudent.getLastName());
+			user.setEmail(newStudent.getEmail());
 			user.setPassword(new BCryptPasswordEncoder().encode("student"));
 			user.setUserRole("student");
 				
-			studentRepo.save(student);
-			user.setStudent(student);
+			studentRepo.save(newStudent);
+			user.setStudent(newStudent);
 			userRepo.save(user);
 
 			model.addAttribute("status", "Student aangemaakt!");
@@ -91,7 +96,7 @@ public class StudentController {
 			model.addAttribute("error", "Er bestaat al een account met dat e-mailadres!");
 		}
 		
-		return "studentform";
+		return "newstudent";
 	}
 	
 	@RequestMapping("/detail")
