@@ -101,7 +101,11 @@ public class StudentController {
 			model.addAttribute("educations", educationRepo.findAll());
 			return "studentform";
 		}
-		studentRepo.save(student);
+		try{
+			studentRepo.save(student);
+		}catch(Exception e){
+			model.addAttribute("error", "Er bestaat al een account met dat e-mailadres!");
+		}
 		model.addAttribute("status", "Student gewijzigd!");
 		model.addAttribute("students", studentRepo.findAll());
 		return "redirect:/students";
