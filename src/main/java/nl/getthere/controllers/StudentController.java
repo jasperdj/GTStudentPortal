@@ -2,6 +2,7 @@ package nl.getthere.controllers;
 
 import javax.validation.Valid;
 
+import nl.getthere.helpers.CurrentUser;
 import nl.getthere.model.EducationRepository;
 import nl.getthere.model.Student;
 import nl.getthere.model.StudentRepository;
@@ -18,8 +19,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
+@SessionAttributes("student")
 public class StudentController {
 
 	@Autowired
@@ -85,9 +88,38 @@ public class StudentController {
 		return "studentform";
 	}
 	
+	@RequestMapping("/detail")
+	public String showStudentDetail(Model model){
+		User u = userRepo.findOneByEmail(CurrentUser.getCurrentUser().getEmail());		
+		model.addAttribute("student", u.getStudent());
+		model.addAttribute("universities", universityRepo.findAll());
+		model.addAttribute("educations", educationRepo.findAll());
+		return "studentform";
+	}
+	
+	@RequestMapping(value = "/detail", method = RequestMethod.POST)
+	public String editStudentDetail(Model model, @ModelAttribute @Valid Student student, BindingResult result){
+		if(result.hasErrors()){
+			model.addAttribute("error", "Student kon niet worden aangepast!");
+			model.addAttribute("universities", universityRepo.findAll());
+			model.addAttribute("educations", educationRepo.findAll());
+			return "studentform";
+		}
+//		User u = userRepo.findOneByEmail(CurrentUser.getCurrentUser().getEmail());
+//		Student s = u.getStudent();
+		try{
+			studentRepo.save(student);
+		}catch(Exception e){
+			model.addAttribute("error", "Er bestaat al een account met dat e-mailadres!");
+		}
+		model.addAttribute("status", "Student gewijzigd!");
+		model.addAttribute("students", studentRepo.findAll());
+		return "studentform";
+	}
+	
 	@RequestMapping(value = "/student/{id}", method = RequestMethod.GET)
 	public String showStudent(@PathVariable Long id, Model model){
-		model.addAttribute(studentRepo.findOne(id));
+		model.addAttribute("student", studentRepo.findOne(id));
 		model.addAttribute("universities", universityRepo.findAll());
 		model.addAttribute("educations", educationRepo.findAll());
 		return "studentform";
