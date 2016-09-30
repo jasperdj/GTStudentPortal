@@ -1,9 +1,11 @@
 package nl.getthere.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 /**
  * Created by jasper.dejong on 27-9-2016.
@@ -21,8 +23,9 @@ public class User {
     private String password;
     private Boolean recruiter;
     private String userRole;
+    private Student student;
 
-    public User() {
+	public User() {
 
     }
 
@@ -69,6 +72,7 @@ public class User {
         this.lastName = lastName;
     }
 
+    @Column(unique = true)
     public String getEmail() {
         return email;
     }
@@ -92,4 +96,13 @@ public class User {
     public void setRecruiter(Boolean recruiter) {
         this.recruiter = recruiter;
     }
+    
+    @OneToOne
+   	public Student getStudent() {
+   		return student;
+   	}
+
+   	public void setStudent(Student student) {
+   		this.student = student;
+   	}
 }

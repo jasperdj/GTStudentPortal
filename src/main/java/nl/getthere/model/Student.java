@@ -67,7 +67,8 @@ public class Student{
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-
+	
+	@Column(unique = true) 
 	public String getEmail() {
 		return email;
 	}
