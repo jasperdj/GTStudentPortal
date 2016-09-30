@@ -26,6 +26,7 @@ public class UserController {
 	@Autowired
 	private UserRepository repo;
 
+	//todo remove this when proper form is in place.
 	@RequestMapping("/public/newuser")
 	public String createUser(Model model, String firstName, String lastName, String email, String phone, String password, Boolean isRecruiter){
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
@@ -40,9 +41,17 @@ public class UserController {
 		return new ModelAndView("login", "error", error);
 	}
 
+	//todo remove this.
 	@RequestMapping("/public/users/*")
 	public String userpage(Model model) {
-		model.addAttribute("name", repo.findOneByEmail(getCurrentUser().getEmail()).getFirstName());
+		CurrentUser currentUser = getCurrentUser();
+		System.out.println("cu:" + currentUser);
+		User user = repo.findOneByEmail(getCurrentUser().getEmail());
+		if (user != null) {
+			model.addAttribute("name", user.getFirstName());
+		} else {
+			model.addAttribute("name", "No name");
+		}
 		return "studentOnly";
 	}
 }
