@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 @Controller
 @SessionAttributes("student")
@@ -62,9 +63,8 @@ public class StudentController {
 		return "studentsoverview";
 	}
 	
-	@RequestMapping(value = "/student", method = RequestMethod.GET)
-	public String showForm(Model model){
-		model.addAttribute("status", "Gebruik het formulier om een student aan te maken.");
+	@RequestMapping("/student")
+	public String showForm(){
 		return "studentform";
 	}
 	
