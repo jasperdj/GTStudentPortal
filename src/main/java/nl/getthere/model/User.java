@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 /**
  * Created by jasper.dejong on 27-9-2016.
@@ -72,7 +73,7 @@ public class User {
         this.lastName = lastName;
     }
 
-    @Column(unique = true)
+    @Column( nullable = false, unique = true)
     public String getEmail() {
         return email;
     }
@@ -96,7 +97,7 @@ public class User {
     public void setRecruiter(Boolean recruiter) {
         this.recruiter = recruiter;
     }
-    
+
     @OneToOne
    	public Student getStudent() {
    		return student;
