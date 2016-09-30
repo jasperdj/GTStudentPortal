@@ -45,4 +45,6 @@ public class UserController {
 		model.addAttribute("name", repo.findOneByEmail(getCurrentUser().getEmail()).getFirstName());
 		return "studentOnly";
 	}
+
+
 }

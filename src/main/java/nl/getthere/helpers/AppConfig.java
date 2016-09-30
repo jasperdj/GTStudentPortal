@@ -23,7 +23,6 @@ import org.springframework.web.servlet.view.JstlView;
 
 @EnableWebMvc
 @Configuration
-@ComponentScan({ "nl.getthere.*" })
 @EnableTransactionManagement
 @Import({ SecurityConfig.class })
 public class AppConfig {

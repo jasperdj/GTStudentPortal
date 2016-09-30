@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -15,6 +16,7 @@ import org.springframework.security.web.authentication.logout.CookieClearingLogo
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
+@EnableWebSecurity
 class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -25,16 +27,16 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         web
                 .ignoring()
-                .antMatchers("/resources/**", "/static/**", "/css/**", "/js/**");
+                .antMatchers("/resources/**");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/login","/","/logout", "/public/**").permitAll()
-                .antMatchers("/resources/**").authenticated()
-                .antMatchers("/students/**", "/students").hasAuthority("recruiter")
-                .antMatchers("/student/**", "/student").hasAnyAuthority("recruiter", "student")
+                .antMatchers("/login","/","/logout", "/public*").permitAll()
+                .antMatchers("/resources*").authenticated()
+                .antMatchers("/students*", "/students").hasAuthority("recruiter")
+                .antMatchers("/student*", "/student").hasAnyAuthority("recruiter", "student")
                 .anyRequest().authenticated()
                 .and()
 
@@ -43,9 +45,6 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .failureUrl("/login?error")
                 .usernameParameter("email")
                 .permitAll();
-
-        http.authorizeRequests().antMatchers("/resources/**").permitAll().;
-
 
         http.
                 logout()

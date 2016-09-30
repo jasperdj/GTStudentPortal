@@ -13,9 +13,6 @@ public class CurrentUser {
     private String email;
     private String role;
 
-    @Autowired
-    private UserRepository userRepository;
-
     public CurrentUser(String name, String role) {
         this.email = name;
         this.role = role;
