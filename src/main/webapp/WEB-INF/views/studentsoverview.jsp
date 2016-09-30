@@ -13,9 +13,7 @@
 	<div class="ui container padded">
 		<%@include file="../includes/status.jsp"%>
 		
-		<form action="/student">
-		    <input type="submit" class="ui icon button" value="Nieuwe student" ></input>
-		</form>
+		<a href="/student" class="ui icon button">Nieuwe student</a>
 		
 		<table class="ui celled table">
 	 	<thead>
