@@ -2,7 +2,6 @@ package nl.getthere.controllers;
 
 import javax.validation.Valid;
 
-import nl.getthere.helpers.CurrentUser;
 import nl.getthere.model.EducationRepository;
 import nl.getthere.model.Student;
 import nl.getthere.model.StudentRepository;
@@ -11,6 +10,7 @@ import nl.getthere.model.User;
 import nl.getthere.model.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -49,9 +49,6 @@ public class StudentController {
 	
 	@RequestMapping(value = "/student", method = RequestMethod.GET)
 	public String showForm(Model model){
-		if(CurrentUser.getCurrentUser().getRole() == "student"){
-			return "index"; //TODO change to proper error code.
-		}
 		model.addAttribute("status", "Gebruik het formulier om een student aan te maken.");
 		model.addAttribute("universities", universityRepo.findAll());
 		model.addAttribute("educations", educationRepo.findAll());
@@ -66,8 +63,23 @@ public class StudentController {
 			model.addAttribute("educations", educationRepo.findAll());
 			return "studentform";
 		}
-		studentRepo.save(student);
-		model.addAttribute("status", "Student aangemaakt!");
+		try{
+			User user = new User();
+			user.setFirstName(student.getFirstName());
+			user.setLastName(student.getLastName());
+			user.setEmail(student.getEmail());
+			user.setPassword(new BCryptPasswordEncoder().encode("student"));
+			user.setUserRole("student");
+				
+			studentRepo.save(student);
+			user.setStudent(student);
+			userRepo.save(user);
+
+			model.addAttribute("status", "Student aangemaakt!");
+		}catch(Exception e){
+			model.addAttribute("error", "Er bestaat al een account met dat e-mailadres!");
+		}
+		
 		model.addAttribute("universities", universityRepo.findAll());
 		model.addAttribute("educations", educationRepo.findAll());
 		return "studentform";

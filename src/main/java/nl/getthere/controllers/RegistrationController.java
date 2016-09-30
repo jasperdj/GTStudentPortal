@@ -50,18 +50,25 @@ public class RegistrationController {
 			model.addAttribute("educations", educationRepo.findAll());
 			return "studentform";
 		}
-		User user = new User();
-		user.setFirstName(student.getFirstName());
-		user.setLastName(student.getLastName());
-		user.setEmail(student.getEmail());
-		user.setPassword(new BCryptPasswordEncoder().encode("student"));
-		user.setUserRole("student");
+		try{
+			User user = new User();
+			user.setFirstName(student.getFirstName());
+			user.setLastName(student.getLastName());
+			user.setEmail(student.getEmail());
+			user.setPassword(new BCryptPasswordEncoder().encode("student"));
+			user.setUserRole("student");
+				
+			studentRepo.save(student);
+			user.setStudent(student);
+			userRepo.save(user);
+			model.addAttribute("status", "Student aangemaakt!");
+		}catch(Exception e){
+			model.addAttribute("error", "Er bestaat al een account met dat e-mailadres!");
+			model.addAttribute("universities", universityRepo.findAll());
+			model.addAttribute("educations", educationRepo.findAll());
+			return "studentform";
+		}
 			
-		studentRepo.save(student);
-		user.setStudent(student);
-		userRepo.save(user);
-		model.addAttribute("status", "Student aangemaakt!");
-	
 		return "redirect:/login";
 	}
 		
