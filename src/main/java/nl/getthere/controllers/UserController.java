@@ -40,11 +40,9 @@ public class UserController {
 		return new ModelAndView("login", "error", error);
 	}
 
-	@RequestMapping("/users/*")
+	@RequestMapping("/public/users/*")
 	public String userpage(Model model) {
 		model.addAttribute("name", repo.findOneByEmail(getCurrentUser().getEmail()).getFirstName());
 		return "studentOnly";
 	}
-
-
 }

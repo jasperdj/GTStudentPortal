@@ -8,4 +8,3 @@
 
 # Questions
 - Are there situations where it is necessary to lock/deactivate an account, instead of deleting?
-- asd    asdas

@@ -14,13 +14,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 @Transactional
-public class UserDaoImpl implements UserDao {
+public abstract class UserRepositoryImpl implements UserRepository {
 
     @Autowired
     private SessionFactory sessionFactory;
 
     @SuppressWarnings("unchecked")
-    public User findByEmail(String username) {
+    public User findOneByEmail(String username) {
 
         List<User> users = new ArrayList<User>();
 
