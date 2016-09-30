@@ -3,9 +3,11 @@ package nl.getthere.controllers;
 import javax.validation.Valid;
 
 import nl.getthere.helpers.CurrentUser;
+import nl.getthere.model.Education;
 import nl.getthere.model.EducationRepository;
 import nl.getthere.model.Student;
 import nl.getthere.model.StudentRepository;
+import nl.getthere.model.University;
 import nl.getthere.model.UniversityRepository;
 import nl.getthere.model.User;
 import nl.getthere.model.UserRepository;
@@ -39,6 +41,16 @@ public class StudentController {
 		return new Student();
 	}
 	
+	@ModelAttribute("universities")
+	public Iterable<University> getUniversity(){
+		return universityRepo.findAll();
+	}
+	
+	@ModelAttribute("educations")
+	public Iterable<Education> getEducation(){
+		return educationRepo.findAll();
+	}
+	
 	@RequestMapping("/")
 	public String goHome(){
 		return "index";
@@ -53,8 +65,6 @@ public class StudentController {
 	@RequestMapping(value = "/student", method = RequestMethod.GET)
 	public String showForm(Model model){
 		model.addAttribute("status", "Gebruik het formulier om een student aan te maken.");
-		model.addAttribute("universities", universityRepo.findAll());
-		model.addAttribute("educations", educationRepo.findAll());
 		return "studentform";
 	}
 	
@@ -62,8 +72,6 @@ public class StudentController {
 	public String createStudent(Model model, @Valid Student student, BindingResult result) {
 		if(result.hasErrors()){
 			model.addAttribute("error", "Student kon niet worden aangemaakt!");
-			model.addAttribute("universities", universityRepo.findAll());
-			model.addAttribute("educations", educationRepo.findAll());
 			return "studentform";
 		}
 		try{
@@ -83,8 +91,6 @@ public class StudentController {
 			model.addAttribute("error", "Er bestaat al een account met dat e-mailadres!");
 		}
 		
-		model.addAttribute("universities", universityRepo.findAll());
-		model.addAttribute("educations", educationRepo.findAll());
 		return "studentform";
 	}
 	
@@ -92,8 +98,8 @@ public class StudentController {
 	public String showStudentDetail(Model model){
 		User u = userRepo.findOneByEmail(CurrentUser.getCurrentUser().getEmail());		
 		model.addAttribute("student", u.getStudent());
-		model.addAttribute("universities", universityRepo.findAll());
-		model.addAttribute("educations", educationRepo.findAll());
+		
+		
 		return "studentform";
 	}
 	
@@ -101,8 +107,6 @@ public class StudentController {
 	public String editStudentDetail(Model model, @ModelAttribute @Valid Student student, BindingResult result){
 		if(result.hasErrors()){
 			model.addAttribute("error", "Student kon niet worden aangepast!");
-			model.addAttribute("universities", universityRepo.findAll());
-			model.addAttribute("educations", educationRepo.findAll());
 			return "studentform";
 		}
 //		User u = userRepo.findOneByEmail(CurrentUser.getCurrentUser().getEmail());
@@ -120,8 +124,6 @@ public class StudentController {
 	@RequestMapping(value = "/student/{id}", method = RequestMethod.GET)
 	public String showStudent(@PathVariable Long id, Model model){
 		model.addAttribute("student", studentRepo.findOne(id));
-		model.addAttribute("universities", universityRepo.findAll());
-		model.addAttribute("educations", educationRepo.findAll());
 		return "studentform";
 	}
 	
@@ -129,8 +131,6 @@ public class StudentController {
 	public String updateStudent(@PathVariable Long id, Model model, @Valid Student student, BindingResult result){
 		if(result.hasErrors()){
 			model.addAttribute("error", "Student kon niet worden aangepast!");
-			model.addAttribute("universities", universityRepo.findAll());
-			model.addAttribute("educations", educationRepo.findAll());
 			return "studentform";
 		}
 		try{
