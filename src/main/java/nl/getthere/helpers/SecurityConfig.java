@@ -32,8 +32,9 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        //todo remove public/users/*
         http.authorizeRequests()
-                .antMatchers("/login","/","/logout", "/public*", "/registration*").permitAll()
+                .antMatchers("/login","/","/logout", "/registration*").permitAll()
                 .antMatchers("/resources*").authenticated()
                 .antMatchers("/students*", "/students").hasAuthority("recruiter")
                 .antMatchers("/student*", "/student").hasAuthority("recruiter")

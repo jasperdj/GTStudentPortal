@@ -22,8 +22,6 @@ import org.springframework.format.annotation.DateTimeFormat;
  */
 
 
-//Todo setting column values. I.E @Column(name = "email", nullable = false, unique = true)
-
 @Entity
 public class Student{
 	@NotEmpty(message="Voer aub een voornaam in. ")
@@ -51,19 +49,22 @@ public class Student{
     public Long getId() {
         return id;
     }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
+    @Column(nullable = false, unique = false)
 	public String getFirstName() {
 		return firstName;
 	}
-
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
 
+    @Column(nullable = true, unique = false)
 	public String getLastName() {
 		return lastName;
 	}
-
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
@@ -72,22 +73,17 @@ public class Student{
 	public String getEmail() {
 		return email;
 	}
-
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
+    @Column(nullable = true, unique = true)
 	public String getPhone() {
 		return phone;
 	}
-
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public enum LinkedInConnectionStatus {
         approved, declined, pending
@@ -98,7 +94,6 @@ public class Student{
     public LocalDate getDateJoined() {
         return dateJoined;
     }
-
     public void setDateJoined(LocalDate dateJoined) {
         this.dateJoined = dateJoined;
     }
@@ -107,33 +102,32 @@ public class Student{
     public Education getEducation() {
         return education;
     }
-
     public void setEducation(Education education) {
         this.education = education;
     }
 
     @DateTimeFormat(pattern="yyyy-MM-dd")
+    @Column(nullable = true, unique = false)
     public LocalDate getStartEducation() {
         return startEducation;
     }
-
     public void setStartEducation(LocalDate startEducation) {
         this.startEducation = startEducation;
     }
 
     @DateTimeFormat(pattern="yyyy-MM-dd")
+    @Column(nullable = true, unique = false)
     public LocalDate getEndEducation() {
         return endEducation;
     }
-
     public void setEndEducation(LocalDate endEducation) {
         this.endEducation = endEducation;
     }
 
+    @Column(nullable = false, unique = false)
     public LinkedInConnectionStatus getLinkedInConnectionStatus() {
         return linkedInConnectionStatus;
     }
-
     public void setLinkedInConnectionStatus(LinkedInConnectionStatus linkedInConnectionStatus) {
         this.linkedInConnectionStatus = linkedInConnectionStatus;
     }
@@ -141,24 +135,23 @@ public class Student{
     public Boolean getIsInterestedInEvents() {
         return isInterestedInEvents;
     }
-
     public void setIsInterestedInEvents(Boolean interestedInEvents) {
         isInterestedInEvents = interestedInEvents;
     }
 
+    @Column(nullable = true, unique = false)
     public String getContactOrigin() {
         return contactOrigin;
     }
-
     public void setContactOrigin(String contactOrigin) {
         this.contactOrigin = contactOrigin;
     }
 
     @DateTimeFormat(pattern="yyyy-MM-dd")
+    @Column(nullable = true, unique = false)
     public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
-
     public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }

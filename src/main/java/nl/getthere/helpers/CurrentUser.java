@@ -20,6 +20,7 @@ public class CurrentUser {
 
     public static CurrentUser getCurrentUser() {
         String name = SecurityContextHolder.getContext().getAuthentication().getName();
+        if (name == null) return null;
         Collection list = SecurityContextHolder.getContext().getAuthentication().getAuthorities();
         String role= "no-role";
         for(Object authority : list) {

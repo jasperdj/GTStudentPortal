@@ -6,17 +6,23 @@ import javax.persistence.*;
  * Created by jasper.dejong on 27-9-2016.
  */
 
-//Todo setting column values. I.E @Column(name = "email", nullable = false, unique = true)
 @Entity
 public class Education {
     private String name;
     private Degree degree;
     private Long id;
 
+    public enum Degree {
+        hbo, wo
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public Long getId() {
         return id;
+    }
+    public void setId(Long id) {
+        this.id = id;
     }
     private University university;
 
@@ -28,25 +34,19 @@ public class Education {
         this.university = university;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
-    public enum Degree {
-        hbo, wo
-    }
+    @Column(nullable = false, unique = false)
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
 
+    @Column(nullable = false, unique = false)
     public Degree getDegree() {
         return degree;
     }
-
     public void setDegree(Degree degree) {
         this.degree = degree;
     }
