@@ -61,7 +61,7 @@ public class Student{
 		this.firstName = firstName;
 	}
 
-    @Column(nullable = true, unique = false)
+    @Column(nullable = false, unique = false)
 	public String getLastName() {
 		return lastName;
 	}
@@ -124,7 +124,6 @@ public class Student{
         this.endEducation = endEducation;
     }
 
-    @Column(nullable = false, unique = false)
     public LinkedInConnectionStatus getLinkedInConnectionStatus() {
         return linkedInConnectionStatus;
     }
