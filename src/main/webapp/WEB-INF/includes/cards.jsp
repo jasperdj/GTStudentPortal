@@ -2,7 +2,7 @@
   <div class="column">
     <div class="ui fluid card">
       <div class="image">
-        <img src="/images/avatar/large/daniel.jpg">
+        <img src="<c:url value="/resources/img/logo.png"/>">
       </div>
       <div class="content">
         <a class="header">Traineeship</a>
@@ -12,7 +12,7 @@
   <div class="column">
     <div class="ui fluid card">
       <div class="image">
-        <img src="/images/avatar/large/helen.jpg">
+        <img src="<c:url value="/resources/img/logo.png"/>">
       </div>
       <div class="content">
         <a class="header">Afstudeeropdracht</a>
@@ -22,7 +22,7 @@
   <div class="column">
     <div class="ui fluid card">
       <div class="image">
-        <img src="/images/avatar/large/elliot.jpg">
+        <img src="<c:url value="/resources/img/logo.png"/>">
       </div>
       <div class="content">
         <a class="header">Stage</a>
@@ -32,7 +32,7 @@
   <div class="column">
     <div class="ui fluid card">
       <div class="image">
-        <img src="/images/avatar/large/elliot.jpg">
+        <img src="<c:url value="/resources/img/logo.png"/>">
       </div>
       <div class="content">
         <a class="header">Lezing Security</a>
@@ -42,7 +42,7 @@
   <div class="column">
     <div class="ui fluid card">
       <div class="image">
-        <img src="/images/avatar/large/elliot.jpg">
+        <img src="<c:url value="/resources/img/logo.png"/>">
       </div>
       <div class="content">
         <a class="header">Lezing Big Data</a>

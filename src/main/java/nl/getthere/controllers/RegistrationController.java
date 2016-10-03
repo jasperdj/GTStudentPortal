@@ -4,9 +4,11 @@ import java.time.LocalDate;
 
 import javax.validation.Valid;
 
+import nl.getthere.model.Education;
 import nl.getthere.model.EducationRepository;
 import nl.getthere.model.Student;
 import nl.getthere.model.StudentRepository;
+import nl.getthere.model.University;
 import nl.getthere.model.UniversityRepository;
 import nl.getthere.model.User;
 import nl.getthere.model.UserRepository;
@@ -41,11 +43,9 @@ public class RegistrationController {
 	public User getUser(){
 		return new User();
 	}
-	
+		
 	@RequestMapping("/registration")
 	public String showRegistrationForm(Model model){
-		model.addAttribute("universities", universityRepo.findAll());
-		model.addAttribute("educations", educationRepo.findAll());
 		return "registration";
 	}
 	
@@ -53,8 +53,6 @@ public class RegistrationController {
 	public String registerNewStudent(@Valid User user, BindingResult result, Model model ){
 		if(result.hasErrors()){
 			model.addAttribute("error", "Er is iets fout gegaan, probeer het opnieuw.");
-			model.addAttribute("universities", universityRepo.findAll());
-			model.addAttribute("educations", educationRepo.findAll());
 			return "registration";
 		}
 
@@ -70,11 +68,8 @@ public class RegistrationController {
 			user.setUserRole("student");
 			user.setStudent(student);
 			userRepo.save(user);
-			model.addAttribute("status", "Student aangemaakt!");
 		}catch(Exception e){
 			model.addAttribute("error", "Er bestaat al een account met dat e-mailadres!");
-			model.addAttribute("universities", universityRepo.findAll());
-			model.addAttribute("educations", educationRepo.findAll());
 			e.printStackTrace();
 			return "registration";
 		}
