@@ -80,6 +80,7 @@ public class StudentController {
 			return "newstudent";
 		}
 		try{
+			//todo redundant block of code with RegistrationController
 			User user = new User();
 			user.setFirstName(newStudent.getFirstName());
 			user.setLastName(newStudent.getLastName());

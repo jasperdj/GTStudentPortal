@@ -55,6 +55,7 @@ public class RegistrationController {
 			return "studentform";
 		}
 		try{
+			//todo redundant block of code with StudentController
 			User user = new User();
 			user.setFirstName(student.getFirstName());
 			user.setLastName(student.getLastName());
