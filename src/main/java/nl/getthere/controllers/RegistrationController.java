@@ -2,7 +2,6 @@ package nl.getthere.controllers;
 
 import java.time.LocalDate;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import nl.getthere.model.EducationRepository;
@@ -51,19 +50,14 @@ public class RegistrationController {
 	}
 	
 	@RequestMapping(value = "/registration", method = RequestMethod.POST)
-	public String registerNewStudent(@Valid User user, BindingResult result, String password, Model model ){
+	public String registerNewStudent(@Valid User user, BindingResult result, Model model ){
 		if(result.hasErrors()){
 			model.addAttribute("error", "Er is iets fout gegaan, probeer het opnieuw.");
 			model.addAttribute("universities", universityRepo.findAll());
 			model.addAttribute("educations", educationRepo.findAll());
 			return "registration";
 		}
-		if(password.length() < 8){
-			model.addAttribute("error", "Wachtwoord is te kort (min. 8 tekens).");
-			model.addAttribute("universities", universityRepo.findAll());
-			model.addAttribute("educations", educationRepo.findAll());
-			return "registration";
-		}
+
 		try{
 			Student student = new Student();
 			student.setFirstName(user.getFirstName());
@@ -72,6 +66,7 @@ public class RegistrationController {
 			student.setDateJoined(LocalDate.now());
 			studentRepo.save(student);
 			
+			user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
 			user.setUserRole("student");
 			user.setStudent(student);
 			userRepo.save(user);

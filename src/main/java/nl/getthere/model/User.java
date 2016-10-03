@@ -1,8 +1,11 @@
 package nl.getthere.model;
 
-import javax.persistence.*;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
@@ -67,7 +70,7 @@ public class User {
         this.firstName = firstName;
     }
 
-    @Column(nullable = true, unique = false)
+    @Column(nullable = false, unique = false)
     public String getLastName() {
         return lastName;
     }
@@ -88,7 +91,7 @@ public class User {
         return password;
     }
     public void setPassword(String password) {
-        this.password = new BCryptPasswordEncoder().encode(password);
+        this.password = password;
     }
 
     @OneToOne
@@ -98,4 +101,13 @@ public class User {
    	public void setStudent(Student student) {
    		this.student = student;
    	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+   	
 }
