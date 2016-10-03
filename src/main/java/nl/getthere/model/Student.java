@@ -30,20 +30,17 @@ public class Student{
     private String lastName;
 	@NotEmpty(message="Voer aub een email in. ") @Email(message="Controleer het opgegeven emailadres. ")
     private String email;
-	@Size(min=10,max=10, message="Controleer nummer.")
     private String phone;
 	private LocalDate dateJoined;
-	@NotNull
     private Education education;
     private LocalDate startEducation;
     private LocalDate endEducation;
     private LinkedInConnectionStatus linkedInConnectionStatus;
-    @NotNull
     private Boolean isInterestedInEvents;
     private String contactOrigin;
-    @NotNull
     private LocalDate dateOfBirth;
     private Long id;
+    
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public Long getId() {

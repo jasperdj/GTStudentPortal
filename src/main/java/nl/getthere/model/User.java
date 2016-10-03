@@ -1,12 +1,13 @@
 package nl.getthere.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 /**
  * Created by jasper.dejong on 27-9-2016.
@@ -15,10 +16,14 @@ import javax.persistence.*;
 @Entity
 public class User {
     private Long id;
+    @NotEmpty(message="Voer aub een voornaam in. ")
     private String firstName;
+    @NotEmpty(message="Voer aub een achternaam in. ")
     private String lastName;
+    @NotEmpty(message="Voer aub een email in. ") @Email(message="Controleer het opgegeven emailadres.")
     private String email;
     private String phone;
+    @NotEmpty(message="Voer aub een wachtwoord in. (min. 8 tekens)")@Size(min=8, message="Minimaal 8 tekens.")
     private String password;
     private String userRole;
     private Student student;
@@ -83,7 +88,7 @@ public class User {
         return password;
     }
     public void setPassword(String password) {
-        this.password = password;
+        this.password = new BCryptPasswordEncoder().encode(password);
     }
 
     @OneToOne
