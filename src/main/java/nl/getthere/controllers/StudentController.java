@@ -94,6 +94,7 @@ public class StudentController {
 			model.addAttribute("status", "Student aangemaakt!");
 		}catch(Exception e){
 			model.addAttribute("error", "Er bestaat al een account met dat e-mailadres!");
+			e.printStackTrace();
 		}
 		
 		return "newstudent";

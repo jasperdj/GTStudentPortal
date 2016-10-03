@@ -4,11 +4,9 @@ import java.time.LocalDate;
 
 import javax.validation.Valid;
 
-import nl.getthere.model.Education;
 import nl.getthere.model.EducationRepository;
 import nl.getthere.model.Student;
 import nl.getthere.model.StudentRepository;
-import nl.getthere.model.University;
 import nl.getthere.model.UniversityRepository;
 import nl.getthere.model.User;
 import nl.getthere.model.UserRepository;
