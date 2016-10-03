@@ -13,6 +13,8 @@
 	<div class="ui container padded">
 		<h3>Welkom op de Get There Studenten Portal!</h3>
 		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at sodales est, eu consequat metus. Proin neque eros, tincidunt suscipit arcu maximus, hendrerit efficitur nibh. Ut pellentesque libero sit amet ultricies placerat. Mauris id pretium dolor. Aliquam ullamcorper faucibus vehicula. Maecenas viverra lorem nec tincidunt sollicitudin. Vivamus rhoncus, est eu ullamcorper rhoncus, elit eros vehicula nunc, at accumsan quam lacus vel ipsum. </p>
+		<%@include file="../includes/cards.jsp"%>
+		</div>
 	</div>	
 </body>
 </html>
