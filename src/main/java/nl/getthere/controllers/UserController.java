@@ -36,22 +36,4 @@ public class UserController {
 		return "usercreation";
 	}
 
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public ModelAndView getLoginPage(@RequestParam Optional<String> error) {
-		return new ModelAndView("login", "error", error);
-	}
-
-	//todo remove this.
-	@RequestMapping("/public/users/*")
-	public String userpage(Model model) {
-		CurrentUser currentUser = getCurrentUser();
-		System.out.println("cu:" + currentUser);
-		User user = repo.findOneByEmail(getCurrentUser().getEmail());
-		if (user != null) {
-			model.addAttribute("name", user.getFirstName());
-		} else {
-			model.addAttribute("name", "No name");
-		}
-		return "studentOnly";
-	}
 }

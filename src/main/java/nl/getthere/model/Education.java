@@ -43,7 +43,8 @@ public class Education {
         this.name = name;
     }
 
-    @Column(nullable = false, unique = false)
+    //todo figure out enum type and make nullable=false
+    @Column(nullable = true, unique = false)
     public Degree getDegree() {
         return degree;
     }

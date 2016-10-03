@@ -9,8 +9,11 @@
     <%@include file="../includes/header.jsp"%>
 </head>
 <body>
+<%@include file="../includes/navbar.jsp"%>
+
 <div class="ui main text container padded">
 	<h3>Welkom op de Get There Studenten Portal!</h3>
+
 	<form class="ui form" role="form" action="/login" method="post">
 	    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 	    <div>
@@ -30,7 +33,7 @@
 </div>
 
 <c:if test="${error.isPresent()}">
-    <p>The email or password you have entered is invalid, try again.</p>
+	<p>The email or password you have entered is invalid, try again.</p>
 </c:if>
 </body>
 </html>
