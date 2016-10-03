@@ -22,7 +22,4 @@ import org.springframework.web.servlet.view.JstlView;
 @Configuration
 public class AppConfig {
 
-
-
-
 }
