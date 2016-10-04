@@ -6,7 +6,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
-import javax.persistence.*;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * Created by jasper.dejong on 27-9-2016.
@@ -15,10 +18,14 @@ import javax.persistence.*;
 @Entity
 public class User {
     private Long id;
+    @NotEmpty(message="Voer aub een voornaam in. ")
     private String firstName;
+    @NotEmpty(message="Voer aub een achternaam in. ")
     private String lastName;
+    @NotEmpty(message="Voer aub een email in. ") @Email(message="Controleer het opgegeven emailadres.")
     private String email;
     private String phone;
+    @NotEmpty(message="Voer aub een wachtwoord in. (min. 8 tekens)")@Size(min=8, message="Minimaal 8 tekens.")
     private String password;
     private String userRole;
     private Student student;
@@ -62,7 +69,7 @@ public class User {
         this.firstName = firstName;
     }
 
-    @Column(nullable = true, unique = false)
+    @Column(nullable = false, unique = false)
     public String getLastName() {
         return lastName;
     }
@@ -93,4 +100,13 @@ public class User {
    	public void setStudent(Student student) {
    		this.student = student;
    	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+   	
 }

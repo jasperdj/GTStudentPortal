@@ -1,5 +1,7 @@
 package nl.getthere.controllers;
 
+import java.time.LocalDate;
+
 import javax.validation.Valid;
 
 import nl.getthere.model.EducationRepository;
@@ -39,39 +41,40 @@ public class RegistrationController {
 		return new Student();
 	}
 	
+	@ModelAttribute("user")
+	public User getUser(){
+		return new User();
+	}
+		
 	@RequestMapping("/registration")
 	public String showRegistrationForm(Model model){
-		model.addAttribute("universities", universityRepo.findAll());
-		model.addAttribute("educations", educationRepo.findAll());
-		return "studentform";
+		return "registration";
 	}
 	
 	@RequestMapping(value = "/registration", method = RequestMethod.POST)
-	public String registerNewStudent(Model model, @Valid Student student, BindingResult result){
+	public String registerNewStudent(@Valid User user, BindingResult result, Model model ){
 		if(result.hasErrors()){
 			model.addAttribute("error", "Er is iets fout gegaan, probeer het opnieuw.");
-			model.addAttribute("universities", universityRepo.findAll());
-			model.addAttribute("educations", educationRepo.findAll());
-			return "studentform";
+			return "registration";
 		}
+
 		try{
-			//todo redundant block of code with StudentController
-			User user = new User();
-			user.setFirstName(student.getFirstName());
-			user.setLastName(student.getLastName());
-			user.setEmail(student.getEmail());
-			user.setPassword(new BCryptPasswordEncoder().encode("student"));
-			user.setUserRole("student");
-				
+			Student student = new Student();
+			student.setFirstName(user.getFirstName());
+			student.setLastName(user.getLastName());
+			student.setEmail(user.getEmail());
+			student.setDateJoined(LocalDate.now());
+
 			studentRepo.save(student);
+			
+			user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
+			user.setUserRole("student");
 			user.setStudent(student);
 			userRepo.save(user);
-			model.addAttribute("status", "Student aangemaakt!");
 		}catch(Exception e){
 			model.addAttribute("error", "Er bestaat al een account met dat e-mailadres!");
-			model.addAttribute("universities", universityRepo.findAll());
-			model.addAttribute("educations", educationRepo.findAll());
-			return "studentform";
+			e.printStackTrace();
+			return "registration";
 		}
 			
 		return "redirect:/login";
