@@ -92,8 +92,6 @@ public class StudentController {
 	public String showStudentDetail(Model model){
 		User u = userRepo.findOneByEmail(CurrentUser.getCurrentUser().getEmail());		
 		model.addAttribute("student", u.getStudent());
-		
-		
 		return "studentform";
 	}
 
