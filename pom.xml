@@ -169,9 +169,12 @@
 		    <version>7.1.2</version>
 		</dependency>
 
-
-
-
+		<!-- https://mvnrepository.com/artifact/org.codehaus.mojo/findbugs-maven-plugin -->
+		<dependency>
+		    <groupId>org.codehaus.mojo</groupId>
+		    <artifactId>findbugs-maven-plugin</artifactId>
+		    <version>3.0.4</version>
+		</dependency>
 	</dependencies>
 
 	<build>
