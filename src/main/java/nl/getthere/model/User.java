@@ -23,7 +23,7 @@ public class User {
     private String password;
     private String userRole;
     private Student student;
-    private List<Event> declinedEvents;
+    private List<Event> acceptedEvents;
 
     @Column(nullable = true, unique = true)
     public String getPhone() {
@@ -34,11 +34,11 @@ public class User {
     }
 
     @ManyToMany(mappedBy = "attendiesAccepted")
-    public List<Event> getDeclinedEvents() {
-        return declinedEvents;
+    public List<Event> getAcceptedEvents() {
+        return acceptedEvents;
     }
-    public void setDeclinedEvents(List<Event> declinedEvents) {
-        this.declinedEvents = declinedEvents;
+    public void setAcceptedEvents(List<Event> acceptedEvents) {
+        this.acceptedEvents = acceptedEvents;
     }
 
     public User() {

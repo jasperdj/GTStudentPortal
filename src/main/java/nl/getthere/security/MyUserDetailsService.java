@@ -52,5 +52,4 @@ public class MyUserDetailsService implements UserDetailsService {
         List<GrantedAuthority> Result = new ArrayList<GrantedAuthority>(setAuths);
         return Result;
     }
-
 }

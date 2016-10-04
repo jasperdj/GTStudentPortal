@@ -2,14 +2,14 @@ package nl.getthere.model;
 
 import org.apache.xpath.operations.Bool;
 
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
 /**
  * Created by jasper.dejong on 4-10-2016.
  */
+@Entity
 public class Event {
     private List<EventType> eventTypes;
     private List<EventTheme> eventThemes;
@@ -19,6 +19,16 @@ public class Event {
     private Boolean published;
     private String description;
     private List<User> attendiesAccepted;
+    private Long id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public Long getId() {
+        return id;
+    }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     @OneToMany
     public List<EventType> getEventTypes() {
