@@ -80,19 +80,7 @@ public class StudentController {
 			return "newstudent";
 		}
 		try{
-			//todo redundant block of code with RegistrationController
-			User user = new User();
-			user.setFirstName(newStudent.getFirstName());
-			user.setLastName(newStudent.getLastName());
-			user.setEmail(newStudent.getEmail());
-			user.setPassword(new BCryptPasswordEncoder().encode("student"));
-			user.setUserRole("student");
-				
-			studentRepo.save(newStudent);
-			user.setStudent(newStudent);
-			userRepo.save(user);
-
-			model.addAttribute("status", "Student aangemaakt!");
+			createStudent(studentRepo, userRepo, model, newStudent);
 		}catch(Exception e){
 			model.addAttribute("error", "Er bestaat al een account met dat e-mailadres!");
 		}
@@ -108,7 +96,22 @@ public class StudentController {
 		
 		return "studentform";
 	}
-	
+
+	public static void createStudent(StudentRepository studentRepo, UserRepository userRepo, Model model, Student newStudent) {
+		User user = new User();
+		user.setFirstName(newStudent.getFirstName());
+		user.setLastName(newStudent.getLastName());
+		user.setEmail(newStudent.getEmail());
+		user.setPassword(new BCryptPasswordEncoder().encode("student"));
+		user.setUserRole("student");
+
+		studentRepo.save(newStudent);
+		user.setStudent(newStudent);
+		userRepo.save(user);
+
+		model.addAttribute("status", "Student aangemaakt!");
+	}
+
 	@RequestMapping(value = "/detail", method = RequestMethod.POST)
 	public String editStudentDetail(Model model, @ModelAttribute @Valid Student student, BindingResult result){
 		if(result.hasErrors()){

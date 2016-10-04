@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import static nl.getthere.controllers.StudentController.createStudent;
 
 import java.util.Optional;
 
@@ -55,18 +56,7 @@ public class RegistrationController {
 			return "studentform";
 		}
 		try{
-			//todo redundant block of code with StudentController
-			User user = new User();
-			user.setFirstName(student.getFirstName());
-			user.setLastName(student.getLastName());
-			user.setEmail(student.getEmail());
-			user.setPassword(new BCryptPasswordEncoder().encode("student"));
-			user.setUserRole("student");
-				
-			studentRepo.save(student);
-			user.setStudent(student);
-			userRepo.save(user);
-			model.addAttribute("status", "Student aangemaakt!");
+			createStudent(studentRepo, userRepo, model, student);
 		}catch(Exception e){
 			model.addAttribute("error", "Er bestaat al een account met dat e-mailadres!");
 			model.addAttribute("universities", universityRepo.findAll());
