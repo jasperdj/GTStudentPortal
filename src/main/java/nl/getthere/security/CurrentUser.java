@@ -1,7 +1,5 @@
-package nl.getthere.helpers;
+package nl.getthere.security;
 
-import nl.getthere.model.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 import java.util.Collection;

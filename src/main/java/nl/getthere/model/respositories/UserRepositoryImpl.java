@@ -1,4 +1,4 @@
-package nl.getthere.model;
+package nl.getthere.model.respositories;
 
 /**
  * Created by jasper.dejong on 29-9-2016.
@@ -6,9 +6,9 @@ package nl.getthere.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import nl.getthere.model.User;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 

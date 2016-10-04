@@ -2,15 +2,15 @@ package nl.getthere.controllers;
 
 import javax.validation.Valid;
 
-import nl.getthere.helpers.CurrentUser;
+import nl.getthere.security.CurrentUser;
 import nl.getthere.model.Education;
-import nl.getthere.model.EducationRepository;
+import nl.getthere.model.respositories.EducationRepository;
 import nl.getthere.model.Student;
-import nl.getthere.model.StudentRepository;
+import nl.getthere.model.respositories.StudentRepository;
 import nl.getthere.model.University;
-import nl.getthere.model.UniversityRepository;
+import nl.getthere.model.respositories.UniversityRepository;
 import nl.getthere.model.User;
-import nl.getthere.model.UserRepository;
+import nl.getthere.model.respositories.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

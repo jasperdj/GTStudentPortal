@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by jasper.dejong on 27-9-2016.
@@ -22,8 +23,25 @@ public class User {
     private String password;
     private String userRole;
     private Student student;
+    private List<Event> declinedEvents;
 
-	public User() {
+    @Column(nullable = true, unique = true)
+    public String getPhone() {
+        return phone;
+    }
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    @ManyToMany(mappedBy = "attendiesAccepted")
+    public List<Event> getDeclinedEvents() {
+        return declinedEvents;
+    }
+    public void setDeclinedEvents(List<Event> declinedEvents) {
+        this.declinedEvents = declinedEvents;
+    }
+
+    public User() {
 
     }
 
