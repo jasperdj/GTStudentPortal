@@ -1,5 +1,7 @@
 package nl.getthere.controllers;
 
+import java.time.LocalDate;
+
 import javax.validation.Valid;
 
 import nl.getthere.model.respositories.EducationRepository;
@@ -40,28 +42,29 @@ public class RegistrationController {
 		return new Student();
 	}
 	
+	@ModelAttribute("user")
+	public User getUser(){
+		return new User();
+	}
+
 	@RequestMapping("/registration")
 	public String showRegistrationForm(Model model){
-		model.addAttribute("universities", universityRepo.findAll());
-		model.addAttribute("educations", educationRepo.findAll());
-		return "studentform";
+		return "registration";
 	}
 	
 	@RequestMapping(value = "/registration", method = RequestMethod.POST)
-	public String registerNewStudent(Model model, @Valid Student student, BindingResult result){
+	public String registerNewStudent(@Valid User user, BindingResult result, Model model ){
 		if(result.hasErrors()){
 			model.addAttribute("error", "Er is iets fout gegaan, probeer het opnieuw.");
-			model.addAttribute("universities", universityRepo.findAll());
-			model.addAttribute("educations", educationRepo.findAll());
-			return "studentform";
+			return "registration";
 		}
+
 		try{
 			createStudent(studentRepo, userRepo, model, student);
 		}catch(Exception e){
 			model.addAttribute("error", "Er bestaat al een account met dat e-mailadres!");
-			model.addAttribute("universities", universityRepo.findAll());
-			model.addAttribute("educations", educationRepo.findAll());
-			return "studentform";
+			e.printStackTrace();
+			return "registration";
 		}
 			
 		return "redirect:/login";

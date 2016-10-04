@@ -8,7 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Generated;
@@ -33,17 +32,15 @@ public class Student{
 	@Size(min=10,max=10, message="Controleer nummer.")
     private String phone;
 	private LocalDate dateJoined;
-	@NotNull
     private Education education;
     private LocalDate startEducation;
     private LocalDate endEducation;
     private LinkedInConnectionStatus linkedInConnectionStatus;
-    @NotNull
     private Boolean isInterestedInEvents;
     private String contactOrigin;
-    @NotNull
     private LocalDate dateOfBirth;
     private Long id;
+    
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public Long getId() {
@@ -61,7 +58,7 @@ public class Student{
 		this.firstName = firstName;
 	}
 
-    @Column(nullable = true, unique = false)
+    @Column(nullable = false, unique = false)
 	public String getLastName() {
 		return lastName;
 	}
@@ -124,7 +121,6 @@ public class Student{
         this.endEducation = endEducation;
     }
 
-    @Column(nullable = false, unique = false)
     public LinkedInConnectionStatus getLinkedInConnectionStatus() {
         return linkedInConnectionStatus;
     }
