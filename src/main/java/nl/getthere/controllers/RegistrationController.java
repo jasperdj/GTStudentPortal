@@ -27,7 +27,6 @@ import java.util.Optional;
 
 @Controller
 public class RegistrationController {
-	
 	@Autowired
 	private UserRepository userRepo;
 	@Autowired
@@ -58,9 +57,8 @@ public class RegistrationController {
 			model.addAttribute("error", "Er is iets fout gegaan, probeer het opnieuw.");
 			return "registration";
 		}
-
 		try{
-			createStudent(studentRepo, userRepo, model, student);
+			StudentController.createStudent(studentRepo, userRepo, model, user);
 		}catch(Exception e){
 			model.addAttribute("error", "Er bestaat al een account met dat e-mailadres!");
 			e.printStackTrace();

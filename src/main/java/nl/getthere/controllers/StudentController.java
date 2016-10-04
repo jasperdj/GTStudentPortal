@@ -24,6 +24,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
+import static java.time.LocalDate.now;
+
 @Controller
 @SessionAttributes("student")
 public class StudentController {
@@ -94,6 +96,23 @@ public class StudentController {
 		User u = userRepo.findOneByEmail(CurrentUser.getCurrentUser().getEmail());		
 		model.addAttribute("student", u.getStudent());
 		return "studentform";
+	}
+
+	public static void createStudent(StudentRepository studentRepo, UserRepository userRepo, Model model, User user) {
+		Student student = new Student();
+		student.setFirstName(user.getFirstName());
+		student.setLastName(user.getLastName());
+		student.setEmail(user.getEmail());
+		student.setDateJoined(now());
+
+		studentRepo.save(student);
+
+		user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
+		user.setUserRole("student");
+		user.setStudent(student);
+		userRepo.save(user);
+
+		model.addAttribute("status", "Student aangemaakt!");
 	}
 
 	public static void createStudent(StudentRepository studentRepo, UserRepository userRepo, Model model, Student newStudent) {
