@@ -11,3 +11,7 @@
 .form-error{
 	color: #e54e4e;
 }
+
+.invalid-input{
+	background: #f45042;
+}

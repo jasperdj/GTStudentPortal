@@ -1,6 +1,7 @@
 package nl.getthere.controllers;
 
 import java.time.LocalDate;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -20,11 +21,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.Optional;
-
 @Controller
+@SessionAttributes(value = "user")
 public class RegistrationController {
 	
 	@Autowired
@@ -47,7 +48,7 @@ public class RegistrationController {
 	}
 		
 	@RequestMapping("/registration")
-	public String showRegistrationForm(Model model){
+	public String showRegistrationForm(){
 		return "registration";
 	}
 	
@@ -84,5 +85,5 @@ public class RegistrationController {
 	public ModelAndView getLoginPage(@RequestParam Optional<String> error) {
 		return new ModelAndView("login", "error", error);
 	}
-	
+
 }

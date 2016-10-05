@@ -38,6 +38,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/students*", "/students").hasAuthority("recruiter")
                 .antMatchers("/student/*", "/student").hasAuthority("recruiter")
                 .antMatchers("/detail*").hasAuthority("student")
+                .antMatchers("/ajaxtest").hasAuthority("recruiter")
                 .anyRequest().authenticated()
                 .and()
 
