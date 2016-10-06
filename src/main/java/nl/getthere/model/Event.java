@@ -31,7 +31,7 @@ public class Event {
         this.id = id;
     }
 
-    @OneToMany
+    @ManyToMany
     public List<EventType> getEventTypes() {
         return eventTypes;
     }
@@ -39,7 +39,7 @@ public class Event {
         this.eventTypes = eventTypes;
     }
 
-    @OneToMany
+    @ManyToMany
     public List<EventTheme> getEventThemes() {
         return eventThemes;
     }
@@ -93,6 +93,5 @@ public class Event {
     public void setAttendiesAccepted(List<User> attendiesAccepted) {
         this.attendiesAccepted = attendiesAccepted;
     }
-
 
 }

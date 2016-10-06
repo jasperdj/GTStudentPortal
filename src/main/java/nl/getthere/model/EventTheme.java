@@ -1,9 +1,7 @@
 package nl.getthere.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by jasper.dejong on 4-10-2016.
@@ -12,6 +10,15 @@ import javax.persistence.Id;
 public class EventTheme {
     private String name;
     private Long id;
+    private List<Event> events;
+
+    @ManyToMany(mappedBy = "eventThemes")
+    private List<Event> getEvents() {
+        return events;
+    }
+    private void setEvents(List<Event> events) {
+        this.events = events;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
