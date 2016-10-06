@@ -1,6 +1,7 @@
 package nl.getthere.model;
 
 import org.apache.xpath.operations.Bool;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -53,6 +54,8 @@ public class Event {
         this.title = title;
     }
 
+    @DateTimeFormat(iso=DateTimeFormat.ISO.DATE_TIME)
+    @Column(nullable = true, unique = false)
     public LocalDateTime getStart() {
         return start;
     }
@@ -60,6 +63,8 @@ public class Event {
         this.start = start;
     }
 
+    @DateTimeFormat(iso=DateTimeFormat.ISO.DATE_TIME)
+    @Column(nullable = true, unique = false)
     public LocalDateTime getEnd() {
         return end;
     }
