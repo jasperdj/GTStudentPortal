@@ -10,6 +10,8 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
+import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by jasper.dejong on 27-9-2016.
@@ -29,8 +31,25 @@ public class User {
     private String password;
     private String userRole;
     private Student student;
+    private List<Event> acceptedEvents;
 
-	public User() {
+    @Column(nullable = true, unique = true)
+    public String getPhone() {
+        return phone;
+    }
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    @ManyToMany(mappedBy = "attendiesAccepted")
+    public List<Event> getAcceptedEvents() {
+        return acceptedEvents;
+    }
+    public void setAcceptedEvents(List<Event> acceptedEvents) {
+        this.acceptedEvents = acceptedEvents;
+    }
+
+    public User() {
 
     }
 
@@ -101,12 +120,4 @@ public class User {
    		this.student = student;
    	}
 
-	public String getPhone() {
-		return phone;
-	}
-
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
-   	
 }

@@ -164,9 +164,15 @@
 
 		<!-- https://mvnrepository.com/artifact/com.puppycrawl.tools/checkstyle -->
 		<dependency>
-		    <groupId>com.puppycrawl.tools</groupId>
-		    <artifactId>checkstyle</artifactId>
-		    <version>7.1.2</version>
+			<groupId>com.puppycrawl.tools</groupId>
+			<artifactId>checkstyle</artifactId>
+			<version>7.1.2</version>
+		</dependency>
+
+		<!-- Logging dependency -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
 	</dependencies>
@@ -177,7 +183,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>findbugs-maven-plugin</artifactId>
