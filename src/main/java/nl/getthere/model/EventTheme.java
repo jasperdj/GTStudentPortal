@@ -1,5 +1,7 @@
 package nl.getthere.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -13,10 +15,11 @@ public class EventTheme {
     private List<Event> events;
 
     @ManyToMany(mappedBy = "eventThemes")
-    private List<Event> getEvents() {
+    @JsonIgnore
+    public List<Event> getEvents() {
         return events;
     }
-    private void setEvents(List<Event> events) {
+    public void setEvents(List<Event> events) {
         this.events = events;
     }
 

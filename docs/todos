@@ -1,9 +1,7 @@
 Student home todo
 + Create Event model
-
-- Create event controller (AddEvent, AddEventType, AddEventTheme)
-
-- Create test data events
++ Create event controller (AddEvent, AddEventType, AddEventTheme)
++ Create test data events
 
 - Create Event row
 
