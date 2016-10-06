@@ -10,6 +10,8 @@ import java.util.List;
 /**
  * Created by jasper.dejong on 4-10-2016.
  */
+
+//Todo: Add form checks notNull etc.
 @Entity
 public class Event {
     private List<EventType> eventTypes;

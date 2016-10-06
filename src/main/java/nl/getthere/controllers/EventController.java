@@ -54,12 +54,9 @@ public class EventController {
         return "newEvent";
     }
 
+    //todo: Map this for Recruiters only.
     @RequestMapping(value = "/api/newEvent", method = RequestMethod.GET)
-    public String newEvent(Model model /*, Event event, EventType eventType, EventTheme eventTheme*/) {
-       /* eventTypeRepo.save(eventType);
-        eventThemeRepo.save(eventTheme);
-        event.setEventTypes(new );
-        eventRepo.save(event);*/
+    public String newEvent(Model model) {
         return "newEvent";
     }
 
