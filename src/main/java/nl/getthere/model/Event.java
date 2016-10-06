@@ -20,6 +20,7 @@ public class Event {
     private LocalDateTime start;
     private LocalDateTime end;
     private Boolean published;
+    @Column(columnDefinition = "TEXT")
     private String description;
     private List<User> attendiesAccepted;
     private Long id;
