@@ -35,6 +35,9 @@
 	href="<c:url value="/resources/css/sidebar.css"/>">
 <link rel="stylesheet" type="text/css"
 	href="<c:url value="/resources/css/transition.css"/>">
+<link rel='stylesheet prefetch'
+	href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/components/icon.min.css'>
+
 
 <link rel="stylesheet" type="text/css"
 	href="<c:url value="/resources/css/studentportal.css"/>">

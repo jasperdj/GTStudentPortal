@@ -1,7 +1,28 @@
 @CHARSET "ISO-8859-1";
 
+.redBorder{
+	border: 1px solid #BF0028;
+}
+
+.detailLabel{
+	width: 50%;
+}
+
+.formPart{
+	display: none;
+	min-height: 150px;
+}
+
+hr{
+	border: 1px solid #dedede;
+}
+
+td{
+	padding: 10px;	
+}
+
 .padded {
-	padding-top: 100px;
+	padding-top: 40px;
 }
 
 .small-padded {
