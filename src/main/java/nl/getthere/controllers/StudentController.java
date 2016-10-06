@@ -105,19 +105,25 @@ public class StudentController {
 	public String showStudentDetail(Model model){
 		User u = userRepo.findOneByEmail(CurrentUser.getCurrentUser().getEmail());		
 		model.addAttribute("student", u.getStudent());
-		
-		
+				
+		return "detail";
+	}
+	
+	@RequestMapping("/editprofile")
+	public String showStudentForm(Model model){
+		User u = userRepo.findOneByEmail(CurrentUser.getCurrentUser().getEmail());		
+		model.addAttribute("student", u.getStudent());
+				
 		return "studentform";
 	}
 	
-	@RequestMapping(value = "/detail", method = RequestMethod.POST)
+	@RequestMapping(value = "/editprofile", method = RequestMethod.POST)
 	public String editStudentDetail(Model model, @ModelAttribute @Valid Student student, BindingResult result){
 		if(result.hasErrors()){
 			model.addAttribute("error", "Student kon niet worden aangepast!");
 			return "studentform";
 		}
-//		User u = userRepo.findOneByEmail(CurrentUser.getCurrentUser().getEmail());
-//		Student s = u.getStudent();
+
 		try{
 			studentRepo.save(student);
 		}catch(Exception e){
