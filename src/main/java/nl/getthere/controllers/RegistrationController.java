@@ -4,12 +4,12 @@ import java.time.LocalDate;
 
 import javax.validation.Valid;
 
-import nl.getthere.model.EducationRepository;
+import nl.getthere.model.respositories.EducationRepository;
 import nl.getthere.model.Student;
-import nl.getthere.model.StudentRepository;
-import nl.getthere.model.UniversityRepository;
+import nl.getthere.model.respositories.StudentRepository;
+import nl.getthere.model.respositories.UniversityRepository;
 import nl.getthere.model.User;
-import nl.getthere.model.UserRepository;
+import nl.getthere.model.respositories.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -21,12 +21,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import static nl.getthere.controllers.StudentController.createStudent;
 
 import java.util.Optional;
 
 @Controller
 public class RegistrationController {
-	
 	@Autowired
 	private UserRepository userRepo;
 	@Autowired
@@ -45,7 +45,7 @@ public class RegistrationController {
 	public User getUser(){
 		return new User();
 	}
-		
+
 	@RequestMapping("/registration")
 	public String showRegistrationForm(Model model){
 		return "registration";
@@ -57,20 +57,8 @@ public class RegistrationController {
 			model.addAttribute("error", "Er is iets fout gegaan, probeer het opnieuw.");
 			return "registration";
 		}
-
 		try{
-			Student student = new Student();
-			student.setFirstName(user.getFirstName());
-			student.setLastName(user.getLastName());
-			student.setEmail(user.getEmail());
-			student.setDateJoined(LocalDate.now());
-
-			studentRepo.save(student);
-			
-			user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
-			user.setUserRole("student");
-			user.setStudent(student);
-			userRepo.save(user);
+			StudentController.createStudent(studentRepo, userRepo, model, user);
 		}catch(Exception e){
 			model.addAttribute("error", "Er bestaat al een account met dat e-mailadres!");
 			e.printStackTrace();

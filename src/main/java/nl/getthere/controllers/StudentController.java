@@ -2,15 +2,15 @@ package nl.getthere.controllers;
 
 import javax.validation.Valid;
 
-import nl.getthere.helpers.CurrentUser;
+import nl.getthere.security.CurrentUser;
 import nl.getthere.model.Education;
-import nl.getthere.model.EducationRepository;
+import nl.getthere.model.respositories.EducationRepository;
 import nl.getthere.model.Student;
-import nl.getthere.model.StudentRepository;
+import nl.getthere.model.respositories.StudentRepository;
 import nl.getthere.model.University;
-import nl.getthere.model.UniversityRepository;
+import nl.getthere.model.respositories.UniversityRepository;
 import nl.getthere.model.User;
-import nl.getthere.model.UserRepository;
+import nl.getthere.model.respositories.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -23,6 +23,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+
+import static java.time.LocalDate.now;
 
 @Controller
 @SessionAttributes("student")
@@ -80,19 +82,7 @@ public class StudentController {
 			return "newstudent";
 		}
 		try{
-			//todo redundant block of code with RegistrationController
-			User user = new User();
-			user.setFirstName(newStudent.getFirstName());
-			user.setLastName(newStudent.getLastName());
-			user.setEmail(newStudent.getEmail());
-			user.setPassword(new BCryptPasswordEncoder().encode("student"));
-			user.setUserRole("student");
-				
-			studentRepo.save(newStudent);
-			user.setStudent(newStudent);
-			userRepo.save(user);
-
-			model.addAttribute("status", "Student aangemaakt!");
+			createStudent(studentRepo, userRepo, model, newStudent);
 		}catch(Exception e){
 			model.addAttribute("error", "Er bestaat al een account met dat e-mailadres!");
 			e.printStackTrace();
@@ -105,11 +95,41 @@ public class StudentController {
 	public String showStudentDetail(Model model){
 		User u = userRepo.findOneByEmail(CurrentUser.getCurrentUser().getEmail());		
 		model.addAttribute("student", u.getStudent());
-		
-		
 		return "studentform";
 	}
-	
+
+	public static void createStudent(StudentRepository studentRepo, UserRepository userRepo, Model model, User user) {
+		Student student = new Student();
+		student.setFirstName(user.getFirstName());
+		student.setLastName(user.getLastName());
+		student.setEmail(user.getEmail());
+		student.setDateJoined(now());
+
+		studentRepo.save(student);
+
+		user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
+		user.setUserRole("student");
+		user.setStudent(student);
+		userRepo.save(user);
+
+		model.addAttribute("status", "Student aangemaakt!");
+	}
+
+	public static void createStudent(StudentRepository studentRepo, UserRepository userRepo, Model model, Student newStudent) {
+		User user = new User();
+		user.setFirstName(newStudent.getFirstName());
+		user.setLastName(newStudent.getLastName());
+		user.setEmail(newStudent.getEmail());
+		user.setPassword(new BCryptPasswordEncoder().encode("student"));
+		user.setUserRole("student");
+
+		studentRepo.save(newStudent);
+		user.setStudent(newStudent);
+		userRepo.save(user);
+
+		model.addAttribute("status", "Student aangemaakt!");
+	}
+
 	@RequestMapping(value = "/detail", method = RequestMethod.POST)
 	public String editStudentDetail(Model model, @ModelAttribute @Valid Student student, BindingResult result){
 		if(result.hasErrors()){
