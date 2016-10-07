@@ -8,7 +8,7 @@ import nl.getthere.model.Event;
 import nl.getthere.model.EventTheme;
 import nl.getthere.model.EventType;
 import nl.getthere.model.User;
-import nl.getthere.model.respositories.EventRespository;
+import nl.getthere.model.respositories.EventRepository;
 import nl.getthere.model.respositories.EventRepository;
 import nl.getthere.model.respositories.EventThemeRepository;
 import nl.getthere.model.respositories.EventTypeRespository;

@@ -8,13 +8,13 @@
         function printEvents(event) {
             var output = "";
             $.each(event, function(key, value) {
-                var hasAccepted = false;
-                $.each(value.attendiesAccepted, function(key, value){
+                var hasAccepted = "";
+                $.each(value.attendees, function(key, value){
+                    if (value.userId == ${userId}) hasAccepted = "hasAccepted";
+                });
 
-
-                })
                 output +=
-                        "<a href='<c:url value="event"/>/"+value.id+"'><div class='ui segment event' idEvent='"+value.id+"'>" +
+                        "<a href='<c:url value="events"/>/"+value.eventId+"'><div class='ui segment event "+hasAccepted+"' idEvent='"+value.eventId+"'>" +
                             "<div class='time'>" + value.start.hour + ":" +value.start.minute+ "</div>"+
                             "<div class='title'>"+value.title+"</div>" +
                         "</div></a>";
@@ -43,12 +43,13 @@
             $("#myEventsFilter").click(function(){
                 $("#myEventsFilter").addClass("selected");
                 $("#allEventsFilter").removeClass("selected");
-
+                $(".event").not(".hasAccepted").hide();
             });
 
             $("#allEventsFilter").click(function(){
                 $("#myEventsFilter").removeClass("selected");
                 $("#allEventsFilter").addClass("selected");
+                $(".event").show();
             });
         });
     </script>
@@ -115,9 +116,10 @@
 </head>
 <body>
 <%@include file="../includes/navbar.jsp"%>
-<h3>Overview events</h3>
+
 
 <div class="ui container padded">
+    <h2>Overview events</h2>
     <div class="ui grid container">
         <div class="twelve wide column">
             <div id="eventOverview">

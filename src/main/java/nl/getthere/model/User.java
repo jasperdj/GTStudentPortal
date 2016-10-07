@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 import javax.persistence.*;
@@ -113,6 +114,7 @@ public class User {
         this.phone = phone;
     }
 
+    @JsonIgnore
     @ManyToMany(mappedBy="attendees")
     public List<Event> getEventsAttending() {
         return eventsAttending;

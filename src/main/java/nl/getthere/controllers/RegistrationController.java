@@ -8,7 +8,7 @@ import javax.validation.Valid;
 import nl.getthere.model.Event;
 import nl.getthere.model.Student;
 import nl.getthere.model.User;
-import nl.getthere.model.respositories.EventRespository;
+import nl.getthere.model.respositories.EventRepository;
 import nl.getthere.model.respositories.StudentRepository;
 import nl.getthere.model.respositories.UserRepository;
 
@@ -30,7 +30,7 @@ public class RegistrationController {
 	@Autowired
 	private StudentRepository studentRepo;
 	@Autowired
-	private EventRespository eventRepo;
+	private EventRepository eventRepo;
 	
 	@ModelAttribute("student")
 	public Student getStudent(){
