@@ -29,13 +29,13 @@
 							<a class="ui huge primary button"> Je gaat al! </a>
 						</c:when>
 						<c:otherwise>
-							<a href="/event/${event.eventId}/signin"
+							<a href="/events/${event.eventId}/signin"
 								class="ui huge primary button"> Schrijf je in! </a>
 						</c:otherwise>
 					</c:choose>
 				</c:when>
 				<c:otherwise>
-					<a href="/event/${event.eventId}/signin"
+					<a href="/events/${event.eventId}/signin"
 						class="ui huge primary button"> Schrijf je in! </a>
 				</c:otherwise>
 			</c:choose>
