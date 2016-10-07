@@ -88,13 +88,19 @@ public class RegistrationController {
 			// TODO: create dedicated function for this.
 			user = userRepo.findOneByEmail(user.getEmail());
 			Event event = eventRepo.findOne(id);
-			if(event.getAttendiesAccepted().isEmpty()){
-				event.setAttendiesAccepted(new ArrayList<User>());
+			if(event.getAttendees() == null){
+				event.setAttendees(new ArrayList<User>());
 			}
-			event.getAttendiesAccepted().add(user);
+			event.getAttendees().add(user);
+			
+			if(user.getEventsAttending() == null){
+				user.setEventsAttending(new ArrayList<Event>());
+			}
+			user.getEventsAttending().add(event);
+			userRepo.save(user);
 			eventRepo.save(event);
 		}catch(Exception e){
-			model.addAttribute("error", "Er bestaat al een account met dat e-mailadres!");
+			model.addAttribute("error", e);
 			e.printStackTrace();
 			return "registration";
 		}
