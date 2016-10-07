@@ -57,15 +57,18 @@ public class EventController {
     @RequestMapping("/events/{eventid}")
     public String showEventDetail(@PathVariable Long eventid, Model model){
     	Event e = eventRepo.findOne(eventid);
+    	if(e == null){
+    		return "404";
+    	}
     	model.addAttribute("user", userRepo.findOneByEmail(CurrentUser.getCurrentUser().getEmail()));
     	model.addAttribute("event", e);
     	return "eventdetail";
     }
 
-    @RequestMapping("/event/{eventid}/signin")
+    @RequestMapping("/events/{eventid}/signin")
     public String signinEvent(@PathVariable Long eventid, Model model){
     	if(CurrentUser.getCurrentUser() == null){
-    		return "redirect:/login";
+    		return "redirect:/registration";
     	}
     	User user = userRepo.findOneByEmail(CurrentUser.getCurrentUser().getEmail());	
 		Event event = eventRepo.findOne(eventid);
