@@ -1,4 +1,3 @@
-
 <div class="carousel">
 	<div class="ui container">
 		<h1 class="ui header">Event 1</h1>
