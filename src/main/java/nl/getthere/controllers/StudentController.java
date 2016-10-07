@@ -6,6 +6,7 @@ import nl.getthere.model.*;
 import nl.getthere.model.respositories.*;
 import nl.getthere.security.CurrentUser;
 
+import org.omg.CORBA.Current;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -74,11 +75,13 @@ public class StudentController {
 
 	@RequestMapping("/events")
 	public String getEventOverview(Model model) {
-		//model.addAttribute("events", getEventsBetweenDays(0, 30));
+		try {
+			User user = userRepo.findOneByEmail(CurrentUser.getCurrentUser().getEmail());
+			model.addAttribute("userId", user.getId());
+		} catch(Exception e) {}
+
 		return "eventOverview";
 	}
-
-
 
 	@RequestMapping("/student")
 	public String showForm(SessionStatus status){

@@ -12,7 +12,6 @@
 	
 	<div class="ui main text container padded">
 		<%@include file="../includes/status.jsp"%>
-		${bleep }
 		<form:form method="post" modelAttribute="newStudent" cssClass="ui form">
 			<div class="field">
 				<label>Naam <form:errors path="firstName" cssClass="form-error" /> <form:errors path="lastName" cssClass="form-error" /></label>

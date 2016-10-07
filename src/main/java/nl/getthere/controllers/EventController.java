@@ -68,6 +68,8 @@ public class EventController {
         return getEventsBetweenDays(from, to);
     }
 
+
+
     public List<Event> getEventsBetweenDays(int fromDaysOffset, int toDaysOffset) {
         LocalDateTime now = LocalDateTime.now().withHour(1).plusDays(fromDaysOffset);
         LocalDateTime end = LocalDateTime.now().withHour(23).plusDays(toDaysOffset);

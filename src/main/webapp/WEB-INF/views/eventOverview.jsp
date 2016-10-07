@@ -8,8 +8,13 @@
         function printEvents(event) {
             var output = "";
             $.each(event, function(key, value) {
+                var hasAccepted = false;
+                $.each(value.attendiesAccepted, function(key, value){
+
+
+                })
                 output +=
-                        "<a href='<c:url value="event"/>/"+value.id+"'><div class='ui segment event'>" +
+                        "<a href='<c:url value="event"/>/"+value.id+"'><div class='ui segment event' idEvent='"+value.id+"'>" +
                             "<div class='time'>" + value.start.hour + ":" +value.start.minute+ "</div>"+
                             "<div class='title'>"+value.title+"</div>" +
                         "</div></a>";
@@ -34,22 +39,29 @@
                 events = _.groupBy(events, 'start.dayOfYear');
                 printEventGroups(events);
             });
+
+            $("#myEventsFilter").click(function(){
+                $("#myEventsFilter").addClass("selected");
+                $("#allEventsFilter").removeClass("selected");
+
+            });
+
+            $("#allEventsFilter").click(function(){
+                $("#myEventsFilter").removeClass("selected");
+                $("#allEventsFilter").addClass("selected");
+            });
         });
     </script>
     <style>
-        #eventOverview {
-            width:500px;
-        }
-
-        #eventOverview .eventGroup {
-            width:500px;
-        }
-
         .eventGroup .title {
             font-size:16pt;
             font-weight:bold;
             text-transform: lowercase;
             margin-top:20px;
+        }
+
+        .eventGroup:first-child .title {
+            margin-top:0px;
         }
 
         .ui .segment .title {
@@ -59,11 +71,11 @@
             color:black;
         }
 
-        .ui .segment:hover {
+        .ui .event.segment:hover {
             background-color:rgba(0,0,0,.1);
         }
 
-        .ui .segment:active {
+        .ui .event.segment:active {
             background-color:rgba(0,0,0,.2);
         }
 
@@ -76,6 +88,29 @@
         .padded {
             padding-top:30px;
         }
+
+        .ui.red.segment.filter:first-child {
+            margin-top:33px;
+            padding:0px;
+        }
+
+        .ui.red.segment.filter:first-child .item {
+            padding:10px;
+        }
+
+        .filter #title {
+            font-size:14pt;
+            font-weight:bold;
+        }
+
+        .filter .item:hover {
+            cursor:pointer;
+        }
+
+        .filter .item.selected {
+            background-color: rgb(255, 229, 222);
+            font-weight:bold;
+        }
     </style>
 </head>
 <body>
@@ -83,8 +118,18 @@
 <h3>Overview events</h3>
 
 <div class="ui container padded">
-    <div id="eventOverview">
+    <div class="ui grid container">
+        <div class="twelve wide column">
+            <div id="eventOverview">
 
+            </div>
+        </div>
+        <div class="four wide column">
+            <div class="ui red segment filter">
+                <div id="allEventsFilter" class="item selected">All events</div>
+                <div id="myEventsFilter" class="item">My events</div>
+            </div>
+        </div>
     </div>
 </div>
 </body>
