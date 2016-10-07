@@ -57,6 +57,7 @@ public class EventController {
     @RequestMapping("/events/{eventid}")
     public String showEventDetail(@PathVariable Long eventid, Model model){
     	Event e = eventRepo.findOne(eventid);
+    	model.addAttribute("user", userRepo.findOneByEmail(CurrentUser.getCurrentUser().getEmail()));
     	model.addAttribute("event", e);
     	return "eventdetail";
     }

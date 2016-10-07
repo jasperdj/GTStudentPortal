@@ -8,28 +8,53 @@
 <%@include file="../includes/header.jsp"%>
 </head>
 <body>
-
+	<%@include file="../includes/status.jsp"%>
 	<div class="ui vertical masthead center aligned segment">
 		<%@include file="../includes/navbar.jsp"%>
 
 		<div class="ui container">
 			<h1 class="ui header">${event.title }</h1>
-			<br> <br> 
-			<a href="/event/${event.eventId}/signin" class="ui huge primary button">
-				Schrijf je in! </a>
+			<h4>${event.attendees.size() } mensen hebben zich ingeschreven.</h4>
+			<br> <br>
+			<c:choose>
+				<c:when test="${user.userId != null }">
+					<c:set var="contains" value="false" />
+					<c:forEach var="item" items="${event.attendees}">
+						<c:if test="${item.userId eq user.userId}">
+							<c:set var="contains" value="true" />
+						</c:if>
+					</c:forEach>
+					<c:choose>
+						<c:when test="${contains}">
+							<a class="ui huge primary button"> Je gaat al! </a>
+						</c:when>
+						<c:otherwise>
+							<a href="/event/${event.eventId}/signin"
+								class="ui huge primary button"> Schrijf je in! </a>
+						</c:otherwise>
+					</c:choose>
+				</c:when>
+				<c:otherwise>
+					<a href="/event/${event.eventId}/signin"
+						class="ui huge primary button"> Schrijf je in! </a>
+				</c:otherwise>
+			</c:choose>
 		</div>
 	</div>
-	<div class="ui main text container padded">
-		<%@include file="../includes/status.jsp"%>
 
-		<div>
-			<div></div>
-			<div>
-				<h4>${event.title }</h4>
-				<p>${event.description }</p>
+	<div class="ui vertical stripe segment">
+		<div class="ui middle aligned stackable grid container">
+			<div class="row">
+				<div class="six wide left floated column">
+					<img src="<c:url value="/resources/img/vr.jpg"/>"
+						class="ui large bordered rounded image">
+				</div>
+				<div class="eight wide column">
+					<h3 class="ui header">${event.title }</h3>
+					<p>${event.description }</p>
+				</div>
 			</div>
 		</div>
-
 	</div>
 
 </body>
