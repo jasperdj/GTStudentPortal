@@ -1,12 +1,14 @@
 package nl.getthere.controllers;
 
+import javax.validation.Valid;
+
 import nl.getthere.model.Event;
 import nl.getthere.model.EventTheme;
 import nl.getthere.model.EventType;
-import nl.getthere.model.Student;
 import nl.getthere.model.respositories.EventRespository;
 import nl.getthere.model.respositories.EventThemeRepository;
 import nl.getthere.model.respositories.EventTypeRespository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,8 +17,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import javax.validation.Valid;
 
 /**
  * Created by jasper.dejong on 4-10-2016.

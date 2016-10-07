@@ -1,8 +1,8 @@
 package nl.getthere.security;
 
-import org.springframework.security.core.context.SecurityContextHolder;
-
 import java.util.Collection;
+
+import org.springframework.security.core.context.SecurityContextHolder;
 
 /**
  * Created by jasper.dejong on 29-9-2016.
