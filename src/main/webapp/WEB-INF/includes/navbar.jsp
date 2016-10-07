@@ -7,6 +7,9 @@
 		<sec:authorize url="/students">
 			<a href="/students" class="item">Studenten</a>
 		</sec:authorize>
+		<sec:authorize url="/events">
+			<a href="/events" class="item">Events</a>
+		</sec:authorize>
 		<sec:authorize url="/detail">
 			<a href="/detail" class="item">Detail</a>
 		</sec:authorize>
