@@ -6,7 +6,7 @@
 <html>
 <head>
     <!-- Todo: Add visual error handling to form -->
-    <title>Get There - Studenten Portal | Login</</title>
+    <title>Get There - Studenten Portal | Login</title>
     <%@include file="../includes/header.jsp" %>
 
     <script>

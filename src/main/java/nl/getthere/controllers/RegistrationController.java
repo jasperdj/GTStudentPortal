@@ -72,5 +72,4 @@ public class RegistrationController {
 	public ModelAndView getLoginPage(@RequestParam Optional<String> error) {
 		return new ModelAndView("login", "error", error);
 	}
-	
 }

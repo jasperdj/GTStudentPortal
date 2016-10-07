@@ -3,8 +3,7 @@ package nl.getthere.controllers;
 import nl.getthere.model.Event;
 import nl.getthere.model.EventTheme;
 import nl.getthere.model.EventType;
-import nl.getthere.model.Student;
-import nl.getthere.model.respositories.EventRespository;
+import nl.getthere.model.respositories.EventRepository;
 import nl.getthere.model.respositories.EventThemeRepository;
 import nl.getthere.model.respositories.EventTypeRespository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +16,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.validation.Valid;
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 /**
  * Created by jasper.dejong on 4-10-2016.
@@ -25,7 +28,7 @@ import javax.validation.Valid;
 @Controller
 public class EventController {
     @Autowired
-    private EventRespository eventRepo;
+    private EventRepository eventRepo;
     @Autowired
     private EventTypeRespository eventTypeRepo;
     @Autowired
@@ -58,6 +61,23 @@ public class EventController {
     @RequestMapping(value = "/api/newEvent", method = RequestMethod.GET)
     public String newEvent(Model model) {
         return "newEvent";
+    }
+
+    @RequestMapping(value = "/api/getEvents")
+    public @ResponseBody List<Event> getEvents(Model model, int from, int to) {
+        return getEventsBetweenDays(from, to);
+    }
+
+    public List<Event> getEventsBetweenDays(int fromDaysOffset, int toDaysOffset) {
+        LocalDateTime now = LocalDateTime.now().withHour(1).plusDays(fromDaysOffset);
+        LocalDateTime end = LocalDateTime.now().withHour(23).plusDays(toDaysOffset);
+
+        Iterable<Event> all = eventRepo.findAll();
+        List<Event> list = StreamSupport.stream(all.spliterator(), false)
+                .filter(x -> x.getStart().isAfter(now) && x.getStart().isBefore(end))
+                .collect(Collectors.toList());
+
+        return list;
     }
 
     @RequestMapping(value = "/api/addEventType", method = RequestMethod.GET)

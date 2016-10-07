@@ -2,15 +2,9 @@ package nl.getthere.controllers;
 
 import javax.validation.Valid;
 
+import nl.getthere.model.*;
+import nl.getthere.model.respositories.*;
 import nl.getthere.security.CurrentUser;
-import nl.getthere.model.Education;
-import nl.getthere.model.respositories.EducationRepository;
-import nl.getthere.model.Student;
-import nl.getthere.model.respositories.StudentRepository;
-import nl.getthere.model.University;
-import nl.getthere.model.respositories.UniversityRepository;
-import nl.getthere.model.User;
-import nl.getthere.model.respositories.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -23,6 +17,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+
+import java.time.LocalDateTime;
+import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 import static java.time.LocalDate.now;
 
@@ -38,6 +38,8 @@ public class StudentController {
 	private EducationRepository educationRepo;
 	@Autowired
 	private UserRepository userRepo;
+	@Autowired
+	private EventRepository eventRepo;
 
 	@ModelAttribute("student")
 	public Student getStudent(){
@@ -69,7 +71,15 @@ public class StudentController {
 		model.addAttribute("students", studentRepo.findAll());
 		return "studentsoverview";
 	}
-	
+
+	@RequestMapping("/events")
+	public String getEventOverview(Model model) {
+		//model.addAttribute("events", getEventsBetweenDays(0, 30));
+		return "eventOverview";
+	}
+
+
+
 	@RequestMapping("/student")
 	public String showForm(SessionStatus status){
 		return "newstudent";
