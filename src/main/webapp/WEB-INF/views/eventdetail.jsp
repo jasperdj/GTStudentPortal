@@ -8,14 +8,20 @@
 <%@include file="../includes/header.jsp"%>
 </head>
 <body>
-	<%@include file="../includes/navbar.jsp"%>
 
+	<div class="ui vertical masthead center aligned segment">
+		<%@include file="../includes/navbar.jsp"%>
+
+		<div class="ui container">
+			<h1 class="ui header">${event.title }</h1>
+			<br> <br> 
+			<a href="/event/3/signin" class="ui huge primary button">
+				Schrijf je in! </a>
+		</div>
+	</div>
 	<div class="ui main text container padded">
 		<%@include file="../includes/status.jsp"%>
-		<div>
-			<h1>${event.title }</h3>
-			<a class="ui button">Schrijf je in!</a>
-		</div>
+
 		<div>
 			<div></div>
 			<div>
@@ -23,7 +29,7 @@
 				<p>${event.description }</p>
 			</div>
 		</div>
-		
+
 	</div>
 
 </body>
