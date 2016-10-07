@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -46,6 +47,13 @@ public class EventController {
         return new EventTheme();
     }
 
+    @RequestMapping("/events/{eventid}")
+    public String showEventDetail(@PathVariable Long eventid, Model model){
+    	Event e = eventRepo.findOne(eventid);
+    	model.addAttribute("event", e);
+    	return "eventdetail";
+    }
+    
     @RequestMapping(value = "/api/newEvent", method = RequestMethod.POST)
     public String newEventPost(Model model, @Valid Event event, BindingResult result) {
         model.addAttribute("error", result);
