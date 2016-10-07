@@ -5,24 +5,38 @@
     <%@include file="../includes/header.jsp"%>
 
     <script>
-        function printEvents(array) {
+        function printEvents(event) {
+            var output = "";
+            $.each(event, function(key, value) {
+                output +=
+                        "<a href='<c:url value="event"/>/"+value.id+"'><div class='ui segment event'>" +
+                            "<div class='time'>" + value.start.hour + ":" +value.start.minute+ "</div>"+
+                            "<div class='title'>"+value.title+"</div>" +
+                        "</div></a>";
+            });
+            return output;
+        }
+
+        function printEventGroups(array) {
             $.each(array, function(key, value){
-                $("ul").append("<li>" + value.title + "</li>")
+                $("#eventOverview").append(
+                        "<div class='eventGroup'>" +
+                        "   <div class='title'>"+value[0].start.dayOfWeek+", "+value[0].start.month+" "+
+                                value[0].start.dayOfMonth +"</div>" +
+                                "<div class='ui raised segments'>"+printEvents(value)+"</div>" +
+                        "</div>"
+                );
             });
         }
 
         $( document ).ready(function() {
             $.get("<c:url value="/api/getEvents" />?from=0&to=30", function(events){
                 events = _.groupBy(events, 'start.dayOfYear');
-                alert($.toJSON(events));
-                //printEvent(events);
+                printEventGroups(events);
             });
-
-
         });
     </script>
     <style>
-
         #eventOverview {
             width:500px;
         }
@@ -32,17 +46,35 @@
         }
 
         .eventGroup .title {
-            font-size:20pt;
+            font-size:16pt;
             font-weight:bold;
+            text-transform: lowercase;
+            margin-top:20px;
         }
 
         .ui .segment .title {
             font-size:12pt;
             font-weight:normal;
+            margin-top:0px;
+            color:black;
         }
 
-        #eventOverview .event p {
+        .ui .segment:hover {
+            background-color:rgba(0,0,0,.1);
+        }
+
+        .ui .segment:active {
+            background-color:rgba(0,0,0,.2);
+        }
+
+        #eventOverview .event .time {
             float:left;
+            margin-right:10px;
+            color:rgba(0,0,0,.6);
+        }
+
+        .padded {
+            padding-top:30px;
         }
     </style>
 </head>
@@ -51,36 +83,8 @@
 <h3>Overview events</h3>
 
 <div class="ui container padded">
-    <div class="ui raised segments">
-        <div class="ui segment">
-            <p>Top</p>
-        </div>
-        <div class="ui segment">
-            <p>Middle</p>
-        </div>
-        <div class="ui segment">
-            <p>Bottom</p>
-        </div>
-    </div>
-
     <div id="eventOverview">
-        <div class="eventGroup">
-            <div class="title">Thursday, October 7</div>
-            <div class="ui raised segments">
-                <div class="ui segment event">
-                    <p>
-                    <div class="time">8:00</div>
-                    <div class="title">Breakfast session</div>
-                    </p>
-                </div>
-                <div class="ui segment event">
-                    <p>
-                    <div class="time">8:00</div>
-                    <div class="title">Breakfast session</div>
-                    </p>
-                </div>
-            </div>
-        </div>
+
     </div>
 </div>
 </body>
