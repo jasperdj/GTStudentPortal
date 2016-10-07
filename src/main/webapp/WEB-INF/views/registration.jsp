@@ -11,11 +11,13 @@
 	<%@include file="../includes/navbar.jsp"%>
 	
 	<div class="ui main text container padded">
+		<h3>Registreer een account</h3>
 		<p>
 		 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae aliquam elit, nec efficitur lorem. Sed at sagittis turpis. Etiam ut tincidunt lacus, vitae tempus mauris. Aliquam eu orci tellus. Quisque lorem nisi, lobortis ac facilisis ut, vehicula et urna. Morbi ut odio gravida dui iaculis mattis id a mauris. Morbi eu hendrerit metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 		</p>
 	
 		<%@include file="../includes/status.jsp"%>
+		<p>Heb je al een account? <a href="/login">Log in</a></p>
 		<form:form method="post" modelAttribute="user" cssClass="ui form">
 			<div class="field">
 				<label>Naam <form:errors path="firstName" cssClass="form-error" /> <form:errors path="lastName" cssClass="form-error" /></label>

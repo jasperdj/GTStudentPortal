@@ -1,11 +1,17 @@
 package nl.getthere.model;
 
-import org.apache.xpath.operations.Bool;
-import org.springframework.format.annotation.DateTimeFormat;
-
-import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * Created by jasper.dejong on 4-10-2016.
@@ -21,16 +27,17 @@ public class Event {
     private LocalDateTime end;
     private Boolean published;
     private String description;
-    private List<User> attendiesAccepted;
-    private Long id;
+    private List<User> attendees;
+    private Long eventId;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    public Long getId() {
-        return id;
+    @Column(name="event_id")
+    public Long getEventId() {
+        return eventId;
     }
-    public void setId(Long id) {
-        this.id = id;
+    public void setEventId(Long id) {
+        this.eventId = id;
     }
 
     @ManyToMany
@@ -80,7 +87,8 @@ public class Event {
     public void setPublished(Boolean published) {
         this.published = published;
     }
-
+    
+    @Lob
     public String getDescription() {
         return description;
     }
@@ -89,11 +97,11 @@ public class Event {
     }
 
     @ManyToMany
-    public List<User> getAttendiesAccepted() {
-        return attendiesAccepted;
+    public List<User> getAttendees() {
+        return attendees;
     }
-    public void setAttendiesAccepted(List<User> attendiesAccepted) {
-        this.attendiesAccepted = attendiesAccepted;
+    public void setAttendees(List<User> attendees) {
+        this.attendees = attendees;
     }
 
 }

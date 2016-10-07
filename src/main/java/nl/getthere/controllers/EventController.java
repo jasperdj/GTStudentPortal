@@ -1,16 +1,26 @@
 package nl.getthere.controllers;
 
+import java.util.ArrayList;
+
+import javax.validation.Valid;
+
 import nl.getthere.model.Event;
 import nl.getthere.model.EventTheme;
 import nl.getthere.model.EventType;
+import nl.getthere.model.User;
+import nl.getthere.model.respositories.EventRespository;
 import nl.getthere.model.respositories.EventRepository;
 import nl.getthere.model.respositories.EventThemeRepository;
 import nl.getthere.model.respositories.EventTypeRespository;
+import nl.getthere.model.respositories.UserRepository;
+import nl.getthere.security.CurrentUser;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -33,6 +43,8 @@ public class EventController {
     private EventTypeRespository eventTypeRepo;
     @Autowired
     private EventThemeRepository eventThemeRepo;
+    @Autowired
+    private UserRepository userRepo;
 
     @ModelAttribute("event")
     public Event getEvent(){
@@ -47,6 +59,39 @@ public class EventController {
     @ModelAttribute("eventTheme")
     public EventTheme getEventTheme(){
         return new EventTheme();
+    }
+
+    @RequestMapping("/events/{eventid}")
+    public String showEventDetail(@PathVariable Long eventid, Model model){
+    	Event e = eventRepo.findOne(eventid);
+    	if(e == null){
+    		return "404";
+    	}
+    	model.addAttribute("user", userRepo.findOneByEmail(CurrentUser.getCurrentUser().getEmail()));
+    	model.addAttribute("event", e);
+    	return "eventdetail";
+    }
+
+    @RequestMapping("/events/{eventid}/signin")
+    public String signinEvent(@PathVariable Long eventid, Model model){
+    	if(CurrentUser.getCurrentUser() == null){
+    		return "redirect:/registration";
+    	}
+    	User user = userRepo.findOneByEmail(CurrentUser.getCurrentUser().getEmail());
+		Event event = eventRepo.findOne(eventid);
+		if(event.getAttendees() == null){
+			event.setAttendees(new ArrayList<User>());
+		}
+		event.getAttendees().add(user);
+
+		if(user.getEventsAttending() == null){
+			user.setEventsAttending(new ArrayList<Event>());
+		}
+		user.getEventsAttending().add(event);
+		userRepo.save(user);
+		eventRepo.save(event);
+    	model.addAttribute("status", "Je bent nu ingeschreven voor het event!");
+    	return "redirect:/events/" + eventid + "/";
     }
 
     @RequestMapping(value = "/api/newEvent", method = RequestMethod.POST)
@@ -100,5 +145,10 @@ public class EventController {
     @RequestMapping(value = "/api/getEventThemes", method = RequestMethod.GET)
     public @ResponseBody Iterable<EventTheme> getEventThemes(Model model) {
         return eventThemeRepo.findAll();
+    }
+
+    @RequestMapping("/api/events/")
+    public @ResponseBody Iterable<Event>getEvents(Model model){
+    	return eventRepo.findAll();
     }
 }
