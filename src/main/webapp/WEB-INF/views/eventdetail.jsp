@@ -15,7 +15,7 @@
 		<div class="ui container">
 			<h1 class="ui header">${event.title }</h1>
 			<br> <br> 
-			<a href="/event/3/signin" class="ui huge primary button">
+			<a href="/event/${event.eventId}/signin" class="ui huge primary button">
 				Schrijf je in! </a>
 		</div>
 	</div>
