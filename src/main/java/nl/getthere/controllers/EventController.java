@@ -79,4 +79,9 @@ public class EventController {
     public @ResponseBody Iterable<EventTheme> getEventThemes(Model model) {
         return eventThemeRepo.findAll();
     }
+    
+    @RequestMapping("/api/events/")
+    public @ResponseBody Iterable<Event>getEvents(Model model){
+    	return eventRepo.findAll();
+    }
 }

@@ -19,7 +19,7 @@ import java.util.List;
 
 @Entity
 public class User {
-    private Long id;
+    private Long userId;
     @NotEmpty(message="Voer aub een voornaam in. ")
     private String firstName;
     @NotEmpty(message="Voer aub een achternaam in. ")
@@ -31,23 +31,7 @@ public class User {
     private String password;
     private String userRole;
     private Student student;
-    private List<Event> acceptedEvents;
-
-    @Column(nullable = true, unique = true)
-    public String getPhone() {
-        return phone;
-    }
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    @ManyToMany(mappedBy = "attendiesAccepted")
-    public List<Event> getAcceptedEvents() {
-        return acceptedEvents;
-    }
-    public void setAcceptedEvents(List<Event> acceptedEvents) {
-        this.acceptedEvents = acceptedEvents;
-    }
+    private List<Event> eventsAttending;
 
     public User() {
 
@@ -65,11 +49,12 @@ public class User {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    public Long getId() {
-        return id;
+	@Column(name="user_id")
+    public Long getUserId() {
+        return userId;
     }
-    public void setId(Long id) {
-        this.id = id;
+    public void setUserId(Long id) {
+        this.userId = id;
     }
 
     @Column(nullable = false, unique = false)
@@ -119,5 +104,22 @@ public class User {
    	public void setStudent(Student student) {
    		this.student = student;
    	}
+   	
+   	@Column(nullable = true, unique = true)
+    public String getPhone() {
+        return phone;
+    }
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    @ManyToMany(mappedBy="attendees")
+    public List<Event> getEventsAttending() {
+        return eventsAttending;
+    }
+    public void setEventsAttending(List<Event> acceptedEvents) {
+        this.eventsAttending = acceptedEvents;
+    }
+
 
 }
