@@ -10,18 +10,21 @@
 
     function eventOverviewController($http) {
         var vm = this;
-
-
         setupController();
 
         function setupController(){
-            vm.eventThemeFilter = {};
+            vm.eventThemeFilterItems = {};
+            vm.eventTypeFilterItems = {}
+
+            vm.eventTypeFilter = null;
+            vm.eventThemeFilter = null;
+
             $http.get('/api/getEventThemes').then(function(response){
-                vm.eventThemeFilter = response.data;
+                vm.eventThemeFilterItems = response.data;
             });
 
             $http.get('/api/getEventTypes').then(function(response){
-                vm.eventTypeFilter = response.data;
+                vm.eventTypeFilterItems = response.data;
             });
 
             $http.get('/api/getEvents?from=0&to=365').then(function(response){
@@ -31,16 +34,14 @@
 
         }
 
-        function fillEventThemeFilter() {
-            $http({
-                method: "get",
-                url: ""
-            }).success(function(data, status, header, config){
-                vm.eventThemeFilter = data;
-            }).error(function(){
+        vm.setEventTypeFilter = function(eventType) {
+            vm.eventTypeFilter = eventType;
+            alert(JSON.stringify(eventType));
+        };
 
-            });
-        }
-
+        vm.setEventThemeFilter = function(eventTheme) {
+            vm.eventThemeFilter = eventTheme;
+            alert(JSON.stringify(eventTheme));
+        };
     }
 })();

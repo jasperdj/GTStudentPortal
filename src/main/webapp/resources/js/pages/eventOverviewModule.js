@@ -4,6 +4,7 @@
 (function(){
     "use strict";
 
-    angular.module("eventOverview", []);
+    angular.module("eventOverview", [])
+        .filter("eventFilter");
 
 })();
