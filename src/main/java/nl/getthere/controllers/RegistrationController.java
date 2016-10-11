@@ -64,7 +64,7 @@ public class RegistrationController {
 		}
 		try{
 			StudentController.createStudent(studentRepo, userRepo, model, user);
-			
+			mailService.sendWelcomeMail(user.getEmail());
 		}catch(Exception e){
 			model.addAttribute("error", "Er bestaat al een account met dat e-mailadres!");
 			e.printStackTrace();
