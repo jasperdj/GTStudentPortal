@@ -47,7 +47,10 @@ public class RegistrationController {
 
 	@RequestMapping("/api/maildebug")
 	public String sendWelcomeMail(){
-		mailService.sendWelcomeMail("ruudzonnenberg@gmail.com");
+		User user = new User();
+		user.setFirstName("Ruud");
+		user.setEmail("ruudzonnenberg@gmail.com");
+		mailService.sendWelcomeMail(user);
 		return "registration";
 	}
 	
@@ -64,7 +67,7 @@ public class RegistrationController {
 		}
 		try{
 			StudentController.createStudent(studentRepo, userRepo, model, user);
-			mailService.sendWelcomeMail(user.getEmail());
+			mailService.sendWelcomeMail(user);
 		}catch(Exception e){
 			model.addAttribute("error", "Er bestaat al een account met dat e-mailadres!");
 			e.printStackTrace();

@@ -1,11 +1,17 @@
 package nl.getthere.services;
 
 import java.io.File;
+import java.util.Properties;
 
 import javax.mail.internet.MimeMessage;
 
+import nl.getthere.model.User;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.support.PropertiesLoaderUtils;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -19,15 +25,19 @@ public class PortalMailService {
 	
 	@Autowired
 	private JavaMailSender jMailSender;
-		
-	public void sendWelcomeMail(String email){
+	
+	public void sendWelcomeMail(User user){
 		try{
 			MimeMessage message = jMailSender.createMimeMessage();
 			MimeMessageHelper helper = new MimeMessageHelper(message, true);
-			helper.setTo(email);
+			helper.setTo(user.getEmail());
 			helper.setSubject("Welkom op de Get There Student Portal!");
-			helper.setText("<h3>Welkom!</h3><p>Leuk dat je je hebt aangemeld op de Get There Student Portal! Hier komt nog meer tekst...</p><p>Groeten, Get There</p><img src='cid:gt_logo'>", true);
-			FileSystemResource res = new FileSystemResource(new File("D:/projects/academy/GTStudentPortal/src/main/webapp/resources/img/logo_header.png"));
+			helper.setText("<h3>Welkom "+ user.getFirstName() + "!</h3><p>Leuk dat je je hebt aangemeld op de Get There Student Portal! Hier komt nog meer tekst...</p><p>Groeten, Get There</p><img src='cid:gt_logo'>", true);
+			
+			Resource resource = new ClassPathResource("/application.properties");
+			Properties props = PropertiesLoaderUtils.loadProperties(resource);
+			String root = props.getProperty("resources");
+			FileSystemResource res = new FileSystemResource(new File(root + "img/logo_header.png"));
 			helper.addInline("gt_logo", res);
 			jMailSender.send(message);
 		}catch(Exception e){
