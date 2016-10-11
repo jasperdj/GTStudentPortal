@@ -14,7 +14,8 @@
                 });
 
                 output +=
-                        "<a href='<c:url value="events"/>/"+value.eventId+"'><div class='ui segment event "+hasAccepted+"' idEvent='"+value.eventId+"'>" +
+                        "<a href='<c:url value="events"/>/"+value.eventId+"'>" +
+                            "<div class='ui segment event "+hasAccepted+"' idEvent='"+value.eventId+"'>" +
                             "<div class='time'>" + value.start.hour + ":" +value.start.minute+ "</div>"+
                             "<div class='title'>"+value.title+"</div>" +
                         "</div></a>";
@@ -44,6 +45,24 @@
                 $("#myEventsFilter").addClass("selected");
                 $("#allEventsFilter").removeClass("selected");
                 $(".event").not(".hasAccepted").hide();
+
+                $("#eventOverview").children().each(function( eventGroup){
+                    var deleteGroup = true;
+                    eventGroup.children().each(function(event){
+                        if (event.not(".hasAccepted") == true ) {
+                            deleteGroup = false;
+                        }
+                    });
+                    if (deleteGroup) eventGroup.hide();
+
+                });
+                $(".eventGroup").children('div').each(function( index ) {
+                    alert(index);
+                    var children = $.find(index, ".hasAccepted");
+                    if (children.length === 0) {
+                        index.parent().hide();
+                    }
+                });
             });
 
             $("#allEventsFilter").click(function(){
@@ -53,70 +72,10 @@
             });
         });
     </script>
-    <style>
-        .eventGroup .title {
-            font-size:16pt;
-            font-weight:bold;
-            text-transform: lowercase;
-            margin-top:20px;
-        }
-
-        .eventGroup:first-child .title {
-            margin-top:0px;
-        }
-
-        .ui .segment .title {
-            font-size:12pt;
-            font-weight:normal;
-            margin-top:0px;
-            color:black;
-        }
-
-        .ui .event.segment:hover {
-            background-color:rgba(0,0,0,.1);
-        }
-
-        .ui .event.segment:active {
-            background-color:rgba(0,0,0,.2);
-        }
-
-        #eventOverview .event .time {
-            float:left;
-            margin-right:10px;
-            color:rgba(0,0,0,.6);
-        }
-
-        .padded {
-            padding-top:30px;
-        }
-
-        .ui.red.segment.filter:first-child {
-            margin-top:33px;
-            padding:0px;
-        }
-
-        .ui.red.segment.filter:first-child .item {
-            padding:10px;
-        }
-
-        .filter #title {
-            font-size:14pt;
-            font-weight:bold;
-        }
-
-        .filter .item:hover {
-            cursor:pointer;
-        }
-
-        .filter .item.selected {
-            background-color: rgb(255, 229, 222);
-            font-weight:bold;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/pages/eventOverview.css"/>"> </link>
 </head>
-<body>
+<body ng-app="eventOverview" ng-controller="eventOverviewController as vm">
 <%@include file="../includes/navbar.jsp"%>
-
 
 <div class="ui container padded">
     <h2>Overview events</h2>
@@ -134,5 +93,9 @@
         </div>
     </div>
 </div>
+
+<script src="<c:url value="resources/js/angular/eventOverviewModule.js" />" ></script>
+<script src="<c:url value="resources/js/angular/eventOverviewController.js" />" ></script>
+
 </body>
 </html>

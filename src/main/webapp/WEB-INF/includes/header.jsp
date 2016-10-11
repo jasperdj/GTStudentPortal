@@ -49,6 +49,7 @@
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"
 	integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
 	crossorigin="anonymous"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
 <script src="<c:url value="/resources/js/semantic.js" />"></script>
 <script src="<c:url value="/resources/js/visibility.js" />"></script>
 <script src="<c:url value="/resources/js/sidebar.js" />"></script>
