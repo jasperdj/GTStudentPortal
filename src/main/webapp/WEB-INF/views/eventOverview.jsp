@@ -86,10 +86,14 @@
                    <div class='title'>{{eventGroup[0].start.dayOfWeek}}, {{eventGroup[0].start.month}}
                     {{eventGroup[0].start.dayOfMonth}} </div>
                     <div class='ui raised segments'>
-                        <a href='<c:url value="events/{{ event.eventId }}" />' ng-repeat="event in eventGroup | filterBy:{title:filterBy}" >
+                        <a href='<c:url value="events/{{ event.eventId }}" />' ng-repeat="event in eventGroup | eventFilter:vm.eventThemeFilter:vm.eventTypeFilter:null">
                             <div class='ui segment event <%--hasAccepted--%>' idEvent='{{ event.eventId }}'>
                                 <div class='time'>{{event.start.hour}}:{{event.start.minute}}</div>
                                 <div class='title'>{{event.title}}</div>
+                                <div id="tags">
+                                    <div class='tag eventType' ng-repeat="eventType in event.eventTypes">{{ eventType.name }}</div>
+                                    <div class='tag eventTheme' ng-repeat="eventTheme in event.eventThemes">{{ eventTheme.name }}</div>
+                                </div>
                             </div>
                         </a>
                     </div>
@@ -102,11 +106,11 @@
                 <div id="myEventsFilter" class="item">My events</div>
             </div>
             <div id="eventThemeFilter" class="ui red segment filter">
-                <div class="item selected">All themes</div>
+                <div class="item selected" ng-click="vm.setEventThemeFilter(null)">All themes</div>
                 <div class="item" ng-repeat="item in vm.eventThemeFilterItems" ng-click="vm.setEventThemeFilter(item)">{{ item.name }}</div>
             </div>
             <div id="eventTypeFilter" class="ui red segment filter">
-                <div class="item selected">All event types</div>
+                <div class="item selected" ng-click="vm.setEventTypeFilter(null)">All event types</div>
                 <div class="item" ng-repeat="item in vm.eventTypeFilterItems" ng-click="vm.setEventTypeFilter(item)">{{ item.name }}</div>
             </div>
         </div>

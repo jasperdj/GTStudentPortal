@@ -24,10 +24,35 @@
     background-color:rgba(0,0,0,.2);
 }
 
-#eventOverview .event .time {
+#eventOverview .event .time, #eventOverview .event .title {
     float:left;
     margin-right:10px;
     color:rgba(0,0,0,.6);
+    margin-top:10px;
+    margin-left:10px;
+}
+
+#eventOverview .event #tags {
+    height:20px;
+    margin:0px;
+}
+
+.ui.segment.event {
+    padding: 0px;
+    height:43px;
+}
+
+#eventOverview .event .tag {
+    border: 1px solid gray;
+    border-radius: 10px;
+    padding: 5px;
+    float:right;
+    color:black;
+    margin:0px;
+    margin-top:5px;
+    margin-right:5px;
+    background-color:rgb(255, 229, 222);
+
 }
 
 .padded {

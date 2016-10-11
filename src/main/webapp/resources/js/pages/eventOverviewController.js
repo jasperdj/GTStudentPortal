@@ -29,19 +29,16 @@
 
             $http.get('/api/getEvents?from=0&to=365').then(function(response){
                 vm.eventGroups = _.groupBy(response.data, 'start.dayOfYear');
-                console.log('response events', vm.eventGroups);
             });
 
         }
 
         vm.setEventTypeFilter = function(eventType) {
             vm.eventTypeFilter = eventType;
-            alert(JSON.stringify(eventType));
         };
 
         vm.setEventThemeFilter = function(eventTheme) {
             vm.eventThemeFilter = eventTheme;
-            alert(JSON.stringify(eventTheme));
         };
     }
 })();
