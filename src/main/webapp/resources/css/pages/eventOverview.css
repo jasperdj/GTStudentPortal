@@ -34,12 +34,16 @@
     padding-top:30px;
 }
 
-.ui.red.segment.filter:first-child {
+.filter:first-child {
     margin-top:33px;
     padding:0px;
 }
 
-.ui.red.segment.filter:first-child .item {
+.ui.red.segment.filter {
+    padding:0px;
+}
+
+.filter .item {
     padding:10px;
 }
 

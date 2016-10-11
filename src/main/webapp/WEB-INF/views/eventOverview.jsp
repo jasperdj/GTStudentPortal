@@ -86,16 +86,24 @@
             </div>
         </div>
         <div class="four wide column">
-            <div class="ui red segment filter">
+            <div id="eventRelationFilter" class="ui red segment filter">
                 <div id="allEventsFilter" class="item selected">All events</div>
                 <div id="myEventsFilter" class="item">My events</div>
+            </div>
+            <div id="eventThemeFilter" class="ui red segment filter">
+                <div class="item selected">All themes</div>
+                <div class="item" ng-repeat="item in vm.eventThemeFilter">{{ item.name }}</div>
+            </div>
+            <div id="eventThemeType" class="ui red segment filter">
+                <div class="item selected">All event types</div>
+                <div class="item" ng-repeat="item in vm.eventTypeFilter">{{ item.name }}</div>
             </div>
         </div>
     </div>
 </div>
 
-<script src="<c:url value="resources/js/angular/eventOverviewModule.js" />" ></script>
-<script src="<c:url value="resources/js/angular/eventOverviewController.js" />" ></script>
+<script src="<c:url value="/resources/js/pages/eventOverviewModule.js" />" ></script>
+<script src="<c:url value="/resources/js/pages/eventOverviewController.js" />" ></script>
 
 </body>
 </html>
