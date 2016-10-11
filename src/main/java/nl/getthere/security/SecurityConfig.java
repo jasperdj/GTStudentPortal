@@ -46,8 +46,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .usernameParameter("email")
                 .permitAll();
 
-
-
         http.
                 logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))

@@ -5,7 +5,7 @@
     <%@include file="../includes/header.jsp"%>
 
     <script>
-        function printEvents(event) {
+        /*function printEvents(event) {
             var output = "";
             $.each(event, function(key, value) {
                 var hasAccepted = "";
@@ -70,7 +70,7 @@
                 $("#allEventsFilter").addClass("selected");
                 $(".event").show();
             });
-        });
+        });*/
     </script>
     <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/pages/eventOverview.css"/>"> </link>
 </head>
@@ -82,7 +82,19 @@
     <div class="ui grid container">
         <div class="twelve wide column">
             <div id="eventOverview">
+                <div class='eventGroup' ng-repeat="eventGroup in vm.eventGroups">
+                   <div class='title'>{{eventGroup[0].start.dayOfWeek}}, {{eventGroup[0].start.month}}
+                    {{eventGroup[0].start.dayOfMonth}} </div>
+                    <div class='ui raised segments'>
+                        <a href='<c:url value="events/{{ event.eventId }}" />' ng-repeat="event in eventGroup" >
+                            <div class='ui segment event <%--hasAccepted--%>' idEvent='{{ event.eventId }}'>
+                                <div class='time'>{{event.start.hour}} : {{event.start.minute}} "</div>
+                                <div class='title'>{{event.title}}</div>
+                            </div>
+                        </a>
 
+                    </div>
+                </div>
             </div>
         </div>
         <div class="four wide column">

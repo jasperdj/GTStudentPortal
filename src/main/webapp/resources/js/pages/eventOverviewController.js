@@ -23,6 +23,12 @@
             $http.get('/api/getEventTypes').then(function(response){
                 vm.eventTypeFilter = response.data;
             });
+
+            $http.get('/api/getEvents?from=0&to=365').then(function(response){
+                vm.eventGroups = _.groupBy(response.data, 'start.dayOfYear');
+                console.log('response events', vm.eventGroups);
+            });
+
         }
 
         function fillEventThemeFilter() {

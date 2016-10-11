@@ -34,7 +34,7 @@
     padding-top:30px;
 }
 
-.filter:first-child {
+.ui.red.segment.filter:first-child {
     margin-top:33px;
     padding:0px;
 }
