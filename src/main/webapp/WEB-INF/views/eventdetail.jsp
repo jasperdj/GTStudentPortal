@@ -54,6 +54,8 @@
 				<div class="eight wide column">
 					<h3 class="ui header">${event.title }</h3>
 					<p>${event.description }</p>
+					<p>${backgroundimg }</p>
+					<img src="data:image/jpg;base64, ${backgroundimg }">
 				</div>
 			</div>
 		</div>

@@ -44,7 +44,7 @@
         
         <div>
             <label for="title">Images</label>
-            <input type="file" name="image" id="title">
+            <input type="file" name="image" id="image">
         </div>
         <div>
             <label for="start">Location</label>
