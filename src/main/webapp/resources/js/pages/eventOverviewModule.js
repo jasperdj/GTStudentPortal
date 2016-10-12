@@ -6,41 +6,45 @@
 
     var app = angular.module("eventOverview", []);
 
+    app.filter("eventGroup", function(){
+
+    });
+
     app.filter("eventFilter", function(){
         return function(item, eventThemeFilter, eventTypeFilter, eventRelationFilter, userId) {
 
-            var keep = false;
+            var keep = true;
 
             if (eventThemeFilter === null && eventTypeFilter===null && eventRelationFilter === null) {
                 keep = true;
             } else {
-                if (eventRelationFilter != null) {
+                if (eventRelationFilter !== null) {
                     angular.forEach(item[0].attendees, function(value){
-                        if (value.userId === userId) {
-                            keep = true;
+                        if (value.userId !== userId && keep === true) {
+                            keep = false;
                         }
                     });
                 }
 
-                angular.forEach(item[0].eventThemes, function (value) {
-                    if (eventThemeFilter !== null && value.name === eventThemeFilter.name) {
-                        keep = true;
-                    }
-                });
+                if (eventThemeFilter !== null) {
+                    var tempKeep = keep;
+                    angular.forEach(item[0].eventThemes, function (value) {
+                        if (value.name !== eventThemeFilter.name && keep === true && tempKeep !== true) {
+                            tempKeep = false;
+                        }
+                    });
+                }
 
-                angular.forEach(item[0].eventTypes, function (value) {
-                    if (eventTypeFilter !== null && value.name === eventTypeFilter.name) {
-                        keep = true;
-                    }
-                });
+                if (eventTypeFilter !== null) {
+                    angular.forEach(item[0].eventTypes, function (value) {
+                        if (value.name !== eventTypeFilter.name && keep === true) {
+                            keep = false;
+                        }
+                    });
+                }
             }
 
-            if (keep) {
-                return item;
-            }
-            else {
-                return null;
-            }
+            return keep ? item : null;
         };
     });
 

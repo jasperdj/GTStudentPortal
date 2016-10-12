@@ -5,6 +5,24 @@
     <%@include file="../includes/header.jsp"%>
 
     <script>
+/*        $(document).ready(function(){
+            $(".item, .item.ng-binding.ng-scope.selected, .item.ng-binding.ng-scope").on("click", function(){
+                alert('click');
+            });
+        });
+
+
+        function hideEventGroups() {
+            $(".eventGroup").each(function(eventGroup){
+                var children = 0;
+                $(this).find(".segments").children().each(function(child){
+                    children += 1;
+                });
+
+                children == 0 ? $(this).hide() : $(this).show();
+            });
+        }*/
+
         /*function printEvents(event) {
             var output = "";
             $.each(event, function(key, value) {

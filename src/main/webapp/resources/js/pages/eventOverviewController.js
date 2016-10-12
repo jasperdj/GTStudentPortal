@@ -30,6 +30,7 @@
 
             $http.get('/api/getEvents?from=0&to=365').then(function(response){
                 vm.eventGroups = _.groupBy(response.data, 'start.dayOfYear');
+                window.mydata = vm.eventGroups;
             });
 
         }
