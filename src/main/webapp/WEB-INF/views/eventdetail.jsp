@@ -7,38 +7,43 @@
 <head>
 <%@include file="../includes/header.jsp"%>
 </head>
-<body>
+<body ng-app="eventDetailModule">
 	<%@include file="../includes/status.jsp"%>
-	<div class="ui vertical masthead center aligned segment">
-		<%@include file="../includes/navbar.jsp"%>
+	<div ng-controller="eventDetailController as vm">
+		<div class="ui vertical masthead center aligned segment">
+			<%@include file="../includes/navbar.jsp"%>
 
-		<div ng-controller="eventDetailController as vm" class="ui container">
-			<h1 class="ui header">{{vm.event.title}}</h1>
-			<h4>{{vm.event.attendees.size()}} mensen hebben zich ingeschreven.</h4>
-			<br> <br>
-			
+			<div class="ui container">
+				<h1 class="ui header">{{vm.event.title}}</h1>
+				<h4>{{vm.event.attendees.length}} mensen hebben zich
+					ingeschreven.</h4>
+				<br> <br>
+
+			</div>
 		</div>
-	</div>
 
-	<div class="ui vertical stripe segment">
-		<div class="ui middle aligned stackable grid container">
-			<div class="row">
-				<div class="eight wide left floated column">
-					<iframe id="gmap" frameborder="0" style="border:0"
-						src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAm5BhArLbRFa1MTHUTVbfUT8QS-OJFtgo&q={{vm.event.location}}"
-						allowfullscreen> </iframe>
-				</div>
-				<div class="eight wide column">
-					<h3 class="ui header">{{vm.event.title}}</h3>
-					<p>{{vm.event.description}}</p>
-					
+		<div class="ui vertical stripe segment">
+			<div class="ui middle aligned stackable grid container">
+				<div class="row">
+					<div class="eight wide left floated column">
+						<iframe id="gmap" frameborder="0" style="border:0" src="{{vm.gmapurl}}"	allowfullscreen> </iframe>
+					</div>
+					<div class="eight wide column">
+						<h3 class="ui header">{{vm.event.title}}</h3>
+						<p>{{vm.event.description}}</p>
+
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 
-<script src="<c:url value="/resources/js/pages/eventDetailModule.js" />" ></script>
-<script src="<c:url value="/resources/js/pages/eventDetailController.js" />" ></script>
+	<script
+		src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.js"></script>
+	<script
+		src="<c:url value="/resources/js/pages/eventDetailModule.js" />"></script>
+	<script
+		src="<c:url value="/resources/js/pages/eventDetailController.js" />"></script>
 
 </body>
 </html>

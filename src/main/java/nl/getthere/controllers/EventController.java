@@ -5,14 +5,10 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 import java.util.Random;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
-import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -29,7 +25,6 @@ import nl.getthere.model.respositories.EventTypeRespository;
 import nl.getthere.model.respositories.UserRepository;
 import nl.getthere.security.CurrentUser;
 
-import org.apache.commons.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
@@ -144,7 +139,14 @@ public class EventController {
         return getEventsBetweenDays(from, to);
     }
 
-
+    @RequestMapping("/api/events/{id}")
+    public @ResponseBody Event getEvent(@PathVariable Long id){
+    	Event e = eventRepo.findOne(id);
+    	if(e == null){
+    		return null;
+    	}
+    	return e;
+    }
 
     public List<Event> getEventsBetweenDays(int fromDaysOffset, int toDaysOffset) {
         LocalDateTime now = LocalDateTime.now().withHour(1).plusDays(fromDaysOffset);
