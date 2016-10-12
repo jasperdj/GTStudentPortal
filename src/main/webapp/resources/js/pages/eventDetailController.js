@@ -12,7 +12,7 @@
     function activate(){
       vm.event = [];
       vm.gmapurl = "";
-      vm.id = $location.path().slice(-1);
+      vm.id = $location.path().match(/\d+/g);
       $http.get("/api/events/" + vm.id).then(function(response){
         vm.event = response.data;
         console.log(vm.event);
