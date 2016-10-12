@@ -78,7 +78,9 @@ public class StudentController {
 		try {
 			User user = userRepo.findOneByEmail(CurrentUser.getCurrentUser().getEmail());
 			model.addAttribute("userId", user.getUserId());
-		} catch(Exception e) {}
+		} catch(Exception e) {
+			model.addAttribute("userId", -1);
+		}
 
 		return "eventOverview";
 	}

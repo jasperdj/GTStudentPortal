@@ -18,6 +18,7 @@
 
             vm.eventTypeFilter = null;
             vm.eventThemeFilter = null;
+            vm.eventRelationFilter = null;
 
             $http.get('/api/getEventThemes').then(function(response){
                 vm.eventThemeFilterItems = response.data;
@@ -31,6 +32,10 @@
                 vm.eventGroups = _.groupBy(response.data, 'start.dayOfYear');
             });
 
+        }
+
+        vm.setEventRelationFilter = function(eventRelation) {
+            vm.eventRelationFilter = eventRelation;
         }
 
         vm.setEventTypeFilter = function(eventType) {

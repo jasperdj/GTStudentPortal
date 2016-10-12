@@ -86,8 +86,9 @@
                    <div class='title'>{{eventGroup[0].start.dayOfWeek}}, {{eventGroup[0].start.month}}
                     {{eventGroup[0].start.dayOfMonth}} </div>
                     <div class='ui raised segments'>
-                        <a href='<c:url value="events/{{ event.eventId }}" />' ng-repeat="event in eventGroup | eventFilter:vm.eventThemeFilter:vm.eventTypeFilter:null">
-                            <div class='ui segment event <%--hasAccepted--%>' idEvent='{{ event.eventId }}'>
+                        <a href='<c:url value="{{ event.eventId }}" />'
+                           ng-repeat="event in eventGroup | eventFilter:vm.eventThemeFilter:vm.eventTypeFilter:vm.eventRelationFilter:${userId}">
+                            <div class='ui segment event' idEvent='{{ event.eventId }}'>
                                 <div class='time'>{{event.start.hour}}:{{event.start.minute}}</div>
                                 <div class='title'>{{event.title}}</div>
                                 <div id="tags">
@@ -101,17 +102,26 @@
             </div>
         </div>
         <div class="four wide column">
-            <div id="eventRelationFilter" class="ui red segment filter">
-                <div id="allEventsFilter" class="item selected">All events</div>
-                <div id="myEventsFilter" class="item">My events</div>
+            <div style="height:20px;"> </div>
+            <div id="eventRelationFilter" class="ui red segment filter" ng-show="${{userId}} != -1">
+                <div id="allEventsFilter" class="item" ng-click="vm.setEventRelationFilter(null)"
+                     ng-class="{ 'selected': vm.eventRelationFilter == null}" >All events</div>
+                <div id="myEventsFilter" class="item" ng-click="vm.setEventRelationFilter(1)"
+                     ng-class="{ 'selected': vm.eventRelationFilter == 1}" >My events</div>
             </div>
             <div id="eventThemeFilter" class="ui red segment filter">
-                <div class="item selected" ng-click="vm.setEventThemeFilter(null)">All themes</div>
-                <div class="item" ng-repeat="item in vm.eventThemeFilterItems" ng-click="vm.setEventThemeFilter(item)">{{ item.name }}</div>
+                <div class="item selected" ng-click="vm.setEventThemeFilter(null)"
+                     ng-class="{ 'selected': vm.eventThemeFilter == null}">All themes</div>
+                <div class="item" ng-repeat="item in vm.eventThemeFilterItems"
+                     ng-click="vm.setEventThemeFilter(item)"
+                     ng-class="{ 'selected': vm.eventThemeFilter.name == item.name}">{{ item.name }}</div>
             </div>
             <div id="eventTypeFilter" class="ui red segment filter">
-                <div class="item selected" ng-click="vm.setEventTypeFilter(null)">All event types</div>
-                <div class="item" ng-repeat="item in vm.eventTypeFilterItems" ng-click="vm.setEventTypeFilter(item)">{{ item.name }}</div>
+                <div class="item selected" ng-click="vm.setEventTypeFilter(null)"
+                     ng-class="{ 'selected': vm.eventTypeFilter == null}">All event types</div>
+                <div class="item" ng-repeat="item in vm.eventTypeFilterItems"
+                     ng-click="vm.setEventTypeFilter(item)"
+                     ng-class="{ 'selected': vm.eventTypeFilter.name == item.name}">{{ item.name }}</div>
             </div>
         </div>
     </div>
