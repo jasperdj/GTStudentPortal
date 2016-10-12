@@ -24,6 +24,7 @@ public class Event {
     private List<EventTheme> eventThemes;
     private String title;
     private String location;
+    private int vacancy;
     private LocalDateTime start;
     private LocalDateTime end;
     private Boolean published;
@@ -111,6 +112,14 @@ public class Event {
 	public void setLocation(String location) {
 		this.location = location;
 	}
+	public int getVacancy() {
+		return vacancy;
+	}
+	public void setVacancy(int vacancy) {
+		this.vacancy = vacancy;
+	}
+	
+	
     
 
 }
