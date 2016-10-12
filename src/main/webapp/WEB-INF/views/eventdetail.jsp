@@ -12,11 +12,6 @@
 	<div class="ui vertical masthead center aligned segment">
 		<%@include file="../includes/navbar.jsp"%>
 
-		<div class="ui container">
-			<h1 class="ui header">${event.title }</h1>
-			<img src="/event_images/${event.imageUrl }">
-			<h4>${event.attendees.size() }mensen hebben zich ingeschreven.
-				Er zijn nog ${event.vacancy - event.attendees.size() } plekken over!</h4>
 		<div ng-controller="eventDetailController as vm" class="ui container">
 			<h1 class="ui header">{{vm.event.title}}</h1>
 			<h4>{{vm.event.attendees.size()}} mensen hebben zich ingeschreven.</h4>
@@ -41,6 +36,9 @@
 			</div>
 		</div>
 	</div>
+
+<script src="<c:url value="/resources/js/pages/eventOverviewModule.js" />" ></script>
+<script src="<c:url value="/resources/js/pages/eventOverviewController.js" />" ></script>
 
 </body>
 </html>
