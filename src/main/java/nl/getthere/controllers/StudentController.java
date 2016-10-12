@@ -1,12 +1,20 @@
 package nl.getthere.controllers;
 
+import static java.time.LocalDate.now;
+
 import javax.validation.Valid;
 
-import nl.getthere.model.*;
-import nl.getthere.model.respositories.*;
+import nl.getthere.model.Education;
+import nl.getthere.model.Student;
+import nl.getthere.model.University;
+import nl.getthere.model.User;
+import nl.getthere.model.respositories.EducationRepository;
+import nl.getthere.model.respositories.EventRepository;
+import nl.getthere.model.respositories.StudentRepository;
+import nl.getthere.model.respositories.UniversityRepository;
+import nl.getthere.model.respositories.UserRepository;
 import nl.getthere.security.CurrentUser;
 
-import org.omg.CORBA.Current;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -18,14 +26,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
-
-import java.time.LocalDateTime;
-import java.util.Collection;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
-
-import static java.time.LocalDate.now;
 
 @Controller
 @SessionAttributes("student")
@@ -78,7 +78,9 @@ public class StudentController {
 		try {
 			User user = userRepo.findOneByEmail(CurrentUser.getCurrentUser().getEmail());
 			model.addAttribute("userId", user.getUserId());
-		} catch(Exception e) {}
+		} catch(Exception e) {
+			model.addAttribute("userId", -1);
+		}
 
 		return "eventOverview";
 	}

@@ -8,3 +8,5 @@
 
 # Questions
 - Are there situations where it is necessary to lock/deactivate an account, instead of deleting?
+- Do you want to lure/accept non-student proffesionals to accept events.
+-
