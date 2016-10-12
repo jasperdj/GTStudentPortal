@@ -6,45 +6,42 @@
 
     var app = angular.module("eventOverview", []);
 
-    app.filter("eventGroup", function(){
-
-    });
+    //TODO replace jquery children counter with proper eventGroupFilter
+    /*app.filter("eventGroupFilter", function(){
+        return function(eventGroup, eventThemeFilter, eventTypeFilter, eventRelationFilter, userId) {
+             var newGroup = eventGroup.clone();
+             newGroup.events = andereFilter(eg.events);
+             if(dat is null) { return null; }
+             return newGroup;
+        };
+    });*/
 
     app.filter("eventFilter", function(){
         return function(item, eventThemeFilter, eventTypeFilter, eventRelationFilter, userId) {
 
-            var keep = true;
-
+            var event = item[0];
             if (eventThemeFilter === null && eventTypeFilter===null && eventRelationFilter === null) {
-                keep = true;
-            } else {
-                if (eventRelationFilter !== null) {
-                    angular.forEach(item[0].attendees, function(value){
-                        if (value.userId !== userId && keep === true) {
-                            keep = false;
-                        }
-                    });
-                }
-
-                if (eventThemeFilter !== null) {
-                    var tempKeep = keep;
-                    angular.forEach(item[0].eventThemes, function (value) {
-                        if (value.name !== eventThemeFilter.name && keep === true && tempKeep !== true) {
-                            tempKeep = false;
-                        }
-                    });
-                }
-
-                if (eventTypeFilter !== null) {
-                    angular.forEach(item[0].eventTypes, function (value) {
-                        if (value.name !== eventTypeFilter.name && keep === true) {
-                            keep = false;
-                        }
-                    });
+                return item;
+            }
+            if (eventRelationFilter === 1) {
+                if(!_.find(event.attendees, { userId : userId })){
+                    return null;
                 }
             }
 
-            return keep ? item : null;
+            if (eventThemeFilter !== null) {
+                if(!_.find(event.eventThemes, { id: eventThemeFilter.id } )){
+                    return null;
+                }
+            }
+
+            if (eventTypeFilter !== null) {
+                if(!_.find(event.eventTypes, { id: eventTypeFilter.id } )){
+                    return null;
+                }
+            }
+
+            return item;
         };
     });
 

@@ -5,9 +5,9 @@
     <%@include file="../includes/header.jsp"%>
 
     <script>
-/*        $(document).ready(function(){
-            $(".item, .item.ng-binding.ng-scope.selected, .item.ng-binding.ng-scope").on("click", function(){
-                alert('click');
+        $(document).ready(function(){
+            $("body").on("click", function(){
+                hideEventGroups();
             });
         });
 
@@ -21,74 +21,7 @@
 
                 children == 0 ? $(this).hide() : $(this).show();
             });
-        }*/
-
-        /*function printEvents(event) {
-            var output = "";
-            $.each(event, function(key, value) {
-                var hasAccepted = "";
-                $.each(value.attendees, function(key, value){
-                    if (value.userId == ${userId}) hasAccepted = "hasAccepted";
-                });
-
-                output +=
-                        "<a href='<c:url value="events"/>/"+value.eventId+"'>" +
-                            "<div class='ui segment event "+hasAccepted+"' idEvent='"+value.eventId+"'>" +
-                            "<div class='time'>" + value.start.hour + ":" +value.start.minute+ "</div>"+
-                            "<div class='title'>"+value.title+"</div>" +
-                        "</div></a>";
-            });
-            return output;
         }
-
-        function printEventGroups(array) {
-            $.each(array, function(key, value){
-                $("#eventOverview").append(
-                        "<div class='eventGroup'>" +
-                        "   <div class='title'>"+value[0].start.dayOfWeek+", "+value[0].start.month+" "+
-                                value[0].start.dayOfMonth +"</div>" +
-                                "<div class='ui raised segments'>"+printEvents(value)+"</div>" +
-                        "</div>"
-                );
-            });
-        }
-
-        $( document ).ready(function() {
-            $.get("<c:url value="/api/getEvents" />?from=0&to=30", function(events){
-                events = _.groupBy(events, 'start.dayOfYear');
-                printEventGroups(events);
-            });
-
-            $("#myEventsFilter").click(function(){
-                $("#myEventsFilter").addClass("selected");
-                $("#allEventsFilter").removeClass("selected");
-                $(".event").not(".hasAccepted").hide();
-
-                $("#eventOverview").children().each(function( eventGroup){
-                    var deleteGroup = true;
-                    eventGroup.children().each(function(event){
-                        if (event.not(".hasAccepted") == true ) {
-                            deleteGroup = false;
-                        }
-                    });
-                    if (deleteGroup) eventGroup.hide();
-
-                });
-                $(".eventGroup").children('div').each(function( index ) {
-                    alert(index);
-                    var children = $.find(index, ".hasAccepted");
-                    if (children.length === 0) {
-                        index.parent().hide();
-                    }
-                });
-            });
-
-            $("#allEventsFilter").click(function(){
-                $("#myEventsFilter").removeClass("selected");
-                $("#allEventsFilter").addClass("selected");
-                $(".event").show();
-            });
-        });*/
     </script>
     <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/pages/eventOverview.css"/>"> </link>
 </head>
