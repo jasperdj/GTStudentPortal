@@ -1,11 +1,18 @@
 package nl.getthere.controllers;
 
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
+import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
+import javax.imageio.ImageIO;
 import javax.validation.Valid;
 
 import nl.getthere.model.Event;
@@ -20,6 +27,9 @@ import nl.getthere.security.CurrentUser;
 
 import org.apache.commons.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.support.PropertiesLoaderUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -27,7 +37,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * Created by jasper.dejong on 4-10-2016.
@@ -65,12 +77,7 @@ public class EventController {
     	if(e == null){
     		return "404";
     	}
-    	if(e.getImage() != null){
-    		byte[] encoded= Base64.encodeBase64(e.getImage());
-            String encodedString = new String(encoded);
-            model.addAttribute("backgroundimg", encodedString);
-    	}
-    	
+
     	model.addAttribute("user", userRepo.findOneByEmail(CurrentUser.getCurrentUser().getEmail()));
     	model.addAttribute("event", e);
     	return "eventdetail";
@@ -99,9 +106,25 @@ public class EventController {
     }
 
     @RequestMapping(value = "/api/newEvent", method = RequestMethod.POST)
-    public String newEventPost(Model model, @Valid Event event, BindingResult result) {
+    public String newEventPost(Model model, @Valid Event event, BindingResult result, @RequestParam("image") MultipartFile image) throws IOException {
         model.addAttribute("error", result);
         System.out.println("RESULT:\n\n\n\n\n\n"+result);
+        
+        Resource resource = new ClassPathResource("/application.properties");
+		Properties props = PropertiesLoaderUtils.loadProperties(resource);
+		String root = props.getProperty("event.image.location");
+
+		Random randy = new Random();
+
+		if (!image.isEmpty()) {
+			String id = randy.nextInt() + ".png";
+			String filename = root + id ;
+			BufferedImage src = ImageIO.read(new ByteArrayInputStream(image.getBytes()));
+			File destination = new File(filename); 
+			ImageIO.write(src, "png", destination);
+			event.setImageUrl(id);
+		}
+
         eventRepo.save(event);
         return "newEvent";
     }

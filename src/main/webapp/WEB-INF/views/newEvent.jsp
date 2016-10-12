@@ -36,7 +36,7 @@
 <div class="ui main text container padded">
     <h3>Maak een nieuw event aan</h3>
 
-    <form:form class="ui form" role="form" method="post">
+    <form:form class="ui form" role="form" method="post" enctype="multipart/form-data">
         <div>
             <label for="title">Title</label>
             <input type="text" name="title" id="title" required autofocus>

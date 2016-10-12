@@ -14,6 +14,7 @@
 
 		<div class="ui container">
 			<h1 class="ui header">${event.title }</h1>
+			<img src="/event_images/${event.imageUrl }">
 			<h4>${event.attendees.size() }mensen hebben zich ingeschreven.
 				Er zijn nog ${event.vacancy - event.attendees.size() } plekken over!</h4>
 			<br> <br>
@@ -54,8 +55,7 @@
 				<div class="eight wide column">
 					<h3 class="ui header">${event.title }</h3>
 					<p>${event.description }</p>
-					<p>${backgroundimg }</p>
-					<img src="data:image/jpg;base64, ${backgroundimg }">
+					
 				</div>
 			</div>
 		</div>

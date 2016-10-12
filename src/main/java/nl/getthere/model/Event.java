@@ -25,7 +25,7 @@ public class Event {
     private String title;
     private String location;
     private int vacancy;
-    private byte[] image;
+    private String imageUrl;
     private LocalDateTime start;
     private LocalDateTime end;
     private Boolean published;
@@ -119,12 +119,13 @@ public class Event {
 	public void setVacancy(int vacancy) {
 		this.vacancy = vacancy;
 	}
-	public byte[] getImage() {
-		return image;
+	public String getImageUrl() {
+		return imageUrl;
 	}
-	public void setImage(byte[] image) {
-		this.image = image;
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
 	}
+
 
 	
 }
