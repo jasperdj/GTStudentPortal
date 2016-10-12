@@ -55,7 +55,7 @@ public class PortalMailServiceTest {
 		pms.sendWelcomeMail(user);
 
 		// verify send method of jMailSender
-		verify(jMailSender).send(any());
+		verify(jMailSender).send(any(MimeMessage.class));
 	}
 
 	@Test
