@@ -14,7 +14,8 @@
 
 		<div class="ui container">
 			<h1 class="ui header">${event.title }</h1>
-			<h4>${event.attendees.size() } mensen hebben zich ingeschreven.</h4>
+			<h4>${event.attendees.size() }mensen hebben zich ingeschreven.
+				Er zijn nog ${event.vacancy - event.attendees.size() } plekken over!</h4>
 			<br> <br>
 			<c:choose>
 				<c:when test="${user.userId != null }">
@@ -45,9 +46,10 @@
 	<div class="ui vertical stripe segment">
 		<div class="ui middle aligned stackable grid container">
 			<div class="row">
-				<div class="six wide left floated column">
-					<img src="<c:url value="/resources/img/vr.jpg"/>"
-						class="ui large bordered rounded image">
+				<div class="eight wide left floated column">
+					<iframe id="gmap" frameborder="0" style="border:0"
+						src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAm5BhArLbRFa1MTHUTVbfUT8QS-OJFtgo&q=${event.location }"
+						allowfullscreen> </iframe>
 				</div>
 				<div class="eight wide column">
 					<h3 class="ui header">${event.title }</h3>

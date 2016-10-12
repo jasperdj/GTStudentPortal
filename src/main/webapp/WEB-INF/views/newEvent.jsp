@@ -41,6 +41,19 @@
             <label for="title">Title</label>
             <input type="text" name="title" id="title" required autofocus>
         </div>
+        
+        <div>
+            <label for="title">Images</label>
+            <input type="file" name="image" id="title">
+        </div>
+        <div>
+            <label for="start">Location</label>
+            <input type="text" name="location" id="location" required>
+        </div>
+        <div>
+            <label for="start">Vacancy</label>
+            <input type="text" name="vacancy" id="vacancy" required>
+        </div>
         <div>
             <label for="start">Event start</label>
             <input type="datetime-local" name="start" id="start" required>
