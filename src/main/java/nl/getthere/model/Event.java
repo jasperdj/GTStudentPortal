@@ -23,6 +23,7 @@ public class Event {
     private List<EventType> eventTypes;
     private List<EventTheme> eventThemes;
     private String title;
+    private String location;
     private LocalDateTime start;
     private LocalDateTime end;
     private Boolean published;
@@ -103,5 +104,13 @@ public class Event {
     public void setAttendees(List<User> attendees) {
         this.attendees = attendees;
     }
+    
+	public String getLocation() {
+		return location;
+	}
+	public void setLocation(String location) {
+		this.location = location;
+	}
+    
 
 }
