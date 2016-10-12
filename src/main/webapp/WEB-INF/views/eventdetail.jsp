@@ -17,30 +17,11 @@
 			<img src="/event_images/${event.imageUrl }">
 			<h4>${event.attendees.size() }mensen hebben zich ingeschreven.
 				Er zijn nog ${event.vacancy - event.attendees.size() } plekken over!</h4>
+		<div ng-controller="eventDetailController as vm" class="ui container">
+			<h1 class="ui header">{{vm.event.title}}</h1>
+			<h4>{{vm.event.attendees.size()}} mensen hebben zich ingeschreven.</h4>
 			<br> <br>
-			<c:choose>
-				<c:when test="${user.userId != null }">
-					<c:set var="contains" value="false" />
-					<c:forEach var="item" items="${event.attendees}">
-						<c:if test="${item.userId eq user.userId}">
-							<c:set var="contains" value="true" />
-						</c:if>
-					</c:forEach>
-					<c:choose>
-						<c:when test="${contains}">
-							<a class="ui huge primary button"> Je gaat al! </a>
-						</c:when>
-						<c:otherwise>
-							<a href="/events/${event.eventId}/signin"
-								class="ui huge primary button"> Schrijf je in! </a>
-						</c:otherwise>
-					</c:choose>
-				</c:when>
-				<c:otherwise>
-					<a href="/events/${event.eventId}/signin"
-						class="ui huge primary button"> Schrijf je in! </a>
-				</c:otherwise>
-			</c:choose>
+			
 		</div>
 	</div>
 
@@ -53,8 +34,8 @@
 						allowfullscreen> </iframe>
 				</div>
 				<div class="eight wide column">
-					<h3 class="ui header">${event.title }</h3>
-					<p>${event.description }</p>
+					<h3 class="ui header">{{vm.event.title}}</h3>
+					<p>{{vm.event.description}}</p>
 					
 				</div>
 			</div>
