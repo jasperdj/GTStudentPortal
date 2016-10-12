@@ -1,6 +1,10 @@
 package nl.getthere.controllers;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 import javax.validation.Valid;
 
@@ -8,7 +12,6 @@ import nl.getthere.model.Event;
 import nl.getthere.model.EventTheme;
 import nl.getthere.model.EventType;
 import nl.getthere.model.User;
-import nl.getthere.model.respositories.EventRepository;
 import nl.getthere.model.respositories.EventRepository;
 import nl.getthere.model.respositories.EventThemeRepository;
 import nl.getthere.model.respositories.EventTypeRespository;
@@ -24,12 +27,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import javax.validation.Valid;
-import java.time.LocalDateTime;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 /**
  * Created by jasper.dejong on 4-10-2016.
