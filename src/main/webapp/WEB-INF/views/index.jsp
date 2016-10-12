@@ -41,6 +41,80 @@
 			<div class="three wide column"><div class="ui center aligned segment featuredTheme">${eventThemes[3].name}</div></div>
 		</div>
 
+			<style>
+				#featured_events {
+					background: url('http://efese.eu/wp-content/uploads/2016/01/test-events.jpg');
+					background-size: 100% 100%;
+					background-color:rgba(0,0,0,0.3);
+					background-blend-mode: darken;
+				}
+
+				#featured_events:hover {
+					background-color:rgba(0,0,0,0.5);
+					background-blend-mode: darken;
+				}
+
+				#featured_internship {
+					background: url('<c:url value="https://www.youngcapital.nl/public_images/Image/142.jpg" />');
+					background-size: 100% 100%;
+					background-color:rgba(0,0,0,0.3);
+					background-blend-mode: darken;
+					padding-top: 67px;
+				}
+
+				#featured_internship:hover {
+					background-color:rgba(0,0,0,0.5);
+					background-blend-mode: darken;
+				}
+
+				#featured_traineeship {
+					background: url('<c:url value="/resources/img/traineeship.JPG" />');
+					background-size: 100% 100%;
+					background-color:rgba(0,0,0,0.3);
+					background-blend-mode: darken;
+				}
+
+				#featured_traineeship:hover {
+					background-color:rgba(0,0,0,0.5);
+					background-blend-mode: darken;
+				}
+
+				.ui.center.aligned.segment.featuredItem {
+					height:200px;
+					color:white;
+					padding-top:80px;
+					font-size:20pt;
+					text-shadow: 0px 2px black;
+					line-height:28px;
+					text-align-all: center;
+					cursor:pointer;
+				}
+
+
+
+				.ui.divider {
+					margin-top:30px !important;
+					margin-bottom:30px !important;
+				}
+
+				.ui.vertical.stripe {
+					padding-top:0px;
+				}
+
+
+			</style>
+		<div class="ui divider"></div>
+
+		<div class="ui grid align centered" id="featured">
+			<div class="four wide column"><a href="/events/"><div id="featured_events" class="ui center aligned segment featuredItem">Evenementen</div></a></div>
+			<div class="four wide column"><a href="#"><div id="featured_traineeship" class="ui center aligned segment featuredItem">Traineeship</div></a></div>
+			<div class="four wide column"><a href="#"><div id="featured_internship" class="ui center aligned segment featuredItem">Stage / Afstudeerstage</div></a></div>
+		</div>
+
+		<div class="ui divider"></div>
+
+		<div class="ui grid align centered" id="featuredThemes">
+
 		<div class="ui vertical stripe segment">
 			<div class="ui middle aligned stackable grid container">
 				<div class="row">
