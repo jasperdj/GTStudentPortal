@@ -8,6 +8,7 @@ import javax.mail.internet.MimeMessage;
 
 import nl.getthere.model.User;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,38 +19,70 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.sun.source.tree.AssertTree;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class PortalMailServiceTest {
 
 	@Mock
 	private JavaMailSender jMailSender;
-	
-	@Mock MimeMessage mockMsg;
-	
+
+	@Mock
+	MimeMessage mockMsg;
+
 	@Autowired
 	private PortalMailService pms;
-	
+
 	@Before
-	public void setup(){
+	public void setup() {
 		MockitoAnnotations.initMocks(this);
 		pms.setjMailSender(jMailSender);
 	}
-	
+
 	@Test
-	public void sendWelcomeMailTest(){
-		//mock the call in pms.sendWelcomeMail where jMailSender returns a MimeMessage.
+	public void sendWelcomeMailTestOK() {
+		// mock the call in pms.sendWelcomeMail where jMailSender returns a
+		// MimeMessage.
 		when(jMailSender.createMimeMessage()).thenReturn(mockMsg);
-		
-		//Test user with valid data.
+
+		// Test user with valid data.
 		User user = new User();
 		user.setEmail("test@test.net");
 		user.setFirstName("Test");
-		
-		//execute method
+
+		// execute method
 		pms.sendWelcomeMail(user);
-		
-		//verify send method of jMailSender
+
+		// verify send method of jMailSender
 		verify(jMailSender).send(any());
+	}
+
+	@Test
+	public void sendWelcomeMailInvalidFirstName() {
+		// mock the call in pms.sendWelcomeMail where jMailSender returns a
+		// MimeMessage.
+		when(jMailSender.createMimeMessage()).thenReturn(mockMsg);
+
+		// Test user with valid data.
+		User user = new User();
+		user.setEmail("test@test.net");
+
+		// execute method
+		Assert.assertFalse(pms.sendWelcomeMail(user));
+	}
+
+	@Test
+	public void sendWelcomeMailInvalidEmailName() {
+		// mock the call in pms.sendWelcomeMail where jMailSender returns a
+		// MimeMessage.
+		when(jMailSender.createMimeMessage()).thenReturn(mockMsg);
+
+		// Test user with valid data.
+		User user = new User();
+		user.setFirstName("Test");
+		
+		// execute method		
+		Assert.assertFalse(pms.sendWelcomeMail(user));
 	}
 }

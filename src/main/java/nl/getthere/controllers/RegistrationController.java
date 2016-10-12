@@ -67,7 +67,10 @@ public class RegistrationController {
 		}
 		try{
 			StudentController.createStudent(studentRepo, userRepo, model, user);
-			mailService.sendWelcomeMail(user);
+			boolean sentSucces = mailService.sendWelcomeMail(user);
+			String statusMsg = sentSucces ? "Er is een mail verstuurd naar: " + user.getEmail() : "Fout tijdens het versturen van de welkoms-email." ;
+
+			model.addAttribute("status", statusMsg);
 		}catch(Exception e){
 			model.addAttribute("error", "Er bestaat al een account met dat e-mailadres!");
 			e.printStackTrace();
