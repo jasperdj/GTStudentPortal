@@ -17,14 +17,32 @@
 
 
         function hideEventGroups() {
+            var totalChildren = 0;
             $(".eventGroup").each(function(eventGroup){
                 var children = 0;
                 $(this).find(".segments").children().each(function(child){
                     children += 1;
+                    totalChildren += 1;
                 });
 
                 children == 0 ? $(this).hide() : $(this).show();
             });
+
+            if (totalChildren == 0) {
+                if ($("#eventOverview #noEventsFound").length == 0) {
+                    $("#eventOverview").prepend('' +
+                            '<div id="noEventsFound" ng-show="vm.eventGroups">' +
+                            '<div class="ui warning message">' +
+                            '<div class="header">Geen evenementen gevonden!</div>' +
+                            'Probeer eens een andere filter.' +
+                            '</div>' +
+                            '</div>');
+                } else {
+                    $("#eventOverview #noEventsFound").show();
+                }
+            } else {
+                $("#eventOverview #noEventsFound").hide();
+            }
         }
     </script>
     <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/pages/eventOverview.css"/>"> </link>

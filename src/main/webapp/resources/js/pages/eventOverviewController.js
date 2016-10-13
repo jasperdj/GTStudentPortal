@@ -21,8 +21,6 @@
             vm.eventThemeFilter = null;
             vm.eventRelationFilter = null;
 
-
-
             $http.get('/api/getEventThemes').then(function(response){
                 vm.eventThemeFilterItems = response.data;
 
