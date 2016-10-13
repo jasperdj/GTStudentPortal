@@ -1,0 +1,133 @@
+#videoWrapper {
+    display: -webkit-box;
+    display: -moz-box;
+    display: box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    height: 64vh;
+    min-height: 320px;
+    max-height: 495px;
+    overflow: hidden;
+    position: relative;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+}
+
+video {
+    position: absolute;
+    z-index: 20;
+    min-width: 89%;
+    min-height: 100%;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+}
+
+#videoContent {
+    z-index: 30;
+    margin: 0 auto;
+    background:none;
+    border:none;
+    margin-top:90px;
+}
+
+#videoContent h3 {
+    font-size:40pt;
+    color:white;
+    padding-bottom:0px;
+    margin-bottom:0px;
+    text-shadow: 0px 2px black;
+    font-weight:bold;
+}
+
+#videoContent h4 {
+    font-size:15pt;
+    padding:0px;
+    margin:0px;
+    color: white;
+    text-shadow: 0px 2px black;
+    margin-bottom:30px;
+    font-weight:bold;
+}
+
+#videoContent h3, #videoContent h4, #videoContent button {
+
+}
+
+#featuredThemes {
+    margin-top:5px;
+}
+
+.ui.center.aligned.segment.featuredTheme.featuredTheme {
+    background: rgba(168, 168, 168,0.2);
+    color:black;
+    font-size:13pt;
+    border-radius:10px;
+    padding:10px;
+    border:none;
+    font-weight:bold;
+    cursor: pointer;
+}
+
+.ui.center.aligned.segment.featuredTheme:hover {
+    background: #DB2828;
+    color:white;
+}
+
+#featured_events {
+    background: url('http://efese.eu/wp-content/uploads/2016/01/test-events.jpg');
+    background-size: 100% 100%;
+    background-color:rgba(0,0,0,0.3);
+    background-blend-mode: darken;
+}
+
+#featured_events:hover {
+    background-color:rgba(0,0,0,0.5);
+    background-blend-mode: darken;
+}
+
+#featured_internship {
+    background: url('https://www.youngcapital.nl/public_images/Image/142.jpg');
+    background-size: 100% 100%;
+    background-color:rgba(0,0,0,0.3);
+    background-blend-mode: darken;
+    padding-top: 67px;
+}
+
+#featured_internship:hover {
+    background-color:rgba(0,0,0,0.5);
+    background-blend-mode: darken;
+}
+
+#featured_traineeship:hover {
+    background-color:rgba(0,0,0,0.5);
+    background-blend-mode: darken;
+}
+
+.ui.center.aligned.segment.featuredItem {
+    height:200px;
+    color:white;
+    padding-top:80px;
+    font-size:20pt;
+    text-shadow: 0px 2px black;
+    line-height:28px;
+    text-align-all: center;
+    cursor:pointer;
+}
+
+.ui.divider {
+    margin-top:30px !important;
+    margin-bottom:30px !important;
+}
+
+.ui.vertical.stripe {
+    padding-top:0px;
+}
+
+

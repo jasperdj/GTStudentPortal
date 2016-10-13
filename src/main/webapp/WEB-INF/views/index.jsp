@@ -3,20 +3,63 @@
 
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <%@include file="../includes/header.jsp"%>
-<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css" />
+<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/pages/index.css" />" />
+<style>
+	#featured_traineeship {
+		background: url('<c:url value="/resources/img/traineeship.JPG" />');
+		background-size: 100% 100%;
+		background-color:rgba(0,0,0,0.3);
+		background-blend-mode: darken;
+	}
+</style>
 </head>
 <body>
 	<%@include file="../includes/hidden_nav.jsp"%>
 	<div class="pusher">
-		<div class="ui vertical masthead center aligned segment">
-			<%@include file="../includes/navbar.jsp"%>
+		<%@include file="../includes/navbar.jsp"%>
+		<div id="videoWrapper">
+			<div id="videoContent" class="ui center aligned segment">
+				<h3>Wat inspireert jou?</h3>
+				<h4>Beleef je passie bij Get There</h4>
 
-			<%@include file="../includes/carousel.jsp"%>
+				<button id="signup" class="ui huge red button"
+						onclick="location.href='<c:url value="/registration" />'">Schrijf in!</button>
+			</div>
+			<video src="https://a248.e.akamai.net/secure.meetupstatic.com/s/img/457419671895069178/guest_home/video.mp4"
+				   autoplay="" loop=""></video>
 		</div>
+
+		<script>
+			$(document).ready(function(){
+				$(".featuredTheme").on("click", function(){
+					window.location.href = "/events/?eventTheme="+$(this).text();
+				})
+			});
+		</script>
+		<div class="ui grid align centered" id="featuredThemes">
+			<div class="three wide column"><div class="ui center aligned segment featuredTheme">${eventThemes[0].name}</div></div>
+			<div class="three wide column"><div class="ui center aligned segment featuredTheme">${eventThemes[1].name}</div></div>
+			<div class="three wide column"><div class="ui center aligned segment featuredTheme">${eventThemes[2].name}</div></div>
+			<div class="three wide column"><div class="ui center aligned segment featuredTheme">${eventThemes[3].name}</div></div>
+		</div>
+
+		<div class="ui divider"></div>
+
+		<div class="ui grid align centered" id="featured">
+			<div class="four wide column"><a href="/events/"><div id="featured_events" class="ui center aligned segment featuredItem">Evenementen</div></a></div>
+			<div class="four wide column"><a href="#"><div id="featured_traineeship" class="ui center aligned segment featuredItem">Traineeship</div></a></div>
+			<div class="four wide column"><a href="#"><div id="featured_internship" class="ui center aligned segment featuredItem">Stage / Afstudeerstage</div></a></div>
+		</div>
+
+		<div class="ui divider"></div>
+
+		<div class="ui grid align centered" id="featuredThemes">
 
 		<div class="ui vertical stripe segment">
 			<div class="ui middle aligned stackable grid container">
@@ -40,7 +83,6 @@
 				</div>
 			</div>
 		</div>
-
 	</div>
 	
 	<script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>

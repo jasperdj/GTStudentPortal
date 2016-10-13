@@ -8,11 +8,7 @@ import nl.getthere.model.Education;
 import nl.getthere.model.Student;
 import nl.getthere.model.University;
 import nl.getthere.model.User;
-import nl.getthere.model.respositories.EducationRepository;
-import nl.getthere.model.respositories.EventRepository;
-import nl.getthere.model.respositories.StudentRepository;
-import nl.getthere.model.respositories.UniversityRepository;
-import nl.getthere.model.respositories.UserRepository;
+import nl.getthere.model.respositories.*;
 import nl.getthere.security.CurrentUser;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +37,8 @@ public class StudentController {
 	private UserRepository userRepo;
 	@Autowired
 	private EventRepository eventRepo;
+	@Autowired
+	private EventThemeRepository eventThemeRepo;
 
 	@ModelAttribute("student")
 	public Student getStudent(){
@@ -63,7 +61,8 @@ public class StudentController {
 	}
 	
 	@RequestMapping("/")
-	public String goHome(){
+	public String goHome(Model model){
+		model.addAttribute("eventThemes", eventThemeRepo.findAll());
 		return "index";
 	}
 	
