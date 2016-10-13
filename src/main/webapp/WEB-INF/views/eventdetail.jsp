@@ -20,6 +20,20 @@
 					ingeschreven.</h4>
 				<br> <br>
 
+
+				<c:if test="${user.userId != null}">
+					<c:forEach var="item" items="${event.attendees}">
+						<c:if test="${item.userId eq user.userId}">
+						</c:if>
+					</c:forEach>
+					<c:set var="contains" value="true" />
+				</c:if>
+							
+				<button ng-if="${contains}" ng-click="vm.signout()" class="massive ui active red button"><i class="checkmark box icon"></i>Schrijf je uit
+				</button>
+				<button  ng-if="${!contains}" ng-click="vm.signin()"class="massive ui red button"><i class="square outline icon"></i>Schrijf je in
+				</button>
+
 			</div>
 		</div>
 
@@ -27,8 +41,7 @@
 			<div class="ui middle aligned stackable grid container">
 				<div class="row">
 					<div class="eight wide left floated column">
-						<iframe id="gmap" frameborder="0" style="border:0"
-							src="{{vm.gmapurl}}" allowfullscreen> </iframe>
+						<iframe id="gmap" src="{{vm.gmapurl}}"></iframe>
 					</div>
 					<div class="eight wide column">
 						<h3 class="ui header">{{vm.event.title}}</h3>
@@ -39,10 +52,6 @@
 		</div>
 	</div>
 
-
-
-	<script
-		src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.js"></script>
 	<script
 		src="<c:url value="/resources/js/pages/eventDetailModule.js" />"></script>
 	<script
