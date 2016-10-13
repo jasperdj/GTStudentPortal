@@ -113,6 +113,7 @@ public class Event {
 	public void setLocation(String location) {
 		this.location = location;
 	}
+	@Column(nullable = true, unique = false, columnDefinition = "int(11) default '0'")
 	public int getVacancy() {
 		return vacancy;
 	}

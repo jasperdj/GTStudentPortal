@@ -11,14 +11,13 @@
 	<%@include file="../includes/status.jsp"%>
 
 	<div ng-controller="eventDetailController as vm">
-		<div id="event_header" class="ui inverted vertical masthead center aligned segment">
+		<div id="event_header"
+			class="ui inverted vertical masthead center aligned segment">
 			<%@include file="../includes/invertednavbar.jsp"%>
 
 			<div class="ui container">
 				<h1 class="ui inverted header">{{vm.event.title}}</h1>
-
-				<h4 ng-if="vm.event.vacancy > 0">Nog {{vm.event.vacancy - vm.event.attendees.length}} van de {{vm.event.vacancy}} plekken beschikbaar.</h4>
-
+				<h4>{{vm.event.location}}</h4>
 				<c:if test="${user.userId != null}">
 					<c:set var="contains" value="false" />
 					<c:forEach var="item" items="${event.attendees}">
@@ -27,14 +26,7 @@
 						</c:if>
 					</c:forEach>
 				</c:if>
-
-				<p>Begin: <strong>{{vm.startFormatted}}</strong></p>
-
-				<p>Eind: <strong>{{vm.endFormatted}}</strong></p>
-
-				<p>Vind plaats {{vm.countdown}}.</p>
-
-
+				<br><br>
 				<button ng-if="${contains}" ng-click="vm.signinToggle()"
 					class="massive ui active red button">
 					<i class="checkmark box icon"></i>Schrijf je uit
@@ -48,7 +40,30 @@
 
 			</div>
 		</div>
-
+		<div class="ui segment">
+			<div class="ui middle aligned stackable grid container">
+				<div class="row">
+					<div class="four wide left floated column">
+						<p class="event_info">
+							Begin: <strong>{{vm.startFormatted}}</strong>
+						</p>
+					</div>
+					<div class="four wide left floated column">
+						<p class="event_info">
+							Eind: <strong>{{vm.endFormatted}}</strong>
+						</p>
+					</div>
+					<div class="four wide left floated column">
+						<p class="event_info">Vind plaats {{vm.countdown}}.</p>
+					</div>
+					<div class="four wide left floated column">
+						<p class="event_info" ng-if="vm.event.vacancy > 0">Nog {{vm.event.vacancy -
+							vm.event.attendees.length}} van de {{vm.event.vacancy}} plekken
+							beschikbaar.</p>
+					</div>
+				</div>
+			</div>
+		</div>
 		<div class="ui vertical stripe segment">
 			<div class="ui middle aligned stackable grid container">
 				<div class="row">

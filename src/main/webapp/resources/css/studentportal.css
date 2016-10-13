@@ -7,6 +7,10 @@
 	border: 0px;
 }
 
+.event_info{
+	font-size: 125%;
+}
+
 .redBorder{
 	border: 1px solid #BF0028;
 }
