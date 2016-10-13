@@ -147,6 +147,38 @@ public class EventController {
     	}
     	return e;
     }
+    
+    @RequestMapping(value = "/api/events/{eventid}", method = RequestMethod.PUT)
+    public @ResponseBody String signInToEvent(@PathVariable Long eventid){
+    	
+    	User user = userRepo.findOneByEmail(CurrentUser.getCurrentUser().getEmail());
+    	if(user == null){
+    		return "403";
+    	}
+		Event event = eventRepo.findOne(eventid);
+		
+		if(event.getAttendees() == null){
+			event.setAttendees(new ArrayList<User>());
+		}
+
+		if(user.getEventsAttending() == null){
+			user.setEventsAttending(new ArrayList<Event>());
+		}
+		
+		if(user.getEventsAttending().contains(event)){
+			user.getEventsAttending().remove(event);
+			event.getAttendees().remove(user);
+		}else{
+			user.getEventsAttending().add(event);
+			event.getAttendees().add(user);
+		}
+		
+		userRepo.save(user);
+		eventRepo.save(event);
+    	
+    	return "200";
+    }
+    
 
     public List<Event> getEventsBetweenDays(int fromDaysOffset, int toDaysOffset) {
         LocalDateTime now = LocalDateTime.now().withHour(1).plusDays(fromDaysOffset);
