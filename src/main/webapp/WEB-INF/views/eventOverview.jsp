@@ -15,7 +15,6 @@
             }  , 100);
         });
 
-
         function hideEventGroups() {
             var totalChildren = 0;
             $(".eventGroup").each(function(eventGroup){

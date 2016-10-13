@@ -10,6 +10,14 @@
 <%@include file="../includes/header.jsp"%>
 <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css" />
 <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/pages/index.css" />" />
+<style>
+	#featured_traineeship {
+		background: url('<c:url value="/resources/img/traineeship.JPG" />');
+		background-size: 100% 100%;
+		background-color:rgba(0,0,0,0.3);
+		background-blend-mode: darken;
+	}
+</style>
 </head>
 <body>
 	<%@include file="../includes/hidden_nav.jsp"%>

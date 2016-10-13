@@ -93,7 +93,7 @@ video {
 }
 
 #featured_internship {
-    background: url('<c:url value="https://www.youngcapital.nl/public_images/Image/142.jpg" />');
+    background: url('https://www.youngcapital.nl/public_images/Image/142.jpg');
     background-size: 100% 100%;
     background-color:rgba(0,0,0,0.3);
     background-blend-mode: darken;
@@ -102,13 +102,6 @@ video {
 
 #featured_internship:hover {
     background-color:rgba(0,0,0,0.5);
-    background-blend-mode: darken;
-}
-
-#featured_traineeship {
-    background: url('<c:url value="/resources/img/traineeship.JPG" />');
-    background-size: 100% 100%;
-    background-color:rgba(0,0,0,0.3);
     background-blend-mode: darken;
 }
 
@@ -127,8 +120,6 @@ video {
     text-align-all: center;
     cursor:pointer;
 }
-
-
 
 .ui.divider {
     margin-top:30px !important;
