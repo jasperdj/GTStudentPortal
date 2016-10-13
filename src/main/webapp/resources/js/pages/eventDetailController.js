@@ -15,7 +15,7 @@
 					window.location.reload(false);
 				} else if (response.data == "403") {
 					$('.ui.basic.modal').modal('show');
-				}else{
+				} else {
 					console.log(response)
 				}
 			});
@@ -37,9 +37,24 @@
 										.trustAsResourceUrl("https://www.google.com/maps/embed/v1/place?key=AIzaSyAm5BhArLbRFa1MTHUTVbfUT8QS-OJFtgo&q="
 												+ vm.event.location.replace(
 														/\s+/g, '%20'));
+								// Setup time
+								var s = vm.event.start;
+								var e = vm.event.end
+								
+								var startDate = new Date(s.year, s.monthValue-1, s.dayOfMonth, s.hour, s.minute, s.second, s.nano);
+								var endDate = new Date(e.year, e.monthValue-1, e.dayOfMonth, e.hour, e.minute, e.second, e.nano);
+								
+								vm.startFormatted = moment(startDate).locale("nl").format("DD-MMM-YYYY HH:mm");
+								vm.endFormatted = moment(endDate).locale("nl").format("DD-MMM-YYYY HH:mm");
+								vm.countdown = moment(startDate).locale("nl").startOf("hour").fromNow();
+								
+								// Setup background
+								$("#event_header").css("background-image", "url(/event_images/"+ vm.event.imageUrl + ")");
+								
 							});
 		}
 		;
+
 	}
 	;
 })();

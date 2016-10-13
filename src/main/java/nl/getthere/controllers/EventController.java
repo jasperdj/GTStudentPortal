@@ -116,7 +116,7 @@ public class EventController {
 		Random randy = new Random();
 
 		if (!image.isEmpty()) {
-			String id = randy.nextInt() + ".png";
+			String id = randy.nextInt(Integer.MAX_VALUE) + ".png";
 			String filename = root + id ;
 			BufferedImage src = ImageIO.read(new ByteArrayInputStream(image.getBytes()));
 			File destination = new File(filename); 
