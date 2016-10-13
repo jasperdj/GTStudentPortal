@@ -30,13 +30,13 @@
             }
 
             if (eventThemeFilter !== null) {
-                if(!_.find(event.eventThemes, { id: eventThemeFilter.id } )){
+                if(!_.find(event.eventThemes, { name: eventThemeFilter.name } )){
                     return null;
                 }
             }
 
             if (eventTypeFilter !== null) {
-                if(!_.find(event.eventTypes, { id: eventTypeFilter.id } )){
+                if(!_.find(event.eventTypes, { name: eventTypeFilter.name } )){
                     return null;
                 }
             }

@@ -9,6 +9,10 @@
             $("body").on("click", function(){
                 hideEventGroups();
             });
+
+            setTimeout( function(){
+                hideEventGroups();
+            }  , 100);
         });
 
 
@@ -27,7 +31,6 @@
 </head>
 <body ng-app="eventOverview" ng-controller="eventOverviewController as vm">
 <%@include file="../includes/navbar.jsp"%>
-
 <div class="ui container padded">
     <h2>Overview events</h2>
     <div class="ui grid container">

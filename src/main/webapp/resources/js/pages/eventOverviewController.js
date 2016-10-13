@@ -6,13 +6,14 @@
     "use strict";
 
     angular.module("eventOverview").controller("eventOverviewController", eventOverviewController);
-    eventOverviewController.inject = ['$http'];
+    eventOverviewController.inject = ['$http', '$location'];
 
-    function eventOverviewController($http) {
+    function eventOverviewController($http, $location) {
         var vm = this;
         setupController();
 
         function setupController(){
+
             vm.eventThemeFilterItems = {};
             vm.eventTypeFilterItems = {}
 
@@ -20,8 +21,20 @@
             vm.eventThemeFilter = null;
             vm.eventRelationFilter = null;
 
+
+
             $http.get('/api/getEventThemes').then(function(response){
                 vm.eventThemeFilterItems = response.data;
+
+                var url = $location.absUrl();
+                var regex = /\/events\/\?eventTheme=([\w\W]+)/;
+                var regexResult = regex.exec(url);
+                if (regexResult !== null) {
+                    var eventThemeName = regexResult[1].replace("%20", " ");
+                    if(_.find(vm.eventThemeFilterItems, { name: eventThemeName } )) {
+                        vm.eventThemeFilter = {'name': eventThemeName, 'id':2};
+                    }
+                }
             });
 
             $http.get('/api/getEventTypes').then(function(response){
