@@ -12,12 +12,12 @@
 
 	<div ng-controller="eventDetailController as vm">
 		<div id="event_header" class="ui inverted vertical masthead center aligned segment">
-			<%@include file="../includes/navbar.jsp"%>
+			<%@include file="../includes/invertednavbar.jsp"%>
 
 			<div class="ui container">
 				<h1 class="ui inverted header">{{vm.event.title}}</h1>
-				<h4>{{vm.event.attendees.length}} mensen hebben zich
-					ingeschreven.</h4>
+
+				<h4 ng-if="vm.event.vacancy > 0">Nog {{vm.event.vacancy - vm.event.attendees.length}} van de {{vm.event.vacancy}} plekken beschikbaar.</h4>
 
 				<c:if test="${user.userId != null}">
 					<c:set var="contains" value="false" />
