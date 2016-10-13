@@ -13,6 +13,14 @@
             setTimeout( function(){
                 hideEventGroups();
             }  , 100);
+
+            setTimeout( function(){
+                hideEventGroups();
+            }  , 200);
+
+            setTimeout( function(){
+                hideEventGroups();
+            }  , 300);
         });
 
         function hideEventGroups() {

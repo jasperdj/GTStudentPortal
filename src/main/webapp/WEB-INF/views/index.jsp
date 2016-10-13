@@ -38,7 +38,7 @@
 		<script>
 			$(document).ready(function(){
 				$(".featuredTheme").on("click", function(){
-					window.location.replace("/events/?eventTheme="+$(this).text());
+					window.location.href = "/events/?eventTheme="+$(this).text();
 				})
 			});
 		</script>
