@@ -36,7 +36,25 @@
 					<i class="square outline icon"></i>Schrijf je in
 				</button>
 
-				<%@include file="../includes/loginrequestmodal.jsp"%>
+				<div class="ui basic modal">
+					<i class="close icon"></i>
+
+					<div class="image content">
+						<div class="image">
+							<i class="warning sign icon"></i>
+						</div>
+						<div class="description">
+							<h3>Je moet ingelogd wezen om je in te kunnen schrijven voor een
+								event.</h3>
+							<p>
+								Heb je al een account? <a href="/login?redirect=/events/{{vm.event.eventId}}">Log dan hier in.</a>
+							</p>
+							<p>
+								<a href="/registration">Registreer een account.</a>
+							</p>
+						</div>
+					</div>
+				</div>
 
 			</div>
 		</div>
@@ -80,11 +98,12 @@
 			</div>
 		</div>
 	</div>
-
+	<%@include file="../includes/footer.jsp"%>
 	<script
 		src="<c:url value="/resources/js/pages/eventDetailModule.js" />"></script>
 	<script
 		src="<c:url value="/resources/js/pages/eventDetailController.js" />"></script>
 	<script src="<c:url value="/resources/js/moments.js" />"></script>
+
 </body>
 </html>

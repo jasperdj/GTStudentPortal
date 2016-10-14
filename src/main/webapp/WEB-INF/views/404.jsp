@@ -24,8 +24,10 @@
 		</div>
 	</div>
 
+	<%@include file="../includes/footer.jsp"%>
 	<script type="text/javascript"
 		src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
 	<script src="<c:url value="/resources/js/carousel.js" />"></script>
+
 </body>
 </html>

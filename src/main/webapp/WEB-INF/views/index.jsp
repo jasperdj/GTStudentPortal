@@ -35,13 +35,7 @@
 				   autoplay="" loop=""></video>
 		</div>
 
-		<script>
-			$(document).ready(function(){
-				$(".featuredTheme").on("click", function(){
-					window.location.href = "/events/?eventTheme="+$(this).text();
-				})
-			});
-		</script>
+
 		<div class="ui grid align centered" id="featuredThemes">
 			<div class="three wide column"><div class="ui center aligned segment featuredTheme">${eventThemes[0].name}</div></div>
 			<div class="three wide column"><div class="ui center aligned segment featuredTheme">${eventThemes[1].name}</div></div>
@@ -84,8 +78,16 @@
 			</div>
 		</div>
 	</div>
-	
+			<%@include file="../includes/footer.jsp"%>
 	<script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
 	<script src="<c:url value="/resources/js/carousel.js" />"></script>
+	<script>
+		$(document).ready(function(){
+			$(".featuredTheme").on("click", function(){
+				window.location.href = "/events/?eventTheme="+$(this).text();
+			})
+		});
+	</script>
 </body>
+
 </html>

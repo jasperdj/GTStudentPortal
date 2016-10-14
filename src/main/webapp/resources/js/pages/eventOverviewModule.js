@@ -19,25 +19,29 @@
     app.filter("eventFilter", function(){
         return function(item, eventThemeFilter, eventTypeFilter, eventRelationFilter, userId) {
 
-            var event = item[0];
             if (eventThemeFilter === null && eventTypeFilter===null && eventRelationFilter === null) {
                 return item;
             }
-            if (eventRelationFilter === 1) {
-                if(!_.find(event.attendees, { userId : userId })){
-                    return null;
-                }
-            }
 
-            if (eventThemeFilter !== null) {
-                if(!_.find(event.eventThemes, { name: eventThemeFilter.name } )){
-                    return null;
-                }
-            }
+            for(var i = 0; i<item.length; i++) {
+                var event = item[i];
 
-            if (eventTypeFilter !== null) {
-                if(!_.find(event.eventTypes, { name: eventTypeFilter.name } )){
-                    return null;
+                if (eventRelationFilter === 1) {
+                    if(!_.find(event.attendees, { userId : userId })){
+                        event[i] = null;
+                    }
+                }
+
+                if (eventThemeFilter !== null) {
+                    if(!_.find(event.eventThemes, { name: eventThemeFilter.name } )){
+                        event[i] = null;
+                    }
+                }
+
+                if (eventTypeFilter !== null) {
+                    if(!_.find(event.eventTypes, { name: eventTypeFilter.name } )){
+                        event[i] = null;
+                    }
                 }
             }
 

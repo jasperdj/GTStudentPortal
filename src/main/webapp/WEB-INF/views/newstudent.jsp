@@ -87,6 +87,6 @@
 			<button type="submit" class="ui button">Submit</button>
 		</form:form>
 	</div>
-	
+	<%@include file="../includes/footer.jsp"%>
 </body>
 </html>

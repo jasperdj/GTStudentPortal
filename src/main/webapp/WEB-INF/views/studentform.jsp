@@ -6,7 +6,6 @@
 <html>
 <head>
 <%@include file="../includes/header.jsp"%>
-<script src="<c:url value="/resources/js/formControl.js" />"></script>
 </head>
 <body>
 	<%@include file="../includes/navbar.jsp"%>
@@ -132,6 +131,7 @@
 
 		</form:form>
 	</div>
-
+	<%@include file="../includes/footer.jsp"%>
+	<script src="<c:url value="/resources/js/formControl.js" />"></script>
 </body>
 </html>
