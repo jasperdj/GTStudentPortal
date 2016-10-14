@@ -19,7 +19,8 @@
 		  <p>The email or password you have entered is invalid, try again.</p>
 		 </div>
 	</c:if>
-	<form class="ui form" role="form" action="/login" method="post">
+	${!redirect.isEmpty()}
+	<form class="ui form" role="form" action="/login<c:if test="${!redirect.isEmpty()}">?redirect=${redirect}</c:if>" method="post">
 	    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 	    <div class="field">
 	        <label for="email">Email address</label>

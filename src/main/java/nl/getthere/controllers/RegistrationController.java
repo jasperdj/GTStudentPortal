@@ -125,7 +125,9 @@ public class RegistrationController {
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public ModelAndView getLoginPage(@RequestParam Optional<String> error) {
-		return new ModelAndView("login", "error", error);
+	public ModelAndView getLoginPage(@RequestParam Optional<String> error, String redirect) {
+		ModelAndView modelAndView = new ModelAndView("login", "error", error);
+		modelAndView.addObject("redirect", redirect);
+		return modelAndView;
 	}
 }
