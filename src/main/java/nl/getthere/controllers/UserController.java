@@ -27,5 +27,5 @@ public class UserController {
 		model.addAttribute("user", u);
 		return "usercreation";
 	}
-
+	
 }
