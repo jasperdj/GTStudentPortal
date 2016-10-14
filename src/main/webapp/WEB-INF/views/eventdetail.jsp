@@ -96,11 +96,12 @@
 			</div>
 		</div>
 	</div>
-
+	<%@include file="../includes/footer.jsp"%>
 	<script
 		src="<c:url value="/resources/js/pages/eventDetailModule.js" />"></script>
 	<script
 		src="<c:url value="/resources/js/pages/eventDetailController.js" />"></script>
 	<script src="<c:url value="/resources/js/moments.js" />"></script>
+
 </body>
 </html>

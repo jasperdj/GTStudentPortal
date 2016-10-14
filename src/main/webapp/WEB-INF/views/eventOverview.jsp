@@ -4,54 +4,6 @@
 <head>
     <%@include file="../includes/header.jsp"%>
 
-    <script>
-        $(document).ready(function(){
-            $("body").on("click", function(){
-                hideEventGroups();
-            });
-
-            setTimeout( function(){
-                hideEventGroups();
-            }  , 100);
-
-            setTimeout( function(){
-                hideEventGroups();
-            }  , 200);
-
-            setTimeout( function(){
-                hideEventGroups();
-            }  , 300);
-        });
-
-        function hideEventGroups() {
-            var totalChildren = 0;
-            $(".eventGroup").each(function(eventGroup){
-                var children = 0;
-                $(this).find(".segments").children().each(function(child){
-                    children += 1;
-                    totalChildren += 1;
-                });
-
-                children == 0 ? $(this).hide() : $(this).show();
-            });
-
-            if (totalChildren == 0) {
-                if ($("#eventOverview #noEventsFound").length == 0) {
-                    $("#eventOverview").prepend('' +
-                            '<div id="noEventsFound" ng-show="vm.eventGroups">' +
-                            '<div class="ui warning message">' +
-                            '<div class="header">Geen evenementen gevonden!</div>' +
-                            'Probeer eens een andere filter.' +
-                            '</div>' +
-                            '</div>');
-                } else {
-                    $("#eventOverview #noEventsFound").show();
-                }
-            } else {
-                $("#eventOverview #noEventsFound").hide();
-            }
-        }
-    </script>
     <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/pages/eventOverview.css"/>"> </link>
 </head>
 <body ng-app="eventOverview" ng-controller="eventOverviewController as vm">
@@ -105,9 +57,58 @@
         </div>
     </div>
 </div>
-
+<%@include file="../includes/footer.jsp"%>
 <script src="<c:url value="/resources/js/pages/eventOverviewModule.js" />" ></script>
 <script src="<c:url value="/resources/js/pages/eventOverviewController.js" />" ></script>
+
+<script>
+    $(document).ready(function(){
+        $("body").on("click", function(){
+            hideEventGroups();
+        });
+
+        setTimeout( function(){
+            hideEventGroups();
+        }  , 100);
+
+        setTimeout( function(){
+            hideEventGroups();
+        }  , 200);
+
+        setTimeout( function(){
+            hideEventGroups();
+        }  , 300);
+    });
+
+    function hideEventGroups() {
+        var totalChildren = 0;
+        $(".eventGroup").each(function(eventGroup){
+            var children = 0;
+            $(this).find(".segments").children().each(function(child){
+                children += 1;
+                totalChildren += 1;
+            });
+
+            children == 0 ? $(this).hide() : $(this).show();
+        });
+
+        if (totalChildren == 0) {
+            if ($("#eventOverview #noEventsFound").length == 0) {
+                $("#eventOverview").prepend('' +
+                        '<div id="noEventsFound" ng-show="vm.eventGroups">' +
+                        '<div class="ui warning message">' +
+                        '<div class="header">Geen evenementen gevonden!</div>' +
+                        'Probeer eens een andere filter.' +
+                        '</div>' +
+                        '</div>');
+            } else {
+                $("#eventOverview #noEventsFound").show();
+            }
+        } else {
+            $("#eventOverview #noEventsFound").hide();
+        }
+    }
+</script>
 
 </body>
 </html>

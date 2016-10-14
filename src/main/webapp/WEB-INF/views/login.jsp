@@ -19,8 +19,7 @@
 		  <p>The email or password you have entered is invalid, try again.</p>
 		 </div>
 	</c:if>
-	${!redirect.isEmpty()}
-	<form class="ui form" role="form" action="/login<c:if test="${!redirect.isEmpty()}">?redirect=${redirect}</c:if>" method="post">
+	<form class="ui form" role="form" action="/login<c:if test="${redirect.length() > 0}">?redirect=${redirect}</c:if>" method="post">
 	    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 	    <div class="field">
 	        <label for="email">Email address</label>
@@ -38,6 +37,6 @@
 	</form>
 </div>
 
-
+<%@include file="../includes/footer.jsp"%>
 </body>
 </html>

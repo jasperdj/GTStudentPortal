@@ -75,6 +75,6 @@
 		</table>
 		<a href="/editprofile" class="ui button">Wijzig gegevens</a>
 	</div>
-
+	<%@include file="../includes/footer.jsp"%>
 </body>
 </html>

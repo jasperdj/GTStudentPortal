@@ -9,26 +9,7 @@
     <title>Get There - Studenten Portal | Login</title>
     <%@include file="../includes/header.jsp" %>
 
-    <script>
-        function functionName(string) {
-            return string.charAt(0).toUpperCase() + string.slice(1);
-        }
 
-        function setEventData(type) {
-            $.get("/api/get" + functionName(type), function (elements) {
-                $.each(elements, function (key, value) {
-                    $("#"+type).append($("<option></option>")
-                            .attr("value", value.id)
-                            .text(value.name));
-                });
-            });
-        }
-
-        $(function () {
-            setEventData("eventThemes");
-            setEventData("eventTypes");
-        });
-    </script>
 </head>
 <body>
 <%@include file="../includes/navbar.jsp" %>
@@ -82,6 +63,27 @@
         <button type="submit">Create event</button>
     </form:form>
 </div>
+<%@include file="../includes/footer.jsp"%>
 
+<script>
+    function functionName(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+
+    function setEventData(type) {
+        $.get("/api/get" + functionName(type), function (elements) {
+            $.each(elements, function (key, value) {
+                $("#"+type).append($("<option></option>")
+                        .attr("value", value.id)
+                        .text(value.name));
+            });
+        });
+    }
+
+    $(function () {
+        setEventData("eventThemes");
+        setEventData("eventTypes");
+    });
+</script>
 </body>
 </html>
