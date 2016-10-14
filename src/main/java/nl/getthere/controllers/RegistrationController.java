@@ -82,14 +82,12 @@ public class RegistrationController {
 
 	@RequestMapping("/registration/event/{id}")
 	public String showRegistrationForEvent(Model model, @PathVariable Long id){
-		try{
-			Event e = eventRepo.findOne(id);
-			model.addAttribute("event", e);
-			return "registration";
-		}catch(Exception e){
-			System.out.println(e);
-			e.printStackTrace();
+		Event e = eventRepo.findOne(id);
+		if(e == null){
+			return "404";
 		}
+
+		model.addAttribute("event", e);
 		return "registration";
 	}
 	

@@ -16,8 +16,8 @@
 			<%@include file="../includes/invertednavbar.jsp"%>
 
 			<div class="ui container">
-				<h1 class="ui inverted header">{{vm.event.title}}</h1>
-				<h4>{{vm.event.location}}</h4>
+				<h1 class="ui inverted header event_head_text">{{vm.event.title}}</h1>
+				<h4 class="event_head_text">{{vm.event.location}}</h4>
 				<c:if test="${user.userId != null}">
 					<c:set var="contains" value="false" />
 					<c:forEach var="item" items="${event.attendees}">
@@ -31,7 +31,7 @@
 					class="massive ui active red button">
 					<i class="checkmark box icon"></i>Schrijf je uit
 				</button>
-				<button ng-if="${!contains}" ng-click="vm.signinToggle()"
+				<button ng-if="${!contains} && vm.event.attendees.length < vm.event.vacancy" ng-click="vm.signinToggle()"
 					class="massive ui red button">
 					<i class="square outline icon"></i>Schrijf je in
 				</button>
@@ -75,9 +75,11 @@
 						<p class="event_info">Vind plaats {{vm.countdown}}.</p>
 					</div>
 					<div class="four wide left floated column">
-						<p class="event_info" ng-if="vm.event.vacancy > 0">Nog {{vm.event.vacancy -
+						<p class="event_info" ng-if="vm.event.vacancy > 0 && vm.event.attendees.length < vm.event.vacancy">Nog {{vm.event.vacancy -
 							vm.event.attendees.length}} van de {{vm.event.vacancy}} plekken
 							beschikbaar.</p>
+							
+						<p class="event_info" ng-if="vm.event.vacancy === vm.event.attendees.length">Er is geen plek meer!</p>
 					</div>
 				</div>
 			</div>
