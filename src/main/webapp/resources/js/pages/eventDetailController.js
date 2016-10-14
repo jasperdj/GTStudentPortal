@@ -49,12 +49,12 @@
 								vm.countdown = moment(startDate).locale("nl").startOf("hour").fromNow();
 								
 								// Setup background
+								$("#event_header").css("background-color", "#fff");
 								$("#event_header").css("background-image", "url(/event_images/"+ vm.event.imageUrl + ")");
-								
+								$("#event_header").css("background-size", "cover");
 							});
 		}
 		;
-
 	}
 	;
 })();
