@@ -72,7 +72,7 @@ public class StudentController {
 		return "studentsoverview";
 	}
 
-	@RequestMapping("/events")
+	@RequestMapping("/events/")
 	public String getEventOverview(Model model) {
 		try {
 			User user = userRepo.findOneByEmail(CurrentUser.getCurrentUser().getEmail());
@@ -82,6 +82,12 @@ public class StudentController {
 		}
 
 		return "eventOverview";
+	}
+
+	@RequestMapping("/events")
+	public String rerouteEvents(Model model) {
+		System.out.println("redirect completed.");
+		return "redirect:/events/";
 	}
 
 	@RequestMapping("/student")
