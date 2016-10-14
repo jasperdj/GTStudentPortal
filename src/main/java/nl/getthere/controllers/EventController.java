@@ -160,23 +160,25 @@ public class EventController {
 		if(event.getAttendees() == null){
 			event.setAttendees(new ArrayList<User>());
 		}
-
-		if(user.getEventsAttending() == null){
-			user.setEventsAttending(new ArrayList<Event>());
+		
+		if(event.getAttendees().size() < event.getVacancy()){
+			if(user.getEventsAttending() == null){
+				user.setEventsAttending(new ArrayList<Event>());
+			}
+			
+			if(user.getEventsAttending().contains(event)){
+				user.getEventsAttending().remove(event);
+				event.getAttendees().remove(user);
+			}else{
+				user.getEventsAttending().add(event);
+				event.getAttendees().add(user);
+			}
+			
+			userRepo.save(user);
+			eventRepo.save(event);
 		}
 		
-		if(user.getEventsAttending().contains(event)){
-			user.getEventsAttending().remove(event);
-			event.getAttendees().remove(user);
-		}else{
-			user.getEventsAttending().add(event);
-			event.getAttendees().add(user);
-		}
-		
-		userRepo.save(user);
-		eventRepo.save(event);
-    	
-    	return "200";
+		return "200";
     }
     
 
