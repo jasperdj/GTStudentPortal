@@ -7,6 +7,10 @@
 	border: 0px;
 }
 
+.event_head_text{
+	text-shadow: 2px 2px #000;
+}
+
 .event_info{
 	font-size: 125%;
 }
