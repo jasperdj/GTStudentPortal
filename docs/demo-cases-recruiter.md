@@ -1,4 +1,4 @@
-# Recruiter Demo Cases
+# Handelingen
 De recruiter kan het systeem gebruiken om een duidelijk overzicht te krijgen van
 welke studenten er zijn ingeschreven en om deze data te beheren.
 Verder kan de recruiter via het mail systeem in contact komen met met de studenten

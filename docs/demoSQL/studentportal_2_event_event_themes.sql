@@ -1,0 +1,9 @@
+INSERT INTO studentportal_2.event_event_themes (events_event_id, event_themes_id) VALUES (7, 1);
+INSERT INTO studentportal_2.event_event_themes (events_event_id, event_themes_id) VALUES (7, 2);
+INSERT INTO studentportal_2.event_event_themes (events_event_id, event_themes_id) VALUES (8, 2);
+INSERT INTO studentportal_2.event_event_themes (events_event_id, event_themes_id) VALUES (9, 2);
+INSERT INTO studentportal_2.event_event_themes (events_event_id, event_themes_id) VALUES (9, 3);
+INSERT INTO studentportal_2.event_event_themes (events_event_id, event_themes_id) VALUES (10, 2);
+INSERT INTO studentportal_2.event_event_themes (events_event_id, event_themes_id) VALUES (11, 1);
+INSERT INTO studentportal_2.event_event_themes (events_event_id, event_themes_id) VALUES (12, 3);
+INSERT INTO studentportal_2.event_event_themes (events_event_id, event_themes_id) VALUES (12, 4);

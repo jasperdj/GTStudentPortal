@@ -72,7 +72,7 @@
 				</div>
 				<div class="row">
 					<div class="center aligned column">
-						<a class="ui huge button">Text hier!</a>
+						<a class="ui huge button">Lees meer!</a>
 					</div>
 				</div>
 			</div>

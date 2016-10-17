@@ -5,8 +5,8 @@
 De student is een gedreven en speelse student die erg geinteresseerd is
 in Big data, Artificial intelligence en heeft ervaring met Java. Hij
 zoekt een afstudeeropdracht waar hij zichzelf kan ontplooien in een
-actieve inspirerende community waar hij veel en snel kan leren.
-
+actieve inspirerende community waar hij veel en snel kan leren.asd asd
+asdas asdsadas asdas dasd
 
 Benadrukken wat de student denkt. Koppeling maken met Google, facebook.
 Wat maakt google zo'n vet bedrijf dat alle hoog ambituese mensen daar
@@ -62,3 +62,13 @@ zijn, beter positioneren.
 
 Omdat geen enkel ander bedrijf het zo simpel maakt voor studenten, heeft
 Get there zich uniek gepositioneerd in de markt.
+
+# Test data 
+- [X] 3 afstudeeropdrachten {Februari}
+- [X] 1 Traineeship  {1 sept} (Traineeship, Software development)
+- [X] 1 Big data event  {Ma} (Tech event, big data)
+- [X] 1 Ontbijt sessie secure coding {Wo} (Security, software development, tech event)
+-  1 gamification event
+- [X] Thema's: Big data, software development, security, gamification
+- [x] Types: Tech events, Traineships, Stages
+
