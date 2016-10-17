@@ -1,14 +1,14 @@
-##BESCHRIJVING
+# Recruiter Demo Cases
 De recruiter kan het systeem gebruiken om een duidelijk overzicht te krijgen van
 welke studenten er zijn ingeschreven en om deze data te beheren.
 Verder kan de recruiter via het mail systeem in contact komen met met de studenten
 en ze zo op de hoogte houden van relevante events/traineeships/stages.
 
-1. Inloggen met recruiter account.
+## Inloggen met recruiter account.
   - Beschrijven welke opties de recruiter nu heeft ("de recruiter kan naar de volgende pagina's")
   - Beschrijf het "upcoming events" gedeelte (afstuderen, verjaardagen, etc)
 
-2. Overzicht pagina tonen. #SMALL
+## Overzicht pagina tonen. #SMALL
   - Overzicht met studenten beschrijven.
   - Bekijk een student.
   - Maak een student aan.
@@ -18,7 +18,7 @@ en ze zo op de hoogte houden van relevante events/traineeships/stages.
   - Verwijder een student.
     - Toon bevestiging.
 
-3. Toon mail functionaliteit.
+## Toon mail functionaliteit.
   - Maak een selectie van student op de overzichtspagina op basis van interesses op het gebied van THEMA X
     - Selecteer de optie om een mail te versturen naar de huidige selectie studenten.
       - Beschrijf het formulier.
@@ -32,7 +32,7 @@ en ze zo op de hoogte houden van relevante events/traineeships/stages.
   - Toon middels debug functie dat er een nieuwe inschrijving kan worden gemeld. #SMALL
 
 
-4. Toon event beheer functionaliteit.
+## Toon event beheer functionaliteit.
   - Beschrijf event formulier.
   - Maak nieuw event en toon het resultaat.
   - Wijzig bestaand event.
