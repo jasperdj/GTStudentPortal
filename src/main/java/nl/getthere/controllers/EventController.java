@@ -103,7 +103,7 @@ public class EventController {
     	model.addAttribute("status", "Je bent nu ingeschreven voor het event!");
     	return "redirect:/events/" + eventid + "/";
     }
-
+    //TODO Remap to /recruiter/newEvent
     @RequestMapping(value = "/api/newEvent", method = RequestMethod.POST)
     public String newEventPost(Model model, @Valid Event event, BindingResult result, @RequestParam("image") MultipartFile image) throws IOException {
         model.addAttribute("error", result);

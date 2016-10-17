@@ -50,17 +50,17 @@
         <div>
             <label for="eventTypes">Event type</label>
             <select id="eventTypes" name="eventTypes" multiple="true">
-                <option class="noneOption">None</option>
+                <option class="noneOption"></option>
             </select>
         </div>
         <div>
             <label for="eventThemes">Event theme</label>
             <select id="eventThemes" name="eventThemes" multiple="true">
-                <option class="noneOption">None</option>
+                <option class="noneOption"></option>
             </select>
         </div>
-
-        <button type="submit">Create event</button>
+		<br>
+        <button class="ui green button" type="submit"><i class="plus icon"></i>Creeer event</button>
     </form:form>
 </div>
 <%@include file="../includes/footer.jsp"%>

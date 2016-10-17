@@ -13,7 +13,9 @@
 	<div ng-controller="recruiterEventController as vm"
 		class="ui container padded">
 		<%@include file="../includes/status.jsp"%>
-		<button ng-click="vm.addEvent()" class="ui green button"><i class="plus icon"></i>Nieuw Event</button>
+		
+		<a href="/api/newEvent" class="ui green button"><i class="plus icon"></i>Nieuw Event</a>
+		
 		<table class="ui striped table">
 			<thead>
 				<tr>
@@ -34,7 +36,7 @@
 					<td>{{ event.attendees.length }}</td>
 					<td>{{ event.vacancy - event.attendees.length }}</td>
 					<td>{{ event.vacancy }}</td>
-					<td><a ng-click="vm.updateEvent()"><i class="write icon"></i></a> <a ng-click="vm.removeEvent()"><i class="remove icon"></i></a></td>
+					<td><a href="#" ng-click="vm.updateEvent()"><i class="write icon"></i></a> <a href="#" ng-click="vm.removeEvent()"><i class="remove icon"></i></a></td>
 				</tr>
 			</tbody>
 		</table>
