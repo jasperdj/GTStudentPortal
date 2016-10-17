@@ -7,7 +7,7 @@
 <head>
 <%@include file="../includes/header.jsp"%>
 </head>
-<body ng-app="eventDetailModule">
+<body ng-app="eventDetailModule" ng-cloak>
 	<%@include file="../includes/status.jsp"%>
 
 	<div ng-controller="eventDetailController as vm">

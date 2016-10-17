@@ -6,7 +6,7 @@
 
     <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/pages/eventOverview.css"/>"> </link>
 </head>
-<body ng-app="eventOverview" ng-controller="eventOverviewController as vm">
+<body ng-app="eventOverview" ng-controller="eventOverviewController as vm" ng-cloak>
 <%@include file="../includes/navbar.jsp"%>
 <div class="ui container padded">
     <h2>Overview events</h2>
