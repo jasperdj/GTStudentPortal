@@ -4,6 +4,8 @@ welke studenten er zijn ingeschreven en om deze data te beheren.
 Verder kan de recruiter via het mail systeem in contact komen met met de studenten
 en ze zo op de hoogte houden van relevante events/traineeships/stages.
 
+De cases met #SMALL kunnen mogelijk worden ingekort of geschrapt ivm tijd.
+
 ## Inloggen met recruiter account.
   - Beschrijven welke opties de recruiter nu heeft ("de recruiter kan naar de volgende pagina's")
   - Beschrijf het "upcoming events" gedeelte (afstuderen, verjaardagen, etc)
