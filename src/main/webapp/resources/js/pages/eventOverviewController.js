@@ -21,22 +21,32 @@
             vm.eventThemeFilter = null;
             vm.eventRelationFilter = null;
 
+            var url = $location.absUrl();
+
             $http.get('/api/getEventThemes').then(function(response){
                 vm.eventThemeFilterItems = response.data;
 
-                var url = $location.absUrl();
-                var regex = /\/events\/\?eventTheme=([\w\W]+)/;
-                var regexResult = regex.exec(url);
-                if (regexResult !== null) {
-                    var eventThemeName = regexResult[1].replace("%20", " ");
+                var eventTheme_Regex = /eventTheme=([\w\%]+)/;
+                var eventTheme_regexResult = eventTheme_Regex.exec(url);
+                if (eventTheme_regexResult !== null) {
+                    var eventThemeName = eventTheme_regexResult[1].replace("%20", " ");
                     if(_.find(vm.eventThemeFilterItems, { name: eventThemeName } )) {
-                        vm.eventThemeFilter = {'name': eventThemeName, 'id':2};
+                        vm.eventThemeFilter = {'name': eventThemeName};
                     }
                 }
             });
 
             $http.get('/api/getEventTypes').then(function(response){
                 vm.eventTypeFilterItems = response.data;
+
+                var eventType_Regex = /eventType=([\w\%]+)/;
+                var eventType_regexResult = eventType_Regex.exec(url);
+                if (eventType_regexResult !== null) {
+                    var eventTypeName = eventType_regexResult[1].replace("%20", " ");
+                    if(_.find(vm.eventTypeFilterItems, { name: eventTypeName } )) {
+                        vm.eventTypeFilter = {'name': eventTypeName};
+                    }
+                }
             });
 
             $http.get('/api/getEvents?from=0&to=365').then(function(response){

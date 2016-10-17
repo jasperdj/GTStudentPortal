@@ -47,8 +47,8 @@
 
 		<div class="ui grid align centered" id="featured">
 			<div class="four wide column"><a href="/events/"><div id="featured_events" class="ui center aligned segment featuredItem">Evenementen</div></a></div>
-			<div class="four wide column"><a href="#"><div id="featured_traineeship" class="ui center aligned segment featuredItem">Traineeship</div></a></div>
-			<div class="four wide column"><a href="#"><div id="featured_internship" class="ui center aligned segment featuredItem">Stage / Afstudeerstage</div></a></div>
+			<div class="four wide column"><a href="/events/?eventType=Traineeships"><div id="featured_traineeship" class="ui center aligned segment featuredItem">Traineeship</div></a></div>
+			<div class="four wide column"><a href="/events/?eventType=Stages"><div id="featured_internship" class="ui center aligned segment featuredItem">Stage / Afstudeerstage</div></a></div>
 		</div>
 
 		<div class="ui divider"></div>
