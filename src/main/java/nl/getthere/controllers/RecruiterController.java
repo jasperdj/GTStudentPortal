@@ -10,8 +10,10 @@ import nl.getthere.model.respositories.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
@@ -79,8 +81,9 @@ public class RecruiterController {
 	}
 	
 	@RequestMapping(value = "recruiterapi/events/", method = RequestMethod.POST)
-	public @ResponseBody Event createEvent() {
-
+	public @ResponseBody Event createEvent(@RequestBody Event newEvent) {
+		System.out.println(newEvent);
+		System.out.println("Bleep!");
 		return null;
 	}
 	

@@ -104,7 +104,7 @@ public class EventController {
     	return "redirect:/events/" + eventid + "/";
     }
     //TODO Remap to /recruiter/newEvent
-    @RequestMapping(value = "/api/newEvent", method = RequestMethod.POST)
+    @RequestMapping(value = "/api/newEvent", headers = "content-type=multipart/*", method = RequestMethod.POST)
     public String newEventPost(Model model, @Valid Event event, BindingResult result, @RequestParam("image") MultipartFile image) throws IOException {
         model.addAttribute("error", result);
         System.out.println("RESULT:\n\n\n\n\n\n"+result);

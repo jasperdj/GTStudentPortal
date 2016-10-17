@@ -13,9 +13,10 @@
 	<div ng-controller="recruiterEventController as vm"
 		class="ui container padded">
 		<%@include file="../includes/status.jsp"%>
-		
-		<a href="/api/newEvent" class="ui green button"><i class="plus icon"></i>Nieuw Event</a>
-		
+
+		<a href="#" ng-click="vm.showNewEvent()" class="ui green button"><i
+			class="plus icon"></i>Nieuw Event</a>
+
 		<table class="ui striped table">
 			<thead>
 				<tr>
@@ -25,7 +26,7 @@
 					<th>Inschrijvingen</th>
 					<th>Plek(over)</th>
 					<th>Plek(totaal)</th>
-					<th> </th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -36,15 +37,83 @@
 					<td>{{ event.attendees.length }}</td>
 					<td>{{ event.vacancy - event.attendees.length }}</td>
 					<td>{{ event.vacancy }}</td>
-					<td><a href="#" ng-click="vm.updateEvent()"><i class="write icon"></i></a> <a href="#" ng-click="vm.removeEvent()"><i class="remove icon"></i></a></td>
+					<td><a href="#" ng-click="vm.updateEvent()"><i
+							class="write icon"></i></a> <a href="#" ng-click="vm.removeEvent()"><i
+							class="remove icon"></i></a></td>
 				</tr>
 			</tbody>
 		</table>
 
+		<div class="ui modal">
+			<div class="ui main text container padded">
+				<h3>Cre&euml;er nieuw event</h3>
+				<form class="ui form" ng-model="newEvent" enctype="multipart/form-data">
+					<div>
+						<label for="title">Titel</label> <input ng-model="newEvent.title"
+							type="text" name="title" id="title" required autofocus>
+					</div>
+
+					<div>
+						<label for="title">Achtergrond</label> <input
+							ng-model="newEvent.imageUrl" type="file" name="image" id="image">
+					</div>
+					<div>
+						<label for="location">Locatie</label> <input
+							ng-model="newEvent.location" type="text" name="location"
+							id="location" required>
+					</div>
+					<div>
+						<label for="vacany">Plekken</label> <input
+							ng-model="newEvent.vacancy" type="text" name="vacancy" id="vacancy"
+							required>
+					</div>
+					<div>
+						<label for="start">Startdatum + tijd</label> <input
+							type="datetime-local" name="start" ng-model="start"
+							id="start" required>
+					</div>
+					<div>
+						<label for="end">Einddatum + tijd</label> <input ng-model="end"
+							 type="datetime-local" name="end" id="end"
+							required>
+					</div>
+					<div>
+						<label for="description">Beschrijving</label>
+						<textarea ng-model="newEvent.description" name="description"
+							id="description" cols=10></textarea>
+					</div>
+					<div>
+						<label for="eventTypes">Soort event</label> <select
+							ng-model="newEvent.eventTypes" id="eventTypes" name="eventTypes"
+							multiple="true">
+							<option class="noneOption"></option>
+						</select>
+					</div>
+					<div>
+						<label for="eventThemes">Thema's</label> <select
+							ng-model="newEvent.eventThemes" id="eventThemes" name="eventThemes"
+							multiple="true">
+							<option class="noneOption"></option>
+						</select>
+					</div>
+					<br>
+					<button ng-click="vm.addEvent(newEvent, start, end)"
+						class="ui positive right labeled icon button" type="submit">
+						<i class="plus icon"></i>Cre&euml;er event
+					</button>
+					<br>
+				</form>
+				<br>
+			</div>
+		</div>
+	</div>
+
 	</div>
 	<%@include file="../includes/footer.jsp"%>
+
 	<script src="<c:url value="/resources/js/pages/recruiterModule.js" />"></script>
-	<script src="<c:url value="/resources/js/pages/recruiterEventController.js" />"></script>
+	<script
+		src="<c:url value="/resources/js/pages/recruiterEventController.js" />"></script>
 	<script src="<c:url value="/resources/js/moments.js" />"></script>
 </body>
 </html>
