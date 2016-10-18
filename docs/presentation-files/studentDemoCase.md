@@ -5,8 +5,7 @@
 De student is een gedreven en speelse student die erg geinteresseerd is
 in Big data, Artificial intelligence en heeft ervaring met Java. Hij
 zoekt een afstudeeropdracht waar hij zichzelf kan ontplooien in een
-actieve inspirerende community waar hij veel en snel kan leren.asd asd
-asdas asdsadas asdas dasd
+actieve inspirerende community waar hij veel en snel kan leren.
 
 Benadrukken wat de student denkt. Koppeling maken met Google, facebook.
 Wat maakt google zo'n vet bedrijf dat alle hoog ambituese mensen daar
@@ -26,7 +25,7 @@ zijn, beter positioneren.
 
 ## Events: Student klikt op afstudeerstage
 
-- Ziet alle beschikbare afstudeer stages, in verschillende onderwerpen.
+- Ziet alle beschikbare afstudeer stages, in verschillende onderwerpen. 
 - Doet filtering op big data.
 
 ## Event: Student klikt op event
