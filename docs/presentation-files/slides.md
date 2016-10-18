@@ -156,7 +156,12 @@ Wat zoekt de uitstekende ambitieuze student waar Get there zo opzoek naar is?
 
 ---
 
-# Reflectie
+# Reflectie Ruud
+- 
+
+---
+
+# Reflectie Jasper
 
 ---
 
