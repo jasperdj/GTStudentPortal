@@ -70,7 +70,7 @@ Wat zoekt de uitstekende ambitieuze student waar Get there zo opzoek naar is?
 
 ---
 
-# Demo
+# [Demo](http://localhost:8080/)
 
 
 ---
@@ -115,7 +115,7 @@ Wat zoekt de uitstekende ambitieuze student waar Get there zo opzoek naar is?
 
 ---
 
-# Demo
+# [Demo](http://localhost:8080/)
 
 ---
 
@@ -146,10 +146,18 @@ Wat zoekt de uitstekende ambitieuze student waar Get there zo opzoek naar is?
 
 ### De toekomst van GT Student Portal 
 - Sociale media integratie
+<!-- .element: class="fragment" -->
 - Notificatie systeem
+<!-- .element: class="fragment" -->
 - Bekijken afgelopen evenementen
+<!-- .element: class="fragment" -->
 - Aansluitend design op Get there. 
+<!-- .element: class="fragment" -->
+
+---
 
 # Reflectie
+
+---
 
 # Vragen? 
