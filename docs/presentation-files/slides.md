@@ -78,7 +78,78 @@ Wat zoekt de uitstekende ambitieuze student waar Get there zo opzoek naar is?
 ### Hoe recruiten wij de student?
 ![](getStudentHere.png) 
 
---- 
+---
 
-### Recruitment in de IT
-- 
+### Hoe worden IT'ers gerecruit? 
+- Standaard uitnodigingen.
+<!-- .element: class="fragment" -->
+- Ongepersonaliseerde communicatie. 
+<!-- .element: class="fragment" -->
+- Maken keuzes voor jou. 
+<!-- .element: class="fragment" -->
+
+---
+
+### Waarom doen ze dit? 
+- Ze kennen je niet.
+<!-- .element: class="fragment" -->
+- Ze hebben veel volume, maar weinig slaagkans. 
+<!-- .element: class="fragment" -->
+- Ze moeten wel een keuze voor je maken. 
+<!-- .element: class="fragment" -->
+
+---
+
+### Wat wil de student?
+- Ze willen persoonlijk en eerlijk behandeld worden. 
+<!-- .element: class="fragment" -->
+- Ze willen eenvoudig zelf kunnen kiezen voor stages/traineeships etc.
+<!-- .element: class="fragment" -->
+- Ze willen zich niet bezwaard voelen ergens voor te moeten kiezen.
+<!-- .element: class="fragment" -->
+
+---
+
+### GT student portal
+![](http://www.speakart.nl/sites/default/files/presenteren_pitchen_groningen_getthere.jpg)
+
+---
+
+# Demo
+
+---
+
+###  GT Student Portal
+![](getStudentHere2.png)
+
+---
+
+### GT Student portal
+- Get students here
+<!-- .element: class="fragment" -->
+    - Gemaakt door en voor studenten. 
+<!-- .element: class="fragment" -->
+    - Verlaagd kosten externe recruitment. 
+<!-- .element: class="fragment" -->
+    - Creeert een sfeer van excellentie, inspiratie en groei. 
+<!-- .element: class="fragment" -->
+- Keep students here
+<!-- .element: class="fragment" -->
+    - Door persoonlijke proactief te benaderen.
+<!-- .element: class="fragment" -->
+    - Door ze zelf eenvoudig een keuze te laten maken
+<!-- .element: class="fragment" -->
+    - Door ze te inspireren.
+<!-- .element: class="fragment" -->
+
+---
+
+### De toekomst van GT Student Portal 
+- Sociale media integratie
+- Notificatie systeem
+- Bekijken afgelopen evenementen
+- Aansluitend design op Get there. 
+
+# Reflectie
+
+# Vragen? 
