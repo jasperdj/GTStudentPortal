@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
@@ -82,15 +81,28 @@ public class RecruiterController {
 	
 	@RequestMapping(value = "recruiterapi/events/", method = RequestMethod.POST)
 	public @ResponseBody Event createEvent(@RequestBody Event newEvent) {
-		System.out.println(newEvent);
-		System.out.println("Bleep!");
-		return null;
+		if(newEvent == null){
+			return null;
+		}
+		if(newEvent.getTitle() == null){
+			return null;
+		}
+		return eventRepo.save(newEvent);
 	}
 	
 	@RequestMapping(value = "recruiterapi/events/{eventid}", method = RequestMethod.DELETE)
-	public @ResponseBody String deleteEvent(){
-		
-		return "";
+	public @ResponseBody String deleteEvent(@PathVariable Long eventid){
+		try{
+			Event e = eventRepo.findOne(eventid);
+			if(e.getEventId() == null){
+				return "404";
+			}
+			eventRepo.delete(eventid);
+		}catch(Exception e){
+			return e.getMessage();
+		}
+			
+		return "200";
 	}
 
 }

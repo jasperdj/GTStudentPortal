@@ -23,13 +23,15 @@
       if(newEvent === undefined){
         return;
       }
-      newEvent.start = start.toLocaleString();
-      newEvent.end = end.toLocaleString();
+      newEvent.start = start.toISOString().replace("Z","");
+      newEvent.end = end.toISOString().replace("Z","");
       $http.post("/recruiterapi/events/", newEvent)
       .then(function (response) {
         console.log(response);
         vm.events.push(response.data);
         vm.hideNewEvent();
+        //TODO make it so it only updates the latest addition.
+        setupMomentsJS(vm.events);
       },
       function(){
         alert('Kon event niet aanmaken!');
@@ -37,8 +39,11 @@
     );
   }
 
-  vm.removeEvent = function(){
-    alert("NYI");
+  vm.removeEvent = function(event){
+    $http.delete("/recruiterapi/events/" + event.eventId).then(function (response){
+      console.log(response);
+      vm.events.splice(vm.events.indexOf(event),1);
+    });
   }
 
   vm.updateEvent = function(){
@@ -47,11 +52,16 @@
 
   activate()
   function activate(){
-    vm.events = []
+    vm.events = [];
+    vm.eventTypes = [];
 
     $http.get("/recruiterapi/events/").then(function(response){
       vm.events = response.data;
       setupMomentsJS(vm.events);
+    });
+
+    $http.get("/api/getEventTypes").then(function(response){
+      vm.eventTypes = response.data;
     });
   }
 

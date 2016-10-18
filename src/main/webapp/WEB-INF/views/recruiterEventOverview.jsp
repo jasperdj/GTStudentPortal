@@ -37,8 +37,8 @@
 					<td>{{ event.attendees.length }}</td>
 					<td>{{ event.vacancy - event.attendees.length }}</td>
 					<td>{{ event.vacancy }}</td>
-					<td><a href="#" ng-click="vm.updateEvent()"><i
-							class="write icon"></i></a> <a href="#" ng-click="vm.removeEvent()"><i
+					<td><a href="#" ng-click="vm.updateEvent(event)"><i
+							class="write icon"></i></a> <a href="#" ng-click="vm.removeEvent(event)"><i
 							class="remove icon"></i></a></td>
 				</tr>
 			</tbody>
@@ -85,7 +85,7 @@
 					<div>
 						<label for="eventTypes">Soort event</label> <select
 							ng-model="newEvent.eventTypes" id="eventTypes" name="eventTypes"
-							multiple="true">
+							multiple="true" ng-options="eventType.id as eventType.name for eventType in vm.eventTypes">
 							<option class="noneOption"></option>
 						</select>
 					</div>

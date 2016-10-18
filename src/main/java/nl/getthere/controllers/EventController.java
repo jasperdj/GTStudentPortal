@@ -208,7 +208,7 @@ public class EventController {
     public @ResponseBody Iterable<EventType> getEventTypes(Model model) {
         return eventTypeRepo.findAll();
     }
-
+    
     @RequestMapping(value = "/api/getEventThemes", method = RequestMethod.GET)
     public @ResponseBody Iterable<EventTheme> getEventThemes(Model model) {
         return eventThemeRepo.findAll();
