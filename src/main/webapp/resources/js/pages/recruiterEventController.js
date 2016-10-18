@@ -23,8 +23,10 @@
       if(newEvent === undefined){
         return;
       }
+      console.log(newEvent.imageUrl);
       newEvent.start = start.toISOString().replace("Z","");
       newEvent.end = end.toISOString().replace("Z","");
+
       $http.post("/recruiterapi/events/", newEvent)
       .then(function (response) {
         console.log(response);
@@ -54,6 +56,7 @@
   function activate(){
     vm.events = [];
     vm.eventTypes = [];
+    vm.eventThemes = [];
 
     $http.get("/recruiterapi/events/").then(function(response){
       vm.events = response.data;
@@ -62,6 +65,10 @@
 
     $http.get("/api/getEventTypes").then(function(response){
       vm.eventTypes = response.data;
+    });
+
+    $http.get("/api/getEventThemes").then(function(response){
+      vm.eventThemes = response.data;
     });
   }
 

@@ -1,5 +1,6 @@
 package nl.getthere.controllers;
 
+import java.io.IOException;
 import java.util.List;
 
 import nl.getthere.model.Event;
@@ -8,6 +9,7 @@ import nl.getthere.model.respositories.EventRepository;
 import nl.getthere.model.respositories.StudentRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -79,14 +81,32 @@ public class RecruiterController {
 		return null;
 	}
 	
-	@RequestMapping(value = "recruiterapi/events/", method = RequestMethod.POST)
-	public @ResponseBody Event createEvent(@RequestBody Event newEvent) {
+	@RequestMapping(value = "recruiterapi/events/", method = RequestMethod.POST,  consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+	public @ResponseBody Event createEvent(@RequestBody Event newEvent) throws IOException {
 		if(newEvent == null){
 			return null;
 		}
 		if(newEvent.getTitle() == null){
 			return null;
 		}
+		
+		System.out.println(newEvent.getImageUrl());
+//		ADD TO PARAMETERS , @RequestParam("image") MultipartFile image		
+//		Resource resource = new ClassPathResource("/application.properties");
+//		Properties props = PropertiesLoaderUtils.loadProperties(resource);
+//		String root = props.getProperty("event.image.location");
+//
+//		Random randy = new Random();
+//
+//		if (!image.isEmpty()) {
+//			String id = randy.nextInt(Integer.MAX_VALUE) + ".png";
+//			String filename = root + id ;
+//			BufferedImage src = ImageIO.read(new ByteArrayInputStream(image.getBytes()));
+//			File destination = new File(filename); 
+//			ImageIO.write(src, "png", destination);
+//			newEvent.setImageUrl(id);
+//		}
+		
 		return eventRepo.save(newEvent);
 	}
 	

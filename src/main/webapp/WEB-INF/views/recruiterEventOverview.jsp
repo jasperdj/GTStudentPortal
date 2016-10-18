@@ -85,14 +85,14 @@
 					<div>
 						<label for="eventTypes">Soort event</label> <select
 							ng-model="newEvent.eventTypes" id="eventTypes" name="eventTypes"
-							multiple="true" ng-options="eventType.id as eventType.name for eventType in vm.eventTypes">
+							multiple="true" ng-options="eventType as eventType.name for eventType in vm.eventTypes">
 							<option class="noneOption"></option>
 						</select>
 					</div>
 					<div>
 						<label for="eventThemes">Thema's</label> <select
 							ng-model="newEvent.eventThemes" id="eventThemes" name="eventThemes"
-							multiple="true">
+							multiple="true" ng-options="eventTheme as eventTheme.name for eventTheme in vm.eventThemes">
 							<option class="noneOption"></option>
 						</select>
 					</div>
