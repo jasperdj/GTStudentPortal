@@ -3,10 +3,14 @@ package nl.getthere.controllers;
 import java.io.IOException;
 import java.util.List;
 
+import nl.getthere.model.Education;
 import nl.getthere.model.Event;
 import nl.getthere.model.Student;
+import nl.getthere.model.University;
+import nl.getthere.model.respositories.EducationRepository;
 import nl.getthere.model.respositories.EventRepository;
 import nl.getthere.model.respositories.StudentRepository;
+import nl.getthere.model.respositories.UniversityRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -25,7 +29,18 @@ public class RecruiterController {
 
 	@Autowired
 	private EventRepository eventRepo;
+	
+	@Autowired
+	private UniversityRepository universityRepo;
+	
+	@Autowired
+	private EducationRepository educationRepo;
 
+	@RequestMapping("recruiter/students")
+	public String showStudents(){
+		return "recruiterStudentOverview";
+	}
+	
 	@RequestMapping("recruiterapi/students/")
 	public @ResponseBody List<Student> getStudents() {
 		List<Student> students = (List<Student>) studentRepo.findAll();
@@ -45,22 +60,43 @@ public class RecruiterController {
 	}
 	
 	@RequestMapping(value = "recruiterapi/students/", method = RequestMethod.POST)
-	public @ResponseBody Student createStudent() {
-
-		return null;
+	public @ResponseBody Student createStudent(@RequestBody Student student) {
+		if(student == null){
+			return null;
+		}
+		return studentRepo.save(student);
 	}
 	
 	@RequestMapping(value = "recruiterapi/students/{studentid}", method = RequestMethod.DELETE)
-	public @ResponseBody String deleteStudent(){
-		
-		return "";
+	public @ResponseBody String deleteStudent(@PathVariable Long studentid){
+		try{
+			Student s = studentRepo.findOne(studentid);
+			if(s.getId() == null){
+				return "404";
+			}
+			studentRepo.delete(studentid);
+		}catch(Exception e){
+			return e.getMessage();
+		}
+			
+		return "200";
 	}
-	
-	
+		
 	@RequestMapping("recruiter/events")
 	public String showEvents(){
-		
 		return "recruiterEventOverview";
+	}
+
+	@RequestMapping("recruiterapi/universities/")
+	public @ResponseBody List<University> getUniversities(){
+		List<University> universities = (List<University>) universityRepo.findAll(); 
+		return universities;
+	}
+	
+	@RequestMapping("recruiterapi/educations/")
+	public @ResponseBody List<Education> getEducations(){
+		List<Education> educations = (List<Education>) educationRepo.findAll(); 
+		return educations;
 	}
 	
 	@RequestMapping("recruiterapi/events/")

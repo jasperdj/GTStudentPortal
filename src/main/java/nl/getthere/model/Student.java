@@ -111,6 +111,9 @@ public class Student{
     public void setStartEducation(LocalDate startEducation) {
         this.startEducation = startEducation;
     }
+    public void setStartEducation(String startEducation){
+    	this.startEducation = LocalDate.parse(startEducation);
+    }
 
     @DateTimeFormat(pattern="yyyy-MM-dd")
     @Column(nullable = true, unique = false)
@@ -120,7 +123,10 @@ public class Student{
     public void setEndEducation(LocalDate endEducation) {
         this.endEducation = endEducation;
     }
-
+    public void setEndEducation(String endEducation){
+    	this.endEducation = LocalDate.parse(endEducation);
+    }
+    
     public LinkedInConnectionStatus getLinkedInConnectionStatus() {
         return linkedInConnectionStatus;
     }
@@ -150,5 +156,8 @@ public class Student{
     }
     public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
+    }
+    public void setDateOfBirth(String dateOfBirth){
+    	this.dateOfBirth = LocalDate.parse(dateOfBirth);
     }
 }

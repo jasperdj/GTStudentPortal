@@ -35,11 +35,11 @@
 					<td>{{s.lastName }}</td>
 					<td>{{s.email }}</td>
 					<td>{{s.phone }}</td>
-					<td>{{s.dateOfBirth }}</td>
+					<td>{{s.dateOfBirthFormatted }}</td>
 					<td>{{s.education.name }} {{s.education.degree}}</td>
-					<td><a href="#" ng-click="vm.updateStudent(student)"><i
+					<td><a href="#" ng-click="vm.updateStudent(s)"><i
 							class="write icon"></i></a> <a href="#"
-						ng-click="vm.removeStudent(student)"><i class="remove icon"></i></a></td>
+						ng-click="vm.removeStudent(s)"><i class="remove icon"></i></a></td>
 				</tr>
 			</tbody>
 		</table>
@@ -78,7 +78,7 @@
 
 					<div class="field">
 						<label>Geboortedatum </label> <input
-							ng-model="newStudent.dateOfBirth" type="date" name="dateOfBirth" />
+							ng-model="dateOfBirth" type="date" name="dateOfBirth" id="dateOfBirth" />
 					</div>
 
 					<div class="fields">
@@ -96,12 +96,12 @@
 							</select>
 						</div>
 						<div class="three wide field">
-							<label>Begin</label> <input ng-model="newStudent.startEducation"
-								type="date" id="startEducation" name="startEducation" />
+							<label>Begin</label> <input 
+								type="date" ng-model="startEducation" id="startEducation" name="startEducation" />
 						</div>
 						<div class="three wide field">
-							<label>Eind</label> <input ng-model="newStudent.endEducation"
-								type="date" id="endEducation" name="endEducation" />
+							<label>Eind</label> <input 
+								type="date" ng-model="endEducation" id="endEducation" name="endEducation" />
 						</div>
 					</div>
 
@@ -118,7 +118,7 @@
 					</div>
 
 					<button
-						ng-click="vm.addStudent(newEvent, startEducation, endEducation)"
+						ng-click="vm.addStudent(newStudent, startEducation, endEducation, dateOfBirth)"
 						class="ui positive right labeled icon button" type="submit">
 						<i class="plus icon"></i>Cre&euml;er student
 					</button>
@@ -133,5 +133,6 @@
 	<script src="<c:url value="/resources/js/pages/recruiterModule.js" />"></script>
 	<script
 		src="<c:url value="/resources/js/pages/recruiterStudentController.js" />"></script>
+		<script src="<c:url value="/resources/js/moments.js" />"></script>
 </body>
 </html>
