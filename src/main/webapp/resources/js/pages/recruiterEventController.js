@@ -23,11 +23,17 @@
       if(newEvent === undefined){
         return;
       }
-      console.log(newEvent.imageUrl);
+      console.log(image);
       newEvent.start = start.toISOString().replace("Z","");
       newEvent.end = end.toISOString().replace("Z","");
 
-      $http.post("/recruiterapi/events/", newEvent)
+      var fd = new FormData();
+      fd.append('image', image);
+      fd.append('newEvent', newEvent);
+      $http.post("/recruiterapi/events/", fd, {
+        transFormRequest: angular.identity,
+        headers: {'Content-Type' : undefined}
+      })
       .then(function (response) {
         console.log(response);
         vm.events.push(response.data);

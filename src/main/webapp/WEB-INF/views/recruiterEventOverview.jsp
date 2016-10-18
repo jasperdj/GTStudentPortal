@@ -38,8 +38,8 @@
 					<td>{{ event.vacancy - event.attendees.length }}</td>
 					<td>{{ event.vacancy }}</td>
 					<td><a href="#" ng-click="vm.updateEvent(event)"><i
-							class="write icon"></i></a> <a href="#" ng-click="vm.removeEvent(event)"><i
-							class="remove icon"></i></a></td>
+							class="write icon"></i></a> <a href="#"
+						ng-click="vm.removeEvent(event)"><i class="remove icon"></i></a></td>
 				</tr>
 			</tbody>
 		</table>
@@ -47,15 +47,15 @@
 		<div class="ui modal">
 			<div class="ui main text container padded">
 				<h3>Cre&euml;er nieuw event</h3>
-				<form class="ui form" ng-model="newEvent" enctype="multipart/form-data">
+				<form class="ui form" ng-model="newEvent"
+					enctype="multipart/form-data">
 					<div>
 						<label for="title">Titel</label> <input ng-model="newEvent.title"
 							type="text" name="title" id="title" required autofocus>
 					</div>
-
 					<div>
-						<label for="title">Achtergrond</label> <input
-							ng-model="newEvent.imageUrl" type="file" name="image" id="image">
+						<label for="image">Achtergrond</label> <input type="file"
+							name="image" ng-model="image" id="image">
 					</div>
 					<div>
 						<label for="location">Locatie</label> <input
@@ -64,18 +64,17 @@
 					</div>
 					<div>
 						<label for="vacany">Plekken</label> <input
-							ng-model="newEvent.vacancy" type="text" name="vacancy" id="vacancy"
-							required>
+							ng-model="newEvent.vacancy" type="text" name="vacancy"
+							id="vacancy" required>
 					</div>
 					<div>
 						<label for="start">Startdatum + tijd</label> <input
-							type="datetime-local" name="start" ng-model="start"
-							id="start" required>
+							type="datetime-local" name="start" ng-model="start" id="start"
+							required>
 					</div>
 					<div>
 						<label for="end">Einddatum + tijd</label> <input ng-model="end"
-							 type="datetime-local" name="end" id="end"
-							required>
+							type="datetime-local" name="end" id="end" required>
 					</div>
 					<div>
 						<label for="description">Beschrijving</label>
@@ -85,14 +84,16 @@
 					<div>
 						<label for="eventTypes">Soort event</label> <select
 							ng-model="newEvent.eventTypes" id="eventTypes" name="eventTypes"
-							multiple="true" ng-options="eventType as eventType.name for eventType in vm.eventTypes">
+							multiple="true"
+							ng-options="eventType as eventType.name for eventType in vm.eventTypes">
 							<option class="noneOption"></option>
 						</select>
 					</div>
 					<div>
 						<label for="eventThemes">Thema's</label> <select
-							ng-model="newEvent.eventThemes" id="eventThemes" name="eventThemes"
-							multiple="true" ng-options="eventTheme as eventTheme.name for eventTheme in vm.eventThemes">
+							ng-model="newEvent.eventThemes" id="eventThemes"
+							name="eventThemes" multiple="true"
+							ng-options="eventTheme as eventTheme.name for eventTheme in vm.eventThemes">
 							<option class="noneOption"></option>
 						</select>
 					</div>
