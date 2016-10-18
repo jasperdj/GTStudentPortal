@@ -9,9 +9,15 @@
 <!-- .element: class="fragment" -->
 - Innovatie is wat een IT bedrijf uniek positioneert op de markt. 
 <!-- .element: class="fragment" -->
-- Gebrek aan innovatie leidt tot verlies in bestaans recht. (Zoals
-  bijvoorbeeld: Nokia, Kodak, Hyves)
+- Gebrek aan innovatie leidt tot verlies in bestaans recht. 
 <!-- .element: class="fragment" -->
+
+![](http://company.nokia.com/sites/default/files/gallery/images/nokia_white_logo.png)
+<!-- .element: class="fragment" height="150px" width="auto" -->
+![](http://vector.me/files/images/5/1/51491/kodak.png) 
+<!-- .element: class="fragment" height="150px" width="auto" -->
+![](http://entoen.tv/wp-content/uploads/Hyves-front.jpg) 
+<!-- .element: class="fragment" height="150px" width="auto" -->
 
 ---
 
@@ -37,7 +43,7 @@
 ---
 
 ### Hoe kan Get There zich uniek positioneren op deze markt?
-Wat zoekt de uitstekende ambituese student waar Get there zo opzoek naar is?
+Wat zoekt de uitstekende ambitieuze student waar Get there zo opzoek naar is?
 
 ---
 
@@ -60,4 +66,19 @@ Wat zoekt de uitstekende ambituese student waar Get there zo opzoek naar is?
 ---
 
 ### GT student portal
-![](http://www.speakart.nl/sites/default/files/presenteren_pitchen_groningen_getthere.jpg) 
+![](http://www.speakart.nl/sites/default/files/presenteren_pitchen_groningen_getthere.jpg)
+
+---
+
+# Demo
+
+
+---
+
+### Hoe recruiten wij de student?
+![](getStudentHere.png) 
+
+--- 
+
+### Recruitment in de IT
+- 
