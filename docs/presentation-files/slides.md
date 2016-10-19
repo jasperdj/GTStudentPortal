@@ -135,7 +135,7 @@ Wat zoekt de uitstekende ambitieuze student waar Get there zo opzoek naar is?
 <!-- .element: class="fragment" -->
 - Keep students here
 <!-- .element: class="fragment" -->
-    - Door persoonlijke proactief te benaderen.
+    - Door persoonlijke proactieve benadering.
 <!-- .element: class="fragment" -->
     - Door ze zelf eenvoudig een keuze te laten maken
 <!-- .element: class="fragment" -->
@@ -157,7 +157,7 @@ Wat zoekt de uitstekende ambitieuze student waar Get there zo opzoek naar is?
 ---
 
 # Reflectie Ruud
-- 
+
 
 ---
 
