@@ -32,11 +32,17 @@ Cronjob every hour, go through all emailNotifications, send email when
 - isAnEmailNotification == true;
 - hasReceivedEmail == false
 
+Events
+- Education edited Student
+- Birthday edited student
+- Weekly cronjob-> account signup's
+
+
 
 # Notifications
 - Every week
     - Account signup's
-    - Event signup's
+    - (Event signup's)
 - Every birthday an email. 
 - 1 day before every student comment. 
 - 3 months before education. 

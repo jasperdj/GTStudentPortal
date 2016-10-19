@@ -1,3 +1,10 @@
+<!-- 
+- Spelling 
+- Inweven van leerprocess. 
+- Tekst reductie eerste helft. 
+- Intentie presentatie veranderen naar leerproces. 
+--> 
+
 # GT student portal
 ## To inspire excellent students to join us. 
 
