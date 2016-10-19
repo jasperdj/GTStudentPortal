@@ -24,9 +24,13 @@
         return;
       }
       console.log(newStudent);
-      newStudent.startEducation = start.toISOString().substring(0, 10);
-      newStudent.endEducation = end.toISOString().substring(0, 10);
-      newStudent.dateOfBirth = dateOfBirth.toISOString().substring(0, 10);
+      if(start !== undefined && end !== undefined){
+        newStudent.startEducation = start.toISOString().substring(0, 10);
+        newStudent.endEducation = end.toISOString().substring(0, 10);
+      }
+      if(dateOfBirth !== undefined){
+        newStudent.dateOfBirth = dateOfBirth.toISOString().substring(0, 10);
+      }
 
       $http.post("/recruiterapi/students/", newStudent)
       .then(function (response) {

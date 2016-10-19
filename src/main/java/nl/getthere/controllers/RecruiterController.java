@@ -15,10 +15,12 @@ import nl.getthere.model.Education;
 import nl.getthere.model.Event;
 import nl.getthere.model.Student;
 import nl.getthere.model.University;
+import nl.getthere.model.User;
 import nl.getthere.model.respositories.EducationRepository;
 import nl.getthere.model.respositories.EventRepository;
 import nl.getthere.model.respositories.StudentRepository;
 import nl.getthere.model.respositories.UniversityRepository;
+import nl.getthere.model.respositories.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
@@ -41,6 +43,9 @@ public class RecruiterController {
 
 	@Autowired
 	private StudentRepository studentRepo;
+	
+	@Autowired
+	private UserRepository userRepo;
 
 	@Autowired
 	private EventRepository eventRepo;
@@ -89,6 +94,8 @@ public class RecruiterController {
 			if(s.getId() == null){
 				return "404";
 			}
+			User u = userRepo.findOneByEmail(s.getEmail());
+			userRepo.delete(u.getUserId());
 			studentRepo.delete(studentid);
 		}catch(Exception e){
 			return e.getMessage();
@@ -140,11 +147,17 @@ public class RecruiterController {
 	}
 
 	@RequestMapping(value = "recruiter/events/{eventid}/", method = RequestMethod.POST)
-	public String updateEvent(@PathVariable Long eventid, @Valid Event uevent, BindingResult result) {
+	public String updateEvent(@PathVariable Long eventid, @ModelAttribute @Valid Event event, BindingResult result) {
 		if(result.hasErrors()){
 			return "updateEvent";
 		}
-		eventRepo.save(uevent);
+		try{
+			eventRepo.save(event);
+		}catch(Exception e){
+			System.out.println("ERROR IN UPDATEEVENT()");
+			e.printStackTrace();
+		}
+		
 		return "redirect:/recruiter/events";
 	}
 	
