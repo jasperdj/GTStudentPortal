@@ -1,15 +1,12 @@
 package nl.getthere.model;
 
 import java.time.LocalDate;
+import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import javax.validation.constraints.Size;
 
+import nl.getthere.controllers.StudentController;
 import org.hibernate.annotations.Generated;
 import org.hibernate.annotations.GenerationTime;
 import org.hibernate.validator.constraints.Email;
@@ -40,6 +37,7 @@ public class Student{
     private String contactOrigin;
     private LocalDate dateOfBirth;
     private Long id;
+    private List<StudentComment> studentComments;
     
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -150,5 +148,21 @@ public class Student{
     }
     public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
+    }
+
+    public Boolean getInterestedInEvents() {
+        return isInterestedInEvents;
+    }
+
+    public void setInterestedInEvents(Boolean interestedInEvents) {
+        isInterestedInEvents = interestedInEvents;
+    }
+
+    @OneToMany
+    public List<StudentComment> getStudentComments() {
+        return studentComments;
+    }
+    public void setStudentComments(List<StudentComment> studentComments) {
+        this.studentComments = studentComments;
     }
 }

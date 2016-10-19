@@ -1,30 +1,16 @@
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 abstract class EmailNotificationRecruiter {
   void postEmailAction();
 }
 
-Class EmailNotificationRecruiters extends EmailNotificationRecruiter {
+class EmailNotificationRecruiters extends EmailNotificationRecruiter {
   subject: Varchar(255)
   content: Text
   when: LocalDateTime
   isAnEmailNotification: Boolean
   hasReceivedEmail: Boolean
   hasBeenSeen: Boolean
-  (override) operation
+  postEmailAction();
 }
 
 Cronjob every hour, go through all emailNotifications, send email when 
@@ -46,21 +32,3 @@ Events
 - Every birthday an email. 
 - 1 day before every student comment. 
 - 3 months before education. 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
