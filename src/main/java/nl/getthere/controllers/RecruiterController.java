@@ -1,7 +1,15 @@
 package nl.getthere.controllers;
 
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Properties;
+import java.util.Random;
+
+import javax.imageio.ImageIO;
+import javax.validation.Valid;
 
 import nl.getthere.model.Education;
 import nl.getthere.model.Event;
@@ -13,7 +21,13 @@ import nl.getthere.model.respositories.StudentRepository;
 import nl.getthere.model.respositories.UniversityRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.support.PropertiesLoaderUtils;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -100,53 +114,75 @@ public class RecruiterController {
 		return educations;
 	}
 	
+	@ModelAttribute("event")
+	public Event createEventBean() {
+	        return new Event();
+	}
+	
+	@ModelAttribute("newEvent")
+	public Event createNewEventBean() {
+	        return new Event();
+	}
+	
 	@RequestMapping("recruiterapi/events/")
 	public @ResponseBody List<Event> getEvents() {
 		List<Event> events = (List<Event>) eventRepo.findAll();
 		return events;
 	}
 
-	@RequestMapping("recruiterapi/events/{eventid}/")
-	public @ResponseBody Event getEvent(@PathVariable Long eventid) {
-		Event event = eventRepo.findOne(eventid);
-		return event;
+	@RequestMapping("recruiter/events/{eventid}/")
+	public String getEvent(@PathVariable Long eventid, Model model) {
+		if(!eventRepo.exists(eventid)){
+			return "404";
+		}
+		model.addAttribute("event", eventRepo.findOne(eventid));
+		return "updateEvent";
 	}
 
-	@RequestMapping(value = "recruiterapi/events/{eventid}/", method = RequestMethod.PUT)
-	public @ResponseBody Event updateEvent(@PathVariable Long eventid) {
-
-		return null;
+	@RequestMapping(value = "recruiter/events/{eventid}/", method = RequestMethod.POST)
+	public String updateEvent(@PathVariable Long eventid, @Valid Event uevent, BindingResult result) {
+		if(result.hasErrors()){
+			return "updateEvent";
+		}
+		eventRepo.save(uevent);
+		return "redirect:/recruiter/events";
 	}
 	
-	@RequestMapping(value = "recruiterapi/events/", headers = "content-type=multipart/*", method = RequestMethod.POST)
-	public @ResponseBody Event createEvent(@RequestBody Event newEvent, @RequestParam("image") MultipartFile image) throws IOException {
-		System.out.println(newEvent);
+    @RequestMapping(value = "recruiter/events/new", method = RequestMethod.GET)
+    public String newEvent(Model model) {
+        return "newEvent";
+    }
+	
+	@RequestMapping(value = "recruiter/events/new", headers = "content-type=multipart/*", method = RequestMethod.POST)
+	public String createEvent(@Valid Event newEvent, @RequestParam("image") MultipartFile image, BindingResult result) throws IOException {
+		if(result.hasErrors()){
+			return "newEvent";
+		}
 		if(newEvent == null){
-			return null;
+			return "newEvent";
 		}
 		if(newEvent.getTitle() == null){
-			return null;
+			return "newEvent";
 		}
-		System.out.println(image);
-//		ADD TO PARAMETERS , @RequestParam("image") MultipartFile image		
-//		Resource resource = new ClassPathResource("/application.properties");
-//		Properties props = PropertiesLoaderUtils.loadProperties(resource);
-//		String root = props.getProperty("event.image.location");
-//
-//		Random randy = new Random();
-//
-//		if (!image.isEmpty()) {
-//			String id = randy.nextInt(Integer.MAX_VALUE) + ".png";
-//			String filename = root + id ;
-//			BufferedImage src = ImageIO.read(new ByteArrayInputStream(image.getBytes()));
-//			File destination = new File(filename); 
-//			ImageIO.write(src, "png", destination);
-//			newEvent.setImageUrl(id);
-//		}
-		
-		return eventRepo.save(newEvent);
+
+		Resource resource = new ClassPathResource("/application.properties");
+		Properties props = PropertiesLoaderUtils.loadProperties(resource);
+		String root = props.getProperty("event.image.location");
+
+		Random randy = new Random();
+
+		if (!image.isEmpty()) {
+			String id = randy.nextInt(Integer.MAX_VALUE) + ".png";
+			String filename = root + id ;
+			BufferedImage src = ImageIO.read(new ByteArrayInputStream(image.getBytes()));
+			File destination = new File(filename); 
+			ImageIO.write(src, "png", destination);
+			newEvent.setImageUrl(id);
+		}
+		eventRepo.save(newEvent);
+		return "redirect:/recruiter/events";
 	}
-	
+		
 	@RequestMapping(value = "recruiterapi/events/{eventid}", method = RequestMethod.DELETE)
 	public @ResponseBody String deleteEvent(@PathVariable Long eventid){
 		try{

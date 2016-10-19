@@ -14,7 +14,7 @@
 		class="ui container padded">
 		<%@include file="../includes/status.jsp"%>
 
-		<a href="#" ng-click="vm.showNewEvent()" class="ui green button"><i
+		<a href="/recruiter/events/new"  class="ui green button"><i
 			class="plus icon"></i>Nieuw Event</a>
 
 		<table class="ui striped table">
@@ -37,7 +37,7 @@
 					<td>{{ event.attendees.length }}</td>
 					<td>{{ event.vacancy - event.attendees.length }}</td>
 					<td>{{ event.vacancy }}</td>
-					<td><a href="#" ng-click="vm.updateEvent(event)"><i
+					<td><a href="/recruiter/events/{{event.eventId}}/"><i
 							class="write icon"></i></a> <a href="#"
 						ng-click="vm.removeEvent(event)"><i class="remove icon"></i></a></td>
 				</tr>
@@ -47,63 +47,54 @@
 		<div class="ui modal">
 			<div class="ui main text container padded">
 				<h3>Cre&euml;er nieuw event</h3>
-				<form class="ui form" ng-model="newEvent"
+				<form:form class="ui form" role="form" method="post"
 					enctype="multipart/form-data">
 					<div>
-						<label for="title">Titel</label> <input ng-model="newEvent.title"
-							type="text" name="title" id="title" required autofocus>
+						<label for="title">Title</label> <input type="text" name="title"
+							id="title" required autofocus>
+					</div>
+
+					<div>
+						<label for="title">Images</label> <input type="file" name="image"
+							id="image">
 					</div>
 					<div>
-						<label for="image">Achtergrond</label> <input type="file"
-							name="image" ng-model="image" id="image">
+						<label for="start">Location</label> <input type="text"
+							name="location" id="location" required>
 					</div>
 					<div>
-						<label for="location">Locatie</label> <input
-							ng-model="newEvent.location" type="text" name="location"
-							id="location" required>
+						<label for="start">Vacancy</label> <input type="text"
+							name="vacancy" id="vacancy" required>
 					</div>
 					<div>
-						<label for="vacany">Plekken</label> <input
-							ng-model="newEvent.vacancy" type="text" name="vacancy"
-							id="vacancy" required>
+						<label for="start">Event start</label> <input
+							type="datetime-local" name="start" id="start" required>
 					</div>
 					<div>
-						<label for="start">Startdatum + tijd</label> <input
-							type="datetime-local" name="start" ng-model="start" id="start"
-							required>
+						<label for="end">Event end</label> <input type="datetime-local"
+							name="end" id="end" required>
 					</div>
 					<div>
-						<label for="end">Einddatum + tijd</label> <input ng-model="end"
-							type="datetime-local" name="end" id="end" required>
+						<label for="description">Description</label>
+						<textarea name="description" id="description" cols=10></textarea>
 					</div>
 					<div>
-						<label for="description">Beschrijving</label>
-						<textarea ng-model="newEvent.description" name="description"
-							id="description" cols=10></textarea>
-					</div>
-					<div>
-						<label for="eventTypes">Soort event</label> <select
-							ng-model="newEvent.eventTypes" id="eventTypes" name="eventTypes"
-							multiple="true"
-							ng-options="eventType as eventType.name for eventType in vm.eventTypes">
+						<label for="eventTypes">Event type</label> <select id="eventTypes"
+							name="eventTypes" multiple="true">
 							<option class="noneOption"></option>
 						</select>
 					</div>
 					<div>
-						<label for="eventThemes">Thema's</label> <select
-							ng-model="newEvent.eventThemes" id="eventThemes"
-							name="eventThemes" multiple="true"
-							ng-options="eventTheme as eventTheme.name for eventTheme in vm.eventThemes">
+						<label for="eventThemes">Event theme</label> <select
+							id="eventThemes" name="eventThemes" multiple="true">
 							<option class="noneOption"></option>
 						</select>
 					</div>
 					<br>
-					<button ng-click="vm.addEvent(newEvent, start, end)"
-						class="ui positive right labeled icon button" type="submit">
+					<button class="ui green button" type="submit">
 						<i class="plus icon"></i>Cre&euml;er event
 					</button>
-					<br>
-				</form>
+				</form:form>
 				<br>
 			</div>
 		</div>
