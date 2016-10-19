@@ -84,7 +84,16 @@ public class RecruiterController {
 		if(student == null){
 			return null;
 		}
-		return studentRepo.save(student);
+		User u = new User();
+		u.setFirstName(student.getFirstName());
+		u.setLastName(student.getLastName());
+		u.setEmail(student.getEmail());
+		u.setPassword("password");
+		Long studentId = StudentController.createStudent(studentRepo, userRepo, u);
+		if(studentId == 0){
+			return null;
+		}
+		return studentRepo.findOne(studentId);
 	}
 	
 	@RequestMapping(value = "recruiterapi/students/{studentid}", method = RequestMethod.DELETE)
