@@ -17,7 +17,7 @@
 		</p>
 	
 		<%@include file="../includes/status.jsp"%>
-		<p>Heb je al een account? <a href="/login">Log in</a></p>
+		<p>Heb je al een account? <a href="/login<c:if test="${redirect != null}">?redirect=${redirect}</c:if>">Log in</a></p>
 		<form:form method="post" modelAttribute="user" cssClass="ui form">
 			<div class="field">
 				<label>Naam <form:errors path="firstName" cssClass="form-error" /> <form:errors path="lastName" cssClass="form-error" /></label>
@@ -42,7 +42,7 @@
 				<label>Wachtwoord <form:errors path="password" cssClass="form-error" /></label>
 				<form:input type="password" path="password"/>
 			</div>
-			
+
 			<button type="submit" class="ui button">Registreer</button>
 		</form:form>
 	</div>

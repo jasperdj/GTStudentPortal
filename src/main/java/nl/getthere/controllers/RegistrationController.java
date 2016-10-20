@@ -55,12 +55,13 @@ public class RegistrationController {
 	}
 	
 	@RequestMapping("/registration")
-	public String showRegistrationForm(Model model){
+	public String showRegistrationForm(Model model, String redirect){
+		model.addAttribute("redirect", redirect);
 		return "registration";
 	}
 	
 	@RequestMapping(value = "/registration", method = RequestMethod.POST)
-	public String registerNewStudent(@Valid User user, BindingResult result, Model model ){
+	public String registerNewStudent( String redirect, @Valid User user, BindingResult result, Model model){
 		if(result.hasErrors()){
 			model.addAttribute("error", "Er is iets fout gegaan, probeer het opnieuw.");
 			return "registration";
@@ -76,7 +77,8 @@ public class RegistrationController {
 			e.printStackTrace();
 			return "registration";
 		}
-		
+
+		if (redirect != null) return "redirect:/login?redirect=" + redirect;
 		return "redirect:/login";
 	}
 

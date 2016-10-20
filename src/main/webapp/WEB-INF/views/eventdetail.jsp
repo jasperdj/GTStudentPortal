@@ -50,7 +50,7 @@
 								Heb je al een account? <a href="/login?redirect=/events/{{vm.event.eventId}}">Log dan hier in.</a>
 							</p>
 							<p>
-								<a href="/registration">Registreer een account.</a>
+								<a href="/registration?redirect=/events/{{vm.event.eventId}}">Registreer een account.</a>
 							</p>
 						</div>
 					</div>
