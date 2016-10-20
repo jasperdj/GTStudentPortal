@@ -103,7 +103,7 @@ public class Student{
         this.education = education;
     }
 
-    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @DateTimeFormat(iso=DateTimeFormat.ISO.DATE)
     @Column(nullable = true, unique = false)
     public LocalDate getStartEducation() {
         return startEducation;
@@ -115,7 +115,7 @@ public class Student{
     	this.startEducation = LocalDate.parse(startEducation);
     }
 
-    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @DateTimeFormat(iso=DateTimeFormat.ISO.DATE)
     @Column(nullable = true, unique = false)
     public LocalDate getEndEducation() {
         return endEducation;
@@ -149,7 +149,7 @@ public class Student{
         this.contactOrigin = contactOrigin;
     }
 
-    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @DateTimeFormat(iso=DateTimeFormat.ISO.DATE)
     @Column(nullable = true, unique = false)
     public LocalDate getDateOfBirth() {
         return dateOfBirth;

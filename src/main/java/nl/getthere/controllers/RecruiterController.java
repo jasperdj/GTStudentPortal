@@ -74,10 +74,24 @@ public class RecruiterController {
 		return student;
 	}
 	
-	@RequestMapping(value = "recruiterapi/students/{studentid}/", method = RequestMethod.PUT)
-	public @ResponseBody Student updateStudent(@PathVariable Long studentid) {
-
-		return null;
+	@RequestMapping(value = "recruiterapi/students/{studentid}", method = RequestMethod.PUT)
+	public @ResponseBody Student updateStudent(@PathVariable Long studentid, @RequestBody Student student) {
+		Student s = studentRepo.findOne(studentid);
+		User u = userRepo.findOneByEmail(s.getEmail());
+		s.setFirstName(student.getFirstName());
+		u.setFirstName(student.getFirstName());
+		s.setLastName(student.getLastName());
+		u.setLastName(student.getLastName());
+		s.setEmail(student.getEmail());
+		u.setEmail(student.getEmail());
+		s.setPhone(student.getPhone());
+		s.setDateOfBirth(student.getDateOfBirth());
+		s.setEducation(student.getEducation());
+		s.setStartEducation(student.getStartEducation());
+		s.setEndEducation(student.getEndEducation());
+		s.setContactOrigin(student.getContactOrigin());
+		
+		return studentRepo.save(s);
 	}
 	
 	@RequestMapping(value = "recruiterapi/students/", method = RequestMethod.POST)
