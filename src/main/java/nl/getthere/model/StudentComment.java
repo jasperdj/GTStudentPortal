@@ -40,6 +40,7 @@ public class StudentComment {
     public void setReminder(LocalDate reminder) {
         this.reminder = reminder;
     }
+    public void setReminder(String reminder) { this.reminder = LocalDate.parse(reminder); }
 
     @DateTimeFormat(iso=DateTimeFormat.ISO.DATE_TIME)
     public LocalDateTime getCreated() {
@@ -48,4 +49,5 @@ public class StudentComment {
     public void setCreated(LocalDateTime created) {
         this.created = created;
     }
+    public void setCreated(String created) { this.created = LocalDateTime.parse(created); }
 }

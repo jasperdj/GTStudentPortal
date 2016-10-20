@@ -158,7 +158,7 @@ public class Student{
         isInterestedInEvents = interestedInEvents;
     }
 
-    @OneToMany
+    @OneToMany(cascade = {CascadeType.ALL})
     public List<StudentComment> getStudentComments() {
         return studentComments;
     }

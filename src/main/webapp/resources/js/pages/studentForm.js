@@ -15,7 +15,26 @@
         vm.student = null;
         vm.studentComments = null;
 
+        vm.addComment = function(){
+            var studentComment = {'comment': vm.comment, 'reminder': null, 'created': new Date().toISOString().replace("Z", "")} ;
+            var studentClone = JSON.parse(JSON.stringify(vm.student));
+            studentClone['studentComments'].push(studentComment);
 
+            $http({
+                method: 'PUT',
+                url: '/gApi/students/'+vm.studentId,
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                data: studentClone
+            }).success(function(data, status){
+                vm.student.push(studentComment);
+            }).error(function(error){
+                alert('Error: commentaar kon niet worden toegevoegd. Probeer later opnieuw.');
+            });
+
+
+        };
 
         setupController();
         function setupController() {
