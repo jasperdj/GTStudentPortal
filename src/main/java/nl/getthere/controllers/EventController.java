@@ -26,6 +26,7 @@ import nl.getthere.model.respositories.UserRepository;
 import nl.getthere.security.CurrentUser;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PropertiesLoaderUtils;
@@ -52,6 +53,7 @@ public class EventController {
     private EventTypeRespository eventTypeRepo;
     @Autowired
     private EventThemeRepository eventThemeRepo;
+    @Qualifier("userRepository")
     @Autowired
     private UserRepository userRepo;
 

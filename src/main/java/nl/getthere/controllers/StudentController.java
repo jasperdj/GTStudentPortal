@@ -92,7 +92,7 @@ public class StudentController {
 
 	@RequestMapping("/student")
 	public String showForm(SessionStatus status){
-		return "newstudent";
+			return "newstudent";
 	}
 	
 	@RequestMapping(value = "/student", method = RequestMethod.POST)

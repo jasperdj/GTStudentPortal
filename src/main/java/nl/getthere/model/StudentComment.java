@@ -13,8 +13,8 @@ import java.time.LocalDateTime;
 public class StudentComment {
     private Long id;
     private String comment;
-    private LocalDateTime timestamp;
     private LocalDate reminder;
+    private LocalDateTime created;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -33,19 +33,19 @@ public class StudentComment {
         this.comment = comment;
     }
 
-    @DateTimeFormat(iso=DateTimeFormat.ISO.DATE_TIME)
-    public LocalDateTime getTimestamp() {
-        return timestamp;
-    }
-    public void setTimestamp(LocalDateTime timestamp) {
-        this.timestamp = timestamp;
-    }
-
     @DateTimeFormat(iso=DateTimeFormat.ISO.DATE)
     public LocalDate getReminder() {
         return reminder;
     }
     public void setReminder(LocalDate reminder) {
         this.reminder = reminder;
+    }
+
+    @DateTimeFormat(iso=DateTimeFormat.ISO.DATE_TIME)
+    public LocalDateTime getCreated() {
+        return created;
+    }
+    public void setCreated(LocalDateTime created) {
+        this.created = created;
     }
 }
