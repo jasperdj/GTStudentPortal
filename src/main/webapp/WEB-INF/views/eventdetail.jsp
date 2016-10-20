@@ -27,10 +27,22 @@
 					</c:forEach>
 				</c:if>
 				<br><br>
-				<button ng-if="${contains}" ng-click="vm.signinToggle()"
-					class="massive ui active red button">
-					<i class="checkmark box icon"></i>Schrijf je uit
-				</button>
+				<div ng-if="${contains}" class="ui cards centered">
+
+					<div class="card">
+						<div class="content">
+							<div class="header"><i class="checkmark box icon"></i>Je bent ingeschreven!</div>
+						</div>
+						<div class="ui bottom attached button" ng-click="vm.signinToggle()">
+							<i class="remove circle icon"></i>Uitschrijven
+						</div>
+					</div>
+
+
+
+
+				</div>
+
 				<button ng-if="${!contains} && vm.event.attendees.length < vm.event.vacancy" ng-click="vm.signinToggle()"
 					class="massive ui red button">
 					<i class="square outline icon"></i>Schrijf je in
