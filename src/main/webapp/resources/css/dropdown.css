@@ -64,7 +64,7 @@
   border-radius: 0.28571429rem;
   -webkit-transition: opacity 0.1s ease;
   transition: opacity 0.1s ease;
-  z-index: 11;
+  z-index: 40;
   will-change: transform, opacity;
 }
 .ui.dropdown .menu > * {
