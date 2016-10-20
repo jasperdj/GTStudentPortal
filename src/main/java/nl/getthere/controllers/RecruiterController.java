@@ -85,16 +85,16 @@ public class RecruiterController {
 		if(student == null){
 			return null;
 		}
-		List<String> errors = validateStudent(student);
-		if(!errors.isEmpty()){
-			return null; //TODO Make sure these errors are sent back.
-		}
+//		List<String> errors = validateStudent(student);
+//		if(!errors.isEmpty()){
+//			return null; //TODO Make sure these errors are sent back.
+//		}
 		User u = new User();
 		u.setFirstName(student.getFirstName());
 		u.setLastName(student.getLastName());
 		u.setEmail(student.getEmail());
 		u.setPassword("password");
-		Long studentId = StudentController.createStudent(studentRepo, userRepo, u);
+		Long studentId = StudentController.createStudent(studentRepo, userRepo, u, student);
 		if(studentId == 0){
 			return null;
 		}

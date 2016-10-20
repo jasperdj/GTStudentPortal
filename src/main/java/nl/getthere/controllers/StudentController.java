@@ -119,9 +119,8 @@ public class StudentController {
 		return "detail";
 	}
 	
-	public static Long createStudent(StudentRepository studentRepo, UserRepository userRepo,  User user) {
+	public static Long createStudent(StudentRepository studentRepo, UserRepository userRepo,  User user, Student student) {
 		try{
-			Student student = new Student();
 			student.setFirstName(user.getFirstName());
 			student.setLastName(user.getLastName());
 			student.setEmail(user.getEmail());
