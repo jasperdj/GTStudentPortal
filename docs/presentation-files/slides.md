@@ -1,12 +1,14 @@
 <!-- 
-- Spelling 
 - Inweven van leerprocess. 
 - Tekst reductie eerste helft. 
 - Intentie presentatie veranderen naar leerproces. 
+- Spelling 
 --> 
 
-# GT student portal
+# GT Academy: Student Portal
 ## To inspire excellent students to join us. 
+
+Note: Academy leertraject, en project. 
 
 ---
 
@@ -77,8 +79,12 @@ Wat zoekt de uitstekende ambitieuze student waar Get there zo opzoek naar is?
 
 ---
 
-# [Demo](http://localhost:8080/)
 
+
+---
+
+# [Demo](http://localhost:8080/)
+Note: Angular, Jquery, Javascript, Html/css, Spring library tags, JSP. 
 
 ---
 
@@ -88,31 +94,13 @@ Wat zoekt de uitstekende ambitieuze student waar Get there zo opzoek naar is?
 ---
 
 ### Hoe worden IT'ers gerecruit? 
-- Standaard uitnodigingen.
-<!-- .element: class="fragment" -->
-- Ongepersonaliseerde communicatie. 
+- Standaard uitnodigingen. 
+Note: Ze kennen je niet, persoonlijke benadering. 
 <!-- .element: class="fragment" -->
 - Maken keuzes voor jou. 
+Note: Ze kijken naar skillset, niet interesses. 
 <!-- .element: class="fragment" -->
-
----
-
-### Waarom doen ze dit? 
-- Ze kennen je niet.
-<!-- .element: class="fragment" -->
-- Ze hebben veel volume, maar weinig slaagkans. 
-<!-- .element: class="fragment" -->
-- Ze moeten wel een keuze voor je maken. 
-<!-- .element: class="fragment" -->
-
----
-
-### Wat wil de student?
-- Ze willen persoonlijk en eerlijk behandeld worden. 
-<!-- .element: class="fragment" -->
-- Ze willen eenvoudig zelf kunnen kiezen voor stages/traineeships etc.
-<!-- .element: class="fragment" -->
-- Ze willen zich niet bezwaard voelen ergens voor te moeten kiezen.
+- Wat zou de student willen?
 <!-- .element: class="fragment" -->
 
 ---
@@ -123,31 +111,19 @@ Wat zoekt de uitstekende ambitieuze student waar Get there zo opzoek naar is?
 ---
 
 # [Demo](http://localhost:8080/)
-
----
-
-###  GT Student Portal
-![](getStudentHere2.png)
+Note: Spring, Hibernate, Security, Forms, Apache commons, 
 
 ---
 
 ### GT Student portal
 - Get students here
 <!-- .element: class="fragment" -->
-    - Gemaakt door en voor studenten. 
-<!-- .element: class="fragment" -->
-    - Verlaagd kosten externe recruitment. 
-<!-- .element: class="fragment" -->
-    - Creeert een sfeer van excellentie, inspiratie en groei. 
-<!-- .element: class="fragment" -->
 - Keep students here
 <!-- .element: class="fragment" -->
-    - Door persoonlijke proactieve benadering.
-<!-- .element: class="fragment" -->
-    - Door ze zelf eenvoudig een keuze te laten maken
-<!-- .element: class="fragment" -->
-    - Door ze te inspireren.
-<!-- .element: class="fragment" -->
+
+Note: Gemaakt door en voor studenten, Verlaagd kosten recruitment. Creeert een sfeer. persoonlijke proactieve benadering. eenvoudig  keuze  maken inspireren.
+
+![](getStudentHere2.png)
 
 ---
 
