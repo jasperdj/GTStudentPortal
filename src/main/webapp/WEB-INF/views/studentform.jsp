@@ -8,18 +8,8 @@
 <head>
     <%@include file="../includes/header.jsp" %>
 
-    <style>
-        .addMessage .header {
-            margin-bottom: 10px;
-        }
-
-        .addMessage input.submitButton {
-            margin-top: 10px;
-        }
-    </style>
-
 </head>
-<body ng-app="studentForm" ng-controller="studentFormController as vm" ng-cloak>
+<body>
 <%@include file="../includes/navbar.jsp" %>
 
 <div class="ui main text container padded">
@@ -28,11 +18,6 @@
     <div class="ui breadcrumb">
         <a id="personCrumb" class="section">Persoon</a>
         <i class="right angle icon divider"></i>
-
-        <sec:authorize url="/students">
-            <a id="commentsCrumb" class="section">Comments</a>
-            <i class="right angle icon divider"></i>
-        </sec:authorize>
 
         <a id="contactCrumb" class="section">Contact</a>
         <i class="right angle icon divider"></i>
@@ -152,40 +137,8 @@
         <button type="submit" class="ui centre floated button">Submit</button>
 
     </form:form>
-
-    <sec:authorize url="/students">
-        <div id="comments" class="formPart">
-            <div class="field">
-                <div class="ui message addMessage">
-
-                    <form ng-submit="vm.addComment()">
-                        <div class="header">Voeg commentaar toe</div>
-                        <label>Commentaar:</label>
-                        <input type="text" name="title" ng-model="vm.comment"/>
-
-                        <label>Herinner mij op:</label>
-                        <input ng-model="vm.reminder" type="date" name="date"/>
-                        <br>
-                        <input type="button" class="ui icon button submitButton" ng-click="vm.addComment()">
-                    </form>
-                </div>
-                <div class="ui message" ng-repeat="studentComment in vm.studentComments">
-                    <i class="close icon"></i>
-                    <div class="header">
-                        {{ studentComment['comment'] }}
-                    </div>
-                    <p ng-show="tudentComment['comment'] != null">
-                        {{ studentComment['comment'].created.dayOfWeek}},
-                        {{studentComment['comment'].created.month}}
-                        {{studentComment['comment'].created.dayOfMonth }}</p>
-                </div>
-                <br/>
-            </div>
-        </div>
-    </sec:authorize>
 </div>
 <%@include file="../includes/footer.jsp" %>
 <script src="<c:url value="/resources/js/formControl.js" />"></script>
-<script src="<c:url value="/resources/js/pages/studentForm.js" />"></script>
 </body>
 </html>

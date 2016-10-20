@@ -180,6 +180,10 @@ public class StudentController {
 	
 	@RequestMapping(value = "/student/{id}", method = RequestMethod.GET)
 	public String showStudent(@PathVariable Long id, Model model){
+		if (CurrentUser.getCurrentUser().getRole().equals("recruiter")) {
+			return "studentDetailRecruiter";
+		}
+
 		Student s = studentRepo.findOne(id);
 		if(s == null){
 			return "404";
