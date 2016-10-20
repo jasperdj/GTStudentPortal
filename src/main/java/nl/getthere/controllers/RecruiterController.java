@@ -160,16 +160,28 @@ public class RecruiterController {
 		return "updateEvent";
 	}
 
-	@RequestMapping(value = "recruiter/events/{eventid}/", method = RequestMethod.POST)
-	public String updateEvent(@PathVariable Long eventid, @ModelAttribute @Valid Event event, BindingResult result) {
+	@RequestMapping(value = "recruiter/events/{eventid}/", headers = "content-type=multipart/*", method = RequestMethod.POST)
+	public String updateEvent(@PathVariable Long eventid, @ModelAttribute @Valid Event event, @RequestParam("image") MultipartFile image, BindingResult result) throws IOException {
 		if(result.hasErrors()){
 			return "updateEvent";
 		}
+		
+		Event e = eventRepo.findOne(eventid);
+		e.setTitle(event.getTitle());
+		e.setDescription(event.getDescription());
+		e.setImageUrl(processImage(image));
+		e.setStart(event.getStart());
+		e.setEnd(event.getEnd());
+		e.setLocation(event.getLocation());
+		e.setEventThemes(event.getEventThemes());
+		e.setEventTypes(event.getEventTypes());
+		e.setVacancy(event.getVacancy());
+		
 		try{
-			eventRepo.save(event);
-		}catch(Exception e){
+			eventRepo.save(e);
+		}catch(Exception ex){
 			System.out.println("ERROR IN UPDATEEVENT()");
-			e.printStackTrace();
+			ex.printStackTrace();
 		}
 		
 		return "redirect:/recruiter/events";
@@ -192,20 +204,8 @@ public class RecruiterController {
 			return "newEvent";
 		}
 
-		Resource resource = new ClassPathResource("/application.properties");
-		Properties props = PropertiesLoaderUtils.loadProperties(resource);
-		String root = props.getProperty("event.image.location");
-
-		Random randy = new Random();
-
-		if (!image.isEmpty()) {
-			String id = randy.nextInt(Integer.MAX_VALUE) + ".png";
-			String filename = root + id ;
-			BufferedImage src = ImageIO.read(new ByteArrayInputStream(image.getBytes()));
-			File destination = new File(filename); 
-			ImageIO.write(src, "png", destination);
-			newEvent.setImageUrl(id);
-		}
+		newEvent.setImageUrl(processImage(image));
+		
 		eventRepo.save(newEvent);
 		return "redirect:/recruiter/events";
 	}
@@ -258,5 +258,23 @@ public class RecruiterController {
         java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
         java.util.regex.Matcher m = p.matcher(email);
         return m.matches();
+	}
+	
+	private String processImage(MultipartFile image) throws IOException{
+		Resource resource = new ClassPathResource("/application.properties");
+		Properties props = PropertiesLoaderUtils.loadProperties(resource);
+		String root = props.getProperty("event.image.location");
+
+		Random randy = new Random();
+
+		if (!image.isEmpty()) {
+			String id = randy.nextInt(Integer.MAX_VALUE) + ".png";
+			String filename = root + id ;
+			BufferedImage src = ImageIO.read(new ByteArrayInputStream(image.getBytes()));
+			File destination = new File(filename); 
+			ImageIO.write(src, "png", destination);
+			return id;
+		}
+		return "";
 	}
 }
