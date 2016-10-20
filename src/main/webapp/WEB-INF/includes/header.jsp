@@ -18,14 +18,14 @@
 <link rel="stylesheet" type="text/css"
 	href="<c:url value="/resources/css/image.css"/>">
 <link rel="stylesheet" type="text/css"
-	href="<c:url value="/resources/css/menu.css"/>">
+	href="<c:url value="/resources/css/menuBeamer.css"/>">
 
 <link rel="stylesheet" type="text/css"
-	href="<c:url value="/resources/css/divider.css"/>">
+	href="<c:url value="/resources/css/dividerBeamer.css"/>">
 <link rel="stylesheet" type="text/css"
 	href="<c:url value="/resources/css/dropdown.css"/>">
 <link rel="stylesheet" type="text/css"
-	href="<c:url value="/resources/css/segment.css"/>">
+	href="<c:url value="/resources/css/segmentBeamer.css"/>">
 <link rel="stylesheet" type="text/css"
 	href="<c:url value="/resources/css/button.css"/>">
 <link rel="stylesheet" type="text/css"

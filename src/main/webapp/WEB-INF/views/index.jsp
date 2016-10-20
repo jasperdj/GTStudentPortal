@@ -24,7 +24,8 @@
 	<div class="pusher">
 		<%@include file="../includes/navbar.jsp"%>
 		<div id="videoWrapper">
-			<div id="videoContent" class="ui center aligned segment">
+
+			<div id="videoContent" class="ui center aligned" style="text-align: center;">
 				<h3>Wat inspireert jou?</h3>
 				<h4>Beleef je passie bij Get There</h4>
 
