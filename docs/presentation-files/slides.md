@@ -12,13 +12,13 @@ Note: Academy leertraject, en project.
 
 ---
 
-### Waarom wil Get there studenten aantrekken?
+### Waarom wil Get There studenten aantrekken?
 
 - Nieuwe generaties brengen nieuwe innovaties. 
 <!-- .element: class="fragment" -->
 - Innovatie is wat een IT bedrijf uniek positioneert op de markt. 
 <!-- .element: class="fragment" -->
-- Gebrek aan innovatie leidt tot verlies in bestaans recht. 
+- Gebrek aan innovatie leidt tot verlies in bestaansrecht.
 <!-- .element: class="fragment" -->
 
 ![](http://company.nokia.com/sites/default/files/gallery/images/nokia_white_logo.png)
@@ -30,8 +30,8 @@ Note: Academy leertraject, en project.
 
 ---
 
-### Get there is niet alleen. 
-- Quintor organiseerd hackathons, wedstrijden en werkt nauw samen met
+### Get There is niet alleen.
+- Quintor organiseert hackathons, wedstrijden en werkt nauw samen met
   scholen. 
 <!-- .element: class="fragment" -->
 - Atos lanceerde eventpoint om young proffesionals aan te trekken.
@@ -41,7 +41,7 @@ Note: Academy leertraject, en project.
 
 ---
 
-### Hoe kunnen studenten Get there nog vinden?
+### Hoe kunnen studenten Get There nog vinden?
 - Dure externe recruiters?
 <!-- .element: class="fragment" -->
 - Google?
@@ -52,7 +52,7 @@ Note: Academy leertraject, en project.
 ---
 
 ### Hoe kan Get There zich uniek positioneren op deze markt?
-Wat zoekt de uitstekende ambitieuze student waar Get there zo opzoek naar is?
+Wat zoekt de uitstekende ambitieuze student waar Get There zo opzoek naar is?
 
 ---
 
@@ -62,7 +62,7 @@ Wat zoekt de uitstekende ambitieuze student waar Get there zo opzoek naar is?
 
 ---
 
-###  Een plek waar hij met alle vrijheid zichzelf kan ontplooien en veel kan leren.
+###  Een plek waar hij/zij met alle vrijheid zichzelf kan ontplooien en veel kan leren.
 ![](https://services.google.com/fh/files/helpcenter/engandtechjobsfow2.jpg)
 <!-- .element: height="450px" width="auto" -->
 
@@ -79,10 +79,6 @@ Wat zoekt de uitstekende ambitieuze student waar Get there zo opzoek naar is?
 
 ---
 
-
-
----
-
 # [Demo](http://localhost:8080/)
 Note: Angular, Jquery, Javascript, Html/css, Spring library tags, JSP. 
 
@@ -94,15 +90,13 @@ Note: Angular, Jquery, Javascript, Html/css, Spring library tags, JSP.
 ---
 
 ### Hoe worden IT'ers gerecruit? 
-- Standaard uitnodigingen. 
-Note: Ze kennen je niet, persoonlijke benadering. 
+- Standaard uitnodigingen.
 <!-- .element: class="fragment" -->
-- Maken keuzes voor jou. 
-Note: Ze kijken naar skillset, niet interesses. 
+- Maken keuzes voor jou.
 <!-- .element: class="fragment" -->
 - Wat zou de student willen?
 <!-- .element: class="fragment" -->
-
+Note: 1.Ze kennen je niet, persoonlijke benadering. 2. Ze kijken naar skillset, niet interesses.
 ---
 
 ### GT student portal
@@ -134,18 +128,10 @@ Note: Gemaakt door en voor studenten, Verlaagd kosten recruitment. Creeert een s
 <!-- .element: class="fragment" -->
 - Bekijken afgelopen evenementen
 <!-- .element: class="fragment" -->
-- Aansluitend design op Get there. 
+- Aansluitend design op Get There.
 <!-- .element: class="fragment" -->
 
 ---
 
-# Reflectie Ruud
-
-
----
-
-# Reflectie Jasper
-
----
 
 # Vragen? 
