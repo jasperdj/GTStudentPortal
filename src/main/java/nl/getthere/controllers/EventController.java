@@ -104,36 +104,6 @@ public class EventController {
     	return "redirect:/events/" + eventid + "/";
     }
 
-    @RequestMapping(value = "/api/newEvent", method = RequestMethod.POST)
-    public String newEventPost(Model model, @Valid Event event, BindingResult result, @RequestParam("image") MultipartFile image) throws IOException {
-        model.addAttribute("error", result);
-        System.out.println("RESULT:\n\n\n\n\n\n"+result);
-        
-        Resource resource = new ClassPathResource("/application.properties");
-		Properties props = PropertiesLoaderUtils.loadProperties(resource);
-		String root = props.getProperty("event.image.location");
-
-		Random randy = new Random();
-
-		if (!image.isEmpty()) {
-			String id = randy.nextInt(Integer.MAX_VALUE) + ".png";
-			String filename = root + id ;
-			BufferedImage src = ImageIO.read(new ByteArrayInputStream(image.getBytes()));
-			File destination = new File(filename); 
-			ImageIO.write(src, "png", destination);
-			event.setImageUrl(id);
-		}
-
-        eventRepo.save(event);
-        return "newEvent";
-    }
-
-    //todo: Map this for Recruiters only.
-    @RequestMapping(value = "/api/newEvent", method = RequestMethod.GET)
-    public String newEvent(Model model) {
-        return "newEvent";
-    }
-
     @RequestMapping(value = "/api/getEvents")
     public @ResponseBody List<Event> getEvents(Model model, int from, int to) {
         return getEventsBetweenDays(from, to);
@@ -208,7 +178,7 @@ public class EventController {
     public @ResponseBody Iterable<EventType> getEventTypes(Model model) {
         return eventTypeRepo.findAll();
     }
-
+    
     @RequestMapping(value = "/api/getEventThemes", method = RequestMethod.GET)
     public @ResponseBody Iterable<EventTheme> getEventThemes(Model model) {
         return eventThemeRepo.findAll();

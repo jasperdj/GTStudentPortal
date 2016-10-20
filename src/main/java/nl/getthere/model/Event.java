@@ -74,6 +74,9 @@ public class Event {
     public void setStart(LocalDateTime start) {
         this.start = start;
     }
+    public void setStart(String start){
+    	this.start = LocalDateTime.parse(start);
+    }
 
     @DateTimeFormat(iso=DateTimeFormat.ISO.DATE_TIME)
     @Column(nullable = true, unique = false)
@@ -82,6 +85,9 @@ public class Event {
     }
     public void setEnd(LocalDateTime end) {
         this.end = end;
+    }
+    public void setEnd(String end){
+    	this.end = LocalDateTime.parse(end);
     }
 
     public Boolean getPublished() {

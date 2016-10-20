@@ -119,7 +119,26 @@ public class StudentController {
 		return "detail";
 	}
 	
+	public static Long createStudent(StudentRepository studentRepo, UserRepository userRepo,  User user, Student student) {
+		try{
+			student.setFirstName(user.getFirstName());
+			student.setLastName(user.getLastName());
+			student.setEmail(user.getEmail());
+			student.setDateJoined(now());
 
+			Student s = studentRepo.save(student);
+
+			user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
+			user.setUserRole("student");
+			user.setStudent(student);
+			userRepo.save(user);
+			return s.getId();
+		}catch(Exception e){
+			System.out.println("createStudent ERROR:" + e.getMessage());
+		}
+		return null;
+
+	}
 
 	public static void createStudent(StudentRepository studentRepo, UserRepository userRepo, Model model, User user) {
 		Student student = new Student();
