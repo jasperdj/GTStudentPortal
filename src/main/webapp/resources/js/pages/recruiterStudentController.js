@@ -37,7 +37,6 @@
 
       $http.post("/recruiterapi/students/", newStudent)
       .then(function (response) {
-        console.log(response);
         vm.students.push(response.data);
         vm.hideNewStudent();
         setupMomentsJS(vm.students);
@@ -46,15 +45,20 @@
         });
       },
       function(){
-        alert('Kon student niet aanmaken!');
+        console.log("Foutje met het aanmaken van een student.");
       }
     );
   }
 
   vm.removeStudent = function(student){
     $http.delete("/recruiterapi/students/" + student.id).then(function (response){
-      console.log(response);
-      vm.students.splice(vm.students.indexOf(student),1);
+      if(response.data !== 200){
+        alert('Kon student niet verwijderen!');
+      }else{
+          vm.students.splice(vm.students.indexOf(student),1);
+      }
+    },function(){
+      alert('Kon student niet verwijderen!')
     });
   }
 

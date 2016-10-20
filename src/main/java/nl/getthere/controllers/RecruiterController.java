@@ -4,6 +4,7 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 import java.util.Random;
@@ -83,6 +84,10 @@ public class RecruiterController {
 	public @ResponseBody Student createStudent(@RequestBody Student student) {
 		if(student == null){
 			return null;
+		}
+		List<String> errors = validateStudent(student);
+		if(!errors.isEmpty()){
+			return null; //TODO Make sure these errors are sent back.
 		}
 		User u = new User();
 		u.setFirstName(student.getFirstName());
@@ -220,4 +225,38 @@ public class RecruiterController {
 		return "200";
 	}
 
+	
+	// HELPERS
+	
+	private List<String> validateStudent(Student student){
+		List<String> errors = new ArrayList<String>();
+		
+		if(student.getFirstName() == null){
+			errors.add("Voer aub uw voornaam in.");
+		}
+		
+		if(student.getLastName() == null){
+			errors.add("Voer aub uw achternaam in.");
+		}
+		
+		if(student.getEmail() == null){
+			errors.add("Voer aub een geldig email adres in.");
+		}else if(!isValidEmail(student.getEmail())){
+			errors.add("Voer aub een geldig email adres in.");
+		}
+		
+		if(student.getPhone() != null && student.getPhone().length() != 10){
+			errors.add("Voer aub een geldig telefoonnummer in.");
+		}
+		
+		
+		return errors;
+	}
+	
+	private boolean isValidEmail(String email){
+		String ePattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
+        java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
+        java.util.regex.Matcher m = p.matcher(email);
+        return m.matches();
+	}
 }
