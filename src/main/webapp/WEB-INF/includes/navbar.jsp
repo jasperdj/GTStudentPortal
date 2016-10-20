@@ -4,14 +4,21 @@
 <div class="ui container">
 	<div class="ui large secondary pointing menu">
 		</a> <a href="/" class="item">Home</a>
-		<sec:authorize url="/students">
-			<a href="/students" class="item">Studenten</a>
-		</sec:authorize>
 		<sec:authorize url="/events">
 			<a href="/events" class="item">Events</a>
 		</sec:authorize>
 		<sec:authorize url="/detail">
 			<a href="/detail" class="item">Detail</a>
+		</sec:authorize>
+		<sec:authorize url="/recruiter/**">
+			<div class="ui simple dropdown item">
+				Recruiter <i class="dropdown icon"></i>
+				<div class="menu">
+					<a class="item" href="/recruiter/students/">Students</a> 
+					<a class="item" href="/recruiter/events/">Events</a>
+					
+				</div>
+			</div>
 		</sec:authorize>
 		<div class="right item">
 			<sec:authorize access="!isFullyAuthenticated()">
