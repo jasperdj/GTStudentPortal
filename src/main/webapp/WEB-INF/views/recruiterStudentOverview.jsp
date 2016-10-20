@@ -37,7 +37,7 @@
 					<td>{{s.phone }}</td>
 					<td>{{s.dateOfBirthFormatted }}</td>
 					<td>{{s.education.name }} {{s.education.degree}}</td>
-					<td><a href="#" ng-click="vm.updateStudent(s)"><i
+					<td><a href="#" ng-click="vm.showNewStudent(s)"><i
 							class="write icon"></i></a> <a href="#"
 						ng-click="vm.removeStudent(s)"><i class="remove icon"></i></a></td>
 				</tr>
@@ -47,7 +47,7 @@
 		<div class="ui modal">
 			<div class="ui main text container padded">
 				<h3>Cre&euml;er nieuwe student</h3>
-				<form class="ui form" ng-model="newStudent">
+				<form class="ui form" ng-model="vm.newStudent" id="newStudentForm">
 					<div class="field">
 						<label>Naam </label>
 						<div class="two fields">

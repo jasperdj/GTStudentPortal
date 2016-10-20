@@ -9,9 +9,12 @@
   function recruiterStudentController($http){
     var vm = this;
 
-    vm.showNewStudent = function(){
+    vm.showNewStudent = function(student){
       $('.ui.modal')
       .modal('show');
+      if(student !== undefined){
+        //fill form with data
+      }
     }
 
     vm.hideNewStudent = function(){
@@ -38,6 +41,9 @@
         vm.students.push(response.data);
         vm.hideNewStudent();
         setupMomentsJS(vm.students);
+        $( '#newStudentForm' ).each(function(){
+          this.reset();
+        });
       },
       function(){
         alert('Kon student niet aanmaken!');

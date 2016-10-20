@@ -72,7 +72,7 @@ public class RecruiterController {
 		Student student = studentRepo.findOne(studentid);
 		return student;
 	}
-
+	
 	@RequestMapping(value = "recruiterapi/students/{studentid}/", method = RequestMethod.PUT)
 	public @ResponseBody Student updateStudent(@PathVariable Long studentid) {
 
