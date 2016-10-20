@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Get There - Studenten Portal</title>
 <link rel="stylesheet" type="text/css"
-	href="<c:url value="/resources/css/semantic.css"/>">
+	href="<c:url value="/resources/css/semanticBeamer.css"/>">
 <link rel="stylesheet" type="text/css"
 	href="<c:url value="/resources/css/reset.css"/>">
 <link rel="stylesheet" type="text/css"
