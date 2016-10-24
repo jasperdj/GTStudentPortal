@@ -16,9 +16,9 @@ Note: Academy leertraject, en project.
 
 - Nieuwe generaties brengen nieuwe innovaties. 
 <!-- .element: class="fragment" -->
-- Innovatie is wat een IT bedrijf uniek positioneert op de markt. 
+- Innovatie brengt groei. 
 <!-- .element: class="fragment" -->
-- Gebrek aan innovatie leidt tot verlies in bestaansrecht.
+- Innovatie is cruciaal.
 <!-- .element: class="fragment" -->
 
 ![](http://company.nokia.com/sites/default/files/gallery/images/nokia_white_logo.png)
@@ -31,12 +31,11 @@ Note: Academy leertraject, en project.
 ---
 
 ### Get There is niet alleen.
-- Quintor organiseert hackathons, wedstrijden en werkt nauw samen met
-  scholen. 
+- Quintor
 <!-- .element: class="fragment" -->
-- Atos lanceerde eventpoint om young proffesionals aan te trekken.
+- Atos
 <!-- .element: class="fragment" -->
-- Jaarlijkste omzet van YoungCapital steeg met 28%.
+- Youngcapital
 <!-- .element: class="fragment" -->
 
 ---
@@ -51,24 +50,26 @@ Note: Academy leertraject, en project.
 
 ---
 
-### Hoe kan Get There zich uniek positioneren op deze markt?
-Wat zoekt de uitstekende ambitieuze student waar Get There zo opzoek naar is?
+### Wat kunnen we hieraan doen?
+- Wat wil de student?
+<!-- .element: class="fragment" -->
+
 
 ---
 
-###  Een plek met een actieve, speelse en inspirerende community.
+### Een speelse en inspirerende community.
 ![](https://services.google.com/fh/files/helpcenter/engandtechjobsfow.jpg)
 <!-- .element: height="500px" width="auto" -->
 
 ---
 
-###  Een plek waar hij/zij met alle vrijheid zichzelf kan ontplooien en veel kan leren.
+### Met vrijheid zichzelf ontwikkelen.
 ![](https://services.google.com/fh/files/helpcenter/engandtechjobsfow2.jpg)
 <!-- .element: height="450px" width="auto" -->
 
 ---
 
-### Een plek waar uitstekende ontwikkelaars werken. 
+### Met uitstekende ontwikkelaars werken. 
 ![](https://services.google.com/fh/files/newsletters/careers_last2.jpg) 
 <!-- .element: height="500px" width="auto" -->
 
@@ -110,14 +111,11 @@ Note: Spring, Hibernate, Security, Forms, Apache commons,
 ---
 
 ### GT Student portal
-- Get students here
-<!-- .element: class="fragment" -->
-- Keep students here
-<!-- .element: class="fragment" -->
+![](getStudentHere2.png)
+
 
 Note: Gemaakt door en voor studenten, Verlaagd kosten recruitment. Creeert een sfeer. persoonlijke proactieve benadering. eenvoudig  keuze  maken inspireren.
 
-![](getStudentHere2.png)
 
 ---
 
