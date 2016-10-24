@@ -110,6 +110,11 @@ Note: Spring, Hibernate, Security, Forms, Apache commons,
 
 ---
 
+### Model
+
+![](uml.png)
+---
+
 ### GT Student portal
 ![](getStudentHere2.png)
 
